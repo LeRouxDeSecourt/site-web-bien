@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="styles_element/favicon.png" type="image/png">
+    <link rel="icon" href="styles_element/favicon.svg" type="image/svg+xml">
+    <title>La page de Alex</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="sounds.js"></script>
+    
+    <link rel="preload" href="hub_elements/icons/icon_about_hover.png" as="image">
+    <link rel="preload" href="hub_elements/icons/icon_work_hover.png" as="image">
+    <link rel="preload" href="hub_elements/icons/icon_link_hover.png" as="image">
+    <link rel="preload" href="hub_elements/icons/icon_art_hover.png" as="image">
+    <link rel="preload" href="hub_elements/icons/icon_contact_hover.png" as="image">
+        
+    <style>
+        @font-face {
+            font-family: 'Plus Jakarta Sans';
+            src: url('styles_element/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+            font-weight: 200 800;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'IBMPlexSans';
+            src: url('styles_element/IBMPlexSans-VariableFont_wdth\,wght.ttf') format('truetype');
+            font-weight: 100 700;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'FSEX300';
+            src: url('styles_element/FSEX300.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Pixeled';
+            src: url('styles_element/Pixeled.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+
+        /* Icon styles */
+        #icon_about div {
+            background-image: url("hub_elements/icons/icon_about_normal.png");
+        }
+        #icon_about:hover div {
+            background-image: url("hub_elements/icons/icon_about_hover.png");
+        }
+        #icon_work div {
+            background-image: url("hub_elements/icons/icon_work_normal.png");
+        }
+        #icon_work:hover div {
+            background-image: url("hub_elements/icons/icon_work_hover.png");
+        }
+        #icon_link div {
+            background-image: url("hub_elements/icons/icon_link_normal.png");
+        }
+        #icon_link:hover div {
+            background-image: url("hub_elements/icons/icon_link_hover.png");
+        }
+        #icon_art div {
+            background-image: url("hub_elements/icons/icon_art_normal.png");
+        }
+        #icon_art:hover div {
+            background-image: url("hub_elements/icons/icon_art_hover.png");
+        }
+        #icon_contact div {
+            background-image: url("hub_elements/icons/icon_contact_normal.png");
+        }
+        #icon_contact:hover div {
+            background-image: url("hub_elements/icons/icon_contact_hover.png");
+        }
+
+        /* CSS Variables */
+        :root {
+            --blanc: #ffffff;
+            --gris: #BBB5B1;
+            --noir: #000000;
+            --orange: #FFA100;
+            --orange_fonce: #6a4000;
+            --bleu: #005EFFFF;
+
+            --background_color: #050505e6;
+            --margin: 1.5rem;
+            --padding: 1rem;
+            --border1: 0.3rem;
+            --border2: 0.2rem;
+            --gap: 0.5rem;
+        }
+
+        /* Base elements */
+        body, h1, h4, span, main {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: black;
+            font-family: 'IBMPlexSans', sans-serif;
+            color: var(--blanc);
+        }
+
+        h1 {
+            margin: var(--margin) 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            color: var(--blanc);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        h3 {
+            margin: var(--margin) 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            color: var(--blanc);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        h4 {
+            font-weight: 300;
+            margin: 0;
+        }
+
+        span {
+            font-family: 'FSEX300', cursive;
+            font-size: 1.2rem;
+            line-height: 1rem;
+            display: inline-block;
+            height: 1rem;
+            color: var(--orange);
+            margin: 0;
+        }
+
+        .box {
+            margin: var(--margin) var(--padding);
+            padding: var(--padding);
+            background-color: var(--background_color);
+            border: solid var(--border2) var(--blanc);
+            text-align: justify;
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        .box_petit {
+            margin: var(--margin) var(--padding);
+            padding: var(--padding);
+            background-color: var(--background_color);
+            border: solid var(--border2) var(--blanc);
+            display: flex;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .box_transparent {
+            margin: var(--margin) var(--padding);
+            border: solid var(--border2) var(--blanc);
+            text-align: justify;
+            box-sizing: border-box;
+            display: flex;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .box_petit_transparent {
+            margin: var(--margin) var(--padding);
+            border: solid var(--border2) var(--blanc);
+            display: flex;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .box_horizontale {
+            margin: var(--margin) var(--padding);
+            padding: 2rem;
+            background-color: var(--background_color);
+            border: solid var(--border2) var(--blanc);
+            text-align: justify;
+            box-sizing: border-box;
+            display: flex;
+
+            width: 18rem;
+            height: 24rem;
+
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: var(--margin);
+        }
+
+        .box_transparent span , .box_petit_transparent span {
+            font-size: 1.5rem;
+            color: var(--blanc);
+        }
+
+        .img_petit {
+            height: 7rem;
+        }
+
+        .img_grand {
+            height: 12rem;
+        }
+
+        .box_transparent:hover , .box_petit_transparent:hover {
+            border: solid var(--border2) var(--orange);
+        }
+
+        .box_transparent:hover span, .box_petit_transparent:hover span {
+            color: var(--orange);
+        }
+
+        .grid {
+            column-count: 2;
+            column-fill: balance;
+            margin: var(--padding);
+            gap: calc(var(--padding)*2);
+        }
+        body.safari .grid {
+            column-count: 2;
+            column-fill: balance;
+            margin: var(--padding);
+            gap: calc(var(--padding)*2);
+        }
+
+        .grid img {
+            display: block;
+        }
+        body.safari .grid img {
+            display: block;
+        }
+
+        @media (max-width: 1px) {
+            .grid {
+                column-count: 1;
+            }
+        }
+
+        .img_art_petit {
+            width: 100%;
+            border: solid var(--border2) var(--blanc);
+            background-color: black;
+            box-sizing: border-box;
+            margin-bottom: calc(2 * var(--padding));
+        }
+        body.safari .img_art_petit {
+            width: 100%;
+            border: solid var(--border2) var(--blanc);
+            background-color: black;
+            box-sizing: border-box;
+            margin: calc(2 * var(--padding)) 0;
+        }
+
+        .img_art_grand {
+            width: calc(50rem - var(--border2)*2);
+            height: auto;
+            margin: var(--padding);
+            border: solid var(--border2) var(--blanc);
+            background-color: black;
+        }
+        body.safari .img_art_grand {
+            width: calc(50rem - var(--border2)*2);
+            height: auto;
+            margin: var(--padding);
+            margin-bottom: 0;
+            border: solid var(--border2) var(--blanc);
+            background-color: black;
+        }
+    
+
+        hr {
+            width: 100%;
+            border: none;
+            height: var(--border1); 
+            background-color: var(--blanc); 
+            margin: 0;
+        }
+        /* Background layers */
+
+        #fond_ecran__haut, #fond_ecran__bas {
+            position: absolute;
+            width: 100%;
+        }
+
+        #fond_ecran__haut {
+            z-index: -2;
+            top: 0;
+            height: 100%;
+            background-image: url("hub_elements/fond_ecran/fond_ecran__haut.jpeg");
+            background-size: cover;
+        }
+
+        #fond_ecran__bas {
+            z-index: -1;
+            bottom: 0;
+            height: 8rem;
+            background-image: url("hub_elements/fond_ecran/fond_ecran__bas.png");
+            background-size: auto 100%;
+            background-repeat: repeat-x;
+        }
+
+        /* Layout */
+        main {
+            width: 100dvw;
+            height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ele_pour_js_drag {
+            opacity: 0;
+            z-index: -3;
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .ele_pour_js_drag.open {
+            opacity: 1;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .window {
+            border: solid var(--border1) var(--blanc);
+            background-color: var(--background_color);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            will-change: transform;
+            pointer-events: all;
+            max-height: 50vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #pop_up_flotant_about .window {
+            width: 40rem;
+            height: 27rem;
+        }
+
+
+        #pop_up_flotant_link .window {
+            width: calc(30rem + 12px);
+        }
+
+        #pop_up_flotant_art .window {
+            width: 52rem;
+            max-height: 70vh;
+            height: 35rem;
+            min-height: 30rem;
+        }
+
+
+        #pop_up_flotant_contact .window {
+            width: 40rem;
+            height: 40rem;
+            max-height: 30rem;
+        }
+        
+
+        .window_main {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            overflow: auto;
+            overflow-x: hidden;
+            flex: 1 1 auto;
+            min-height: 0;
+            width: 100%;
+            padding-top: var(--padding);
+        }
+
+        #window1 .window_main {
+            justify-content: center;
+            padding-top: 0;
+        }
+
+
+        #pop_up_flotant_contact .window .window_main{
+            display: flex;
+            flex-direction: row;
+            padding-top: 0rem;
+        }
+
+
+        .haut_page {
+            padding: 0.5rem var(--padding);
+            background-color: var(--blanc);
+            box-shadow: inset 0px 3px 0px 3px var(--blanc);
+            border-bottom: solid var(--border1) var(--gris);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            color: var(--noir);
+        }
+        .haut_page h3 {
+            color: var(--noir);
+        }
+
+        .haut_page:hover .window-title, .haut_page:hover .control_button {
+            color: var(--orange);
+        }
+
+        .window-title {
+            font-family: 'Pixeled', cursive;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .control_button {
+            background: none;
+            border: none;
+            height: 1.2rem;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+            padding: 0;
+        }
+
+        .control_button svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .haut_page .control_button:hover {
+            color: var(--bleu);
+        }
+
+        /* Main content */
+        .window_main h1 span {
+            font-size: 3.5rem;
+        }
+
+        .div_boutons {
+            display: flex;
+            justify-content: center;
+            gap: var(--gap);
+            margin: var(--margin);
+            margin-top: 0;
+        }
+
+        .bouton_plus_texte {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .img_boutton_main {
+            width: 5rem;
+            height: 5rem;
+            background-size: cover;
+        }
+
+        /* Floating info pop-up */
+
+
+        .info_part1 {
+            margin: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .info_part1 h1 {
+            margin-left: 2rem;
+        }
+
+        .img_salut_info {
+            height: 19rem;
+        }
+
+        .img_6rem img{
+            height: 6rem;
+            margin: 0.2rem;
+        }
+        .img_6rem:hover img{
+            height: 6.4rem;
+            margin: 0rem;
+        }
+
+        .rotate_90 {
+            margin: 0;
+            height: 1rem;
+            width: 1rem;
+            margin-top: -0.5rem;
+            margin-left: -0.4rem;
+            margin-right: 0.4rem;
+        }
+        .rotate_90 span{
+            height: 1rem;
+            width: max-content;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            transform-origin: bottom left;
+            -webkit-transform-origin: bottom left;
+            background-color: var(--noir);
+        }
+
+        .img_contact_icon {
+            height: 4rem;
+        }
+
+        .box_horizontale h3 {
+            margin: 0rem;
+        }
+
+        .box_horizontale a {
+            margin: -1rem;
+            padding: 1rem;
+            background-color: var(--background_color);
+            border: solid var(--border2) var(--blanc);
+            display: flex;
+            color: var(--blanc);
+            margin-top: auto;
+            width: 212px;
+        }
+
+        .box_horizontale h4{
+            text-align: left;
+        }
+
+        .span_fleche_pixel {
+            font-family: 'FSEX300', cursive;
+            display: inline-block;
+            font-size: 2rem;
+            vertical-align: middle;
+            margin-top: -0.5rem;
+            color: var(--blanc);
+        }
+
+        .box_horizontale a:hover{
+            color: var(--orange);
+            border: solid var(--border2) var(--orange);
+        }
+
+        .box_horizontale a:hover .span_fleche_pixel {
+            color: var(--orange);
+        }
+
+
+
+        /*-------------------------*/
+
+        #pop_up_flotant_work .window {
+            width: 47rem;
+            max-height: 65vh;
+        }
+
+        #pop_up_flotant_work .window_main {
+            padding-top: 0;
+        }
+
+        .projet_titre {
+            margin: var(--margin) 0 var(--padding) 0;
+        }
+
+        .projet_card {
+            margin: 0 var(--padding) var(--margin) var(--padding);
+            padding: var(--padding);
+            background-color: var(--background_color);
+            border: solid var(--border2) var(--blanc);
+            width: calc(100% - (var(--padding) * 2));
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding);
+        }
+
+        .projet_card h4 {
+            text-align: left;
+            margin: 0;
+        }
+
+        .projet_galerie_box {
+            padding: var(--padding);
+            margin: calc(-1*(var(--padding) + var(--border2)));
+            margin-bottom: var(--padding);
+            border: solid var(--border2) var(--blanc);
+            background-color: black;
+        }
+
+        .projet_galerie {
+            display: flex;
+            gap: var(--padding);
+            overflow-x: auto;
+            padding-bottom: 0.2rem;
+        }
+
+        .projet_image_contexte {
+            height: 14rem;
+            max-height: 14rem;
+            width: auto;
+            background-color: black;
+            flex: 0 0 auto;
+        }
+
+        .projet_cta {
+            margin-top: 0.4rem;
+            padding: 0.8rem 1rem;
+            background-color: var(--background_color);
+            border: solid var(--border2) var(--blanc);
+            display: flex;
+            color: var(--blanc);
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .projet_cta h4 {
+            margin: 0;
+        }
+
+        .projet_cta:hover {
+            color: var(--orange);
+            border: solid var(--border2) var(--orange);
+        }
+
+        .projet_cta:hover .span_fleche_pixel {
+            color: var(--orange);
+        }
+
+        .projet_chat {
+            padding: var(--padding);
+            border: solid var(--border2) var(--blanc);
+            background-color: black;
+            overflow-x: auto;
+        }
+
+        .projet_chat pre {
+            margin: 0;
+            font-family: 'IBMPlexSans', monospace;
+            font-size: 0.95rem;
+            line-height: 1.4rem;
+            color: var(--blanc);
+            white-space: pre-wrap;
+        }
+
+
+
+        #pop_up_flotant_work hr {
+            flex-shrink: 0;
+            align-self: stretch;
+            border: 0;
+            border-top: var(--border2) solid var(--blanc);
+            margin: 0 var(--padding);
+            height: 0;
+            width: clac(100%- 4*var(--padding));
+        }
+
+
+
+        /*-------------------------*/
+
+    </style>
+</head>
+<body>
+  <svg style="display: none;">
+    <symbol id="icon-close" viewBox="0 0 500 500">
+      <rect width="100" height="100" fill="currentColor"/>
+      <rect x="100" y="100" width="100" height="100" fill="currentColor"/>
+      <rect x="200" y="200" width="100" height="100" fill="currentColor"/>
+      <rect x="300" y="100" width="100" height="100" fill="currentColor"/>
+      <rect x="400" width="100" height="100" fill="currentColor"/>
+      <rect x="100" y="300" width="100" height="100" fill="currentColor"/>
+      <rect y="400" width="100" height="100" fill="currentColor"/>
+      <rect x="300" y="300" width="100" height="100" fill="currentColor"/>
+      <rect x="400" y="400" width="100" height="100" fill="currentColor"/>
+    </symbol>
+  </svg>
+    <div id="fond_ecran__haut"></div>
+    <div id="fond_ecran__bas"></div>
+
+    <main>
+        <div class="window open" id="window1">
+            <div class="haut_page"></div>
+            <div class="window_main">
+                <h1>Hi, ici <span>Alexandre</span></h1>
+                <div class="div_boutons">
+                    <div class="bouton_plus_texte" id="icon_about">
+                        <div class="img_boutton_main"></div>
+                        <h4>infos</h4>
+                    </div>
+                    <div class="bouton_plus_texte" id="icon_work">
+                        <div class="img_boutton_main"></div>
+                        <h4>Projets</h4>
+                    </div>
+                    <div class="bouton_plus_texte" id="icon_link">
+                        <div class="img_boutton_main"></div>
+                        <h4>Liens</h4>
+                    </div>
+                    <div class="bouton_plus_texte" id="icon_art">
+                        <div class="img_boutton_main"></div>
+                        <h4>Art 3D</h4>
+                    </div>
+                    <div class="bouton_plus_texte" id="icon_contact">
+                        <div class="img_boutton_main"></div>
+                        <h4>Contact</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="ele_pour_js_drag icon_about" id="pop_up_flotant_about">
+        <div class="window">
+            <div class="haut_page">
+                <h3 class="window-title">Info</h3>
+                <button class="control_button icon_about">
+                  <svg width="24" height="24">
+                    <use href="#icon-close" />
+                  </svg>
+                </button>
+            </div>
+            <div class="window_main">
+                <div class="info_part1">
+                    <img src="hub_elements/images/avatar.png" class="img_salut_info">
+                    <h1>Bonjour !</h1>
+                </div>
+                <div class="box">
+                    <h4>Je suis <span>Alexandre</span>, étudiant au lycée Sainte-Famille. Depuis toujours, je suis passionné par l'informatique, la technologie et le design UI/UX. Curieux et créatif, j'aime bricoler et développer des projets dans ces domaines. Le sport me permet de me dépasser et de me concentrer. Je suis toujours prêt à apprendre et à relever de nouveaux défis, avec l'envie d'innover.</h4>
+                </div>
+                <h3>Open Badges :</h3>
+                <div class="box">
+                    <a href="https://openbadgepassport.com/app/badge/info/970419" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_creativite_niveau_3.png" alt=""></a>
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>CRÉATIVITÉ NIVEAU III :</span></h4>
+                        <h4>Ce badge valorise ma créativité : j’ai su générer et développer des idées originales, prendre des risques pour tester de nouvelles approches et combiner mes connaissances pour résoudre un problème de façon innovante.</h4>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="https://openbadgepassport.com/app/badge/info/970422" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_esprit_equipe_niveau_2.png" alt=""></a>
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>ESPRIT D'ÉQUIPE NIVEAU II :</span></h4>
+                        <h4>Ce badge reconnaît mon esprit d’équipe : j’ai collaboré sur plusieurs projets, aidé mes coéquipiers en cas de besoin, partagé l’information et contribué activement à l’atteinte d’objectifs communs.</h4>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="https://openbadgepassport.com/app/badge/info/970421" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_engagement_niveau_2.png" alt=""></a>
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>ENGAGEMENT NIVEAU II :</span></h4>
+                        <h4>Ce badge illustre mon engagement : j’ai respecté les règles de l’établissement, participé à des actions solidaires, pris des initiatives pour organiser des projets et soutenu mes camarades tout au long de leur parcours.</h4>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="https://openbadgepassport.com/app/badge/info/970420" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_merite_niveau_2.png" alt=""></a>
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>MÉRITE NIVEAU II :</span></h4>
+                        <h4>Ce badge récompense ma persévérance : j’ai fourni des efforts constants malgré les difficultés, sollicité de l’aide quand nécessaire, saisi des opportunités de stages et maintenu une attitude positive et solidaire dans l’établissement.</h4>
+                    </div>
+                </div>
+
+                <h3>capacité :</h3>
+                <div class="box">
+                    <canvas id="canvas1" class="img_petit"></canvas>
+                    <img id="source-img1" src="hub_elements/images/logos_technologies.png" style="display: none">
+                    <div style="margin-left: var(--margin);">
+                        <h4>Je maîtrise plusieurs langages de programmation et outils comme le HTML, CSS, PHP, JS ou encore Python. J'ai également designé cette page avec Figma, et rendu toutes les images 3D que vous voyez ici a l'aide de l'outil Blender.</h4>
+                    </div>
+                </div>
+
+                <h3>Travail :</h3>
+                <div class="box">
+                    <canvas id="canvas2" class="img_petit"></canvas>
+                    <img id="source-img2" src="hub_elements/images/travail_standbick.png" style="display: none">
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>Strandblick Leipzig Cospudener See</span></h4>
+                        <h4>J’ai travaillé dans un bar de plage au bord du Cospudener See, près de Leipzig. Entre service et ambiance estivale, j’ai appris à gérer le rythme intense de la restauration tout en pratiquant l’allemand avec les locaux. Une expérience à la fois conviviale et formatrice.</h4>
+                    </div>
+                </div>
+
+                <h3>Stages :</h3>
+                <div class="box">
+                    <canvas id="canvas3" class="img_petit"></canvas>
+                    <img id="source-img3" src="hub_elements/images/stage_savonnerie.png" style="display: none">
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>La Savonnerie des Hauts-de-France</span></h4>
+                        <h4>J'ai effectué un stage de seconde à la Savonnerie des Hauts-de-France, un très joli commerce où j'ai découvert le travail dur et répétitif, mais aussi l'art de vendre un produit à la clientèle.</h4>
+                    </div>
+                </div>
+                <div class="box">
+                    <canvas id="canvas4" class="img_petit"></canvas>
+                    <img id="source-img4" src="hub_elements/images/stage_compagnons_saisons.png" style="display: none">
+                    <div style="margin-left: var(--margin);">
+                        <h4><span>Les Compagnons des saisons</span></h4>
+                        <h4>J'ai aussi fait un stage volontaire aux Compagnons des Saisons à Wambrechies et Villeneuve d'Ascq, où j'ai découvert un environnement exigeant, appris à m'adapter à diverses tâches et renforcé mes compétences relationnelles.</h4>
+                    </div>
+                </div>
+
+                <br>
+                <h4>Allez, je vous laisse regarder la suite ! ➡️</h4>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="ele_pour_js_drag icon_work" id="pop_up_flotant_work">
+        <div class="window">
+            <div class="haut_page">
+                <h3 class="window-title">Projets</h3>
+                <button class="control_button icon_work">
+                  <svg width="24" height="24">
+                    <use href="#icon-close" />
+                  </svg>
+                </button>
+            </div>
+            <div class="window_main">
+                <div class="info_part1" style="margin: 2rem 0;">
+                    <img    style="margin-left: -2rem;height: 16rem;"      src="hub_elements/images/projet_papier_crayon.png" class="img_salut_info">
+                    <h1 style="margin-left: -3rem;">Mes projets :</h1>
+                </div>
+                <h3 class="projet_titre">Application iOS - Arts Plastiques</h3>
+                <div class="projet_card">
+                    <div class="projet_galerie_box">
+                        <div class="projet_galerie">
+                            <img class="projet_image_contexte" src="hub_elements/images/projet_1/projet_1_1.png" alt="Capture du projet Arts Plastiques - vue 1">
+                            <img class="projet_image_contexte" src="hub_elements/images/projet_1/projet_1_2.png" alt="Capture du projet Arts Plastiques - vue 2">
+                            <img class="projet_image_contexte" src="hub_elements/images/projet_1/projet_1_3.png" alt="Capture du projet Arts Plastiques - vue 3">
+                        </div>
+                    </div>
+
+                    <h4><span>Problématique :</span> Comment faire interagir lumière, matière et espace ?</h4>
+                    <h4>
+                        Ce projet de Terminale (option Arts Plastiques) explore volontairement un paradoxe :
+                        j'utilise une application iOS en réalité augmentée pour montrer l'illusion du virtuel.
+                        L'application ne crée pas d'interaction physique réelle avec la lumière, la matière ou l'espace.
+                        C'est précisément cette absence qui construit la démarche artistique et questionne notre perception du réel.
+                    </h4>
+                    <h4>
+                        L'œuvre n'existe que par l'utilisateur, ce qui remet en cause la matérialité de l'objet numérique
+                        et la notion même d'interaction dans l'ère digitale.
+                    </h4>
+
+                    <h4 class="projet_techniques"><span>Technique :</span> Swift, iOS, ARKit</h4>
+
+                    <a class="projet_cta" href="https://github.com/LeRouxDeSecourt/ios_swift_app_art-pla_1/" target="_blank">
+                        <h4>Voir le projet sur GitHub <span class="span_fleche_pixel">→</span></h4>
+                    </a>
+                </div>
+
+                <h3 class="projet_titre">Fine-tuning IA - Messages Instagram</h3>
+                <div class="projet_card">
+                    <div class="projet_galerie_box">
+                        <div class="projet_galerie">
+                            <img class="projet_image_contexte" src="hub_elements/images/projet_2/projet_2_1.png" alt="Pipeline de fine-tuning - vue 1">
+                            <img class="projet_image_contexte" src="hub_elements/images/projet_2/projet_2_2.png" alt="Pipeline de fine-tuning - vue 2">
+                        </div>
+                    </div>
+
+                    <h4><span>Objectif :</span> entraîner un modèle qui répond avec mon style de conversation Insta.</h4>
+                    <h4>
+                        J'ai fine-tuné des modèles Mistral 7B, Mistral 3B et Llama 3 3B sur mes messages Instagram.
+                        J'ai d'abord téléchargé mes données, puis converti les conversations en <span>JSONL</span> pour Mistral
+                        et en format <span>ShareGPT</span> pour Llama.
+                    </h4>
+                    <h4>
+                        Pour encaisser la charge de calcul, j'ai utilisé Google Colab avec Python et Unsloth.
+                        Ensuite, j'ai exporté les poids pour faire tourner le modèle localement avec Ollama.
+                        Résultat: un assistant qui répond avec mon ton, mes tics d'écriture et un peu de pipo assumé.
+                    </h4>
+
+                    <h4 class="projet_techniques"><span>Technique :</span> Python, Google Colab, Unsloth, Mistral 7B/3B, Llama 3 3B, JSONL, ShareGPT, Ollama</h4>
+                    <h4><span>Exemple :</span></h4>
+
+                    <div class="projet_chat">
+                        <pre>>> salut, tu peut m'envoyer les cours ?
+héhé ! tkt ça me dérange pas du tout 😊
+
+>>> merci, trop gentil ! peut tu l'envoyer par photo ?
+okkkkk je vais envoyer ce message.
+
+>>> ca arrive quand ?
+en vrai c'est compliqué car les données sont très volumineuses... mais si tu me donnes ta coordonnée privée, je peux t'envoyer des fichiers zip qui contiennent tous tes cours et toutes les notes !</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ele_pour_js_drag icon_link" id="pop_up_flotant_link">
+        <div class="window">
+            <div class="haut_page">
+                <h3 class="window-title">Liens</h3>
+                <button class="control_button icon_link">
+                  <svg width="24" height="24">
+                    <use href="#icon-close" />
+                  </svg>
+                </button>
+            </div>
+            <div class="window_main">
+                <h2>ici tout ce que j'ai fait !</h2>
+                <a class="box_transparent" target="_blank" href="recap_philo/index.php" >
+                    <img src="hub_elements/images/project_recap_philo.png" class="img_grand">
+                    <div style="margin: var(--padding);">
+                        <h4><span>Recap de Philo</span></h4>
+                        <h4>Ici le lien pour aller sur un regroupement de récapitulatifs de chaque notion vue en cours de philosophie.</h4>
+                    </div>
+                </a>
+                <a class="box_transparent" target="_blank" href="recap_cours_NSI/home.html" >
+                    <img src="hub_elements/images/project_recap_cours.png" class="img_grand">
+                    <div style="margin: var(--padding);">
+                        <h4><span>Recap de NSI</span></h4>
+                        <h4>Ici les liens pour accéder aux récaps que j'ai faits sur tous les cours de NSI Première !</h4>
+                    </div>
+                </a>
+                <div style="display: flex; ">
+                    <a class="box_petit_transparent" target="_blank" href="horloge_clean/horloge.php" >
+                        <img src="hub_elements/images/project_horloge_propre.png" class="img_grand">
+                        <h4 class="rotate_90"><span>Horloge clean</span></h4>
+                    </a>
+                    <a class="box_petit_transparent" target="_blank" href="horloge_stylise/horloge_fond_theme_auto.html" >
+                        <img src="hub_elements/images/project_horloge_stilise.png" class="img_grand">
+                        <h4 class="rotate_90"><span>Horloge stylisé</span></h4>
+                    </a>
+                </div>
+                <a class="box_transparent" target="_blank" href="vieux_cv/cv.html" >
+                    <img src="hub_elements/images/project_cv.png" class="img_grand">
+                    <div style="margin: var(--padding);">
+                        <h4><span>Mon 1er cv :</span></h4>
+                        <h4>Voici mon premier CV, que je trouve toujours stylé ! Bien sûr, il n’est plus à jour, mais n’hésitez pas à le consulter.</h4>
+                    </div>
+                </a>
+                <div style="display: flex; ">
+                    <a class="box_petit_transparent" target="_blank" href="hub_1/index.html" >
+                        <img src="hub_elements/images/project_hub.png" class="img_grand">
+                        <h4 class="rotate_90"><span>1ᵉhub (périmé)</span></h4>
+                    </a>
+                    <a class="box_petit_transparent" target="_blank" href="hub_2/index.html" >
+                        <img src="hub_elements/images/project_hub_2.png" class="img_grand">
+                        <h4 class="rotate_90"><span>2ᵉhub (dépassé)</span></h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ele_pour_js_drag icon_art" id="pop_up_flotant_art">
+        <div class="window">
+            <div class="haut_page">
+                <h3 class="window-title">Art 3D</h3>
+                <button class="control_button icon_art">
+                  <svg width="24" height="24">
+                    <use href="#icon-close" />
+                  </svg>
+                </button>
+            </div>
+            <div class="window_main">
+                <h2>Et ici toutes mes productions :</h2>
+                <img src="hub_elements/images/art_1.png" class="img_art_grand">
+                <div class="grid">
+                    <img src="hub_elements/images/art_2.png" class="img_art_petit">
+                    <img src="hub_elements/images/art_3.png" class="img_art_petit">
+                    <img src="hub_elements/images/art_4.png" class="img_art_petit">
+                    <img src="hub_elements/images/art_5.png" class="img_art_petit">
+                    <img src="hub_elements/images/art_6.png" class="img_art_petit">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ele_pour_js_drag icon_contact" id="pop_up_flotant_contact">
+        <div class="window">
+            <div class="haut_page">
+                <h3 class="window-title">Contact</h3>
+                <button class="control_button icon_contact">
+                  <svg width="24" height="24">
+                    <use href="#icon-close" />
+                  </svg>
+                </button>
+            </div>
+            <div class="window_main">
+                <div class="box_horizontale">
+                    <img src="hub_elements/icons/icon_mail_normal.png" alt="" class="img_contact_icon">
+                    <h3>Par Mail :</h3>
+                    <h4>Mon e-mail est : alexcapon33@gmail.com
+                        <br>
+                        N'hésitez pas à me contacter pour toutes opportunités, collaborations ou autre  :&#41;.
+                    </h4>
+                    <a href="mailto:alexcapon33@gmail.com"><h4>Envoyez-moi un courriel <span class="span_fleche_pixel">→</span></h4></a>
+                </div>
+                <div class="box_horizontale">
+                    <img src="hub_elements/icons/icon_insta_normal.png" alt="" class="img_contact_icon">
+                    <h3>Ou Instagram :</h3>
+                    <h4>Mon pseudo est : roux.de.secourt
+                        <br>
+                        Ajoute-moi ! Ça fait toujours plaisir d'apprendre à connaître des personnes. 
+                    </h4>
+                    <a href="https://www.instagram.com/roux.de.secourt" target="_blank"><h4>Ajoutez-moi sur insta <span class="span_fleche_pixel">→</span></h4></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Le système de sons est maintenant géré par sounds.js
+        
+        // Attendre que les sons soient initialisés
+        window.addEventListener('load', () => {
+            // Ajouter les sons aux boutons principaux (down/up)
+            attachButtonSounds('.bouton_plus_texte');
+            attachButtonSounds('.control_button');
+            attachButtonSounds('a.box_transparent, a.box_petit_transparent');
+            attachButtonSounds('.box_horizontale a');
+            attachButtonSounds('.projet_cta');
+            
+            // Ajouter les sons de hover aux boutons principaux
+            attachHoverSound('.bouton_plus_texte');
+            attachHoverSound('.control_button');
+            attachHoverSound('a.box_transparent, a.box_petit_transparent');
+            attachHoverSound('.box_horizontale a');
+            attachHoverSound('.projet_cta');
+            attachHoverSound('.img_6rem');
+            attachHoverSound('.haut_page');
+            
+            // Initialiser l'écouteur global pour le son de clic par défaut
+            // après avoir marqué tous les éléments avec sons personnalisés
+            initGlobalClickSound();
+        });
+        
+
+
+
+
+
+
+
+
+        
+        // savoir si c safariiiiiii !!! 
+
+        if (
+            /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+        ) {
+                document.body.classList.add('safari');
+        }
+
+
+
+
+
+
+        const buttons = document.querySelectorAll(".bouton_plus_texte");
+        const allPopUps = document.querySelectorAll(".pop_up_flotant");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const iconClass = btn.id; // ex : icon_about
+                const targetPopUp = document.querySelector(`.ele_pour_js_drag.${iconClass}`);
+                const inner = targetPopUp.querySelector('.window');
+                const windowMain = inner.querySelector('.window_main');
+                
+                inner.style.transform = 'translate(-50%, -50%)';
+                inner.style.webkitTransform = 'translate(-50%, -50%)'; // Safari compatibility
+                targetPopUp.classList.add("open");
+                
+                // FIXED: Reset scroll position to top when opening
+                windowMain.scrollTop = 0;
+
+                // Fermeture par bouton 
+                const closeBtn = targetPopUp.querySelector('.control_button');
+                closeBtn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Force Safari to repaint
+                    targetPopUp.style.opacity = '0';
+                
+                    targetPopUp.classList.remove("open");
+                    targetPopUp.style.opacity = '';
+                };
+            });
+        });
+
+        // Drag functionality with Safari improvements
+        let isDragging = false;
+        let offsetX = 0, offsetY = 0;
+        let currentInner = null;
+
+        document.querySelectorAll(".haut_page").forEach(header => {
+            header.onmousedown = (e) => {
+                e.preventDefault(); // Prevent text selection on Safari
+                isDragging = true;
+                currentInner = header.closest('.window');
+                const rect = currentInner.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                offsetX = e.clientX - centerX;
+                offsetY = e.clientY - centerY;
+                
+                // Add class for better performance during drag
+                currentInner.style.willChange = 'transform';
+            };
+        });
+
+        document.onmousemove = (e) => {
+            if (!isDragging || !currentInner) return;
+            e.preventDefault();
+            
+            const currentX = e.clientX - offsetX - window.innerWidth / 2;
+            const currentY = e.clientY - offsetY - window.innerHeight / 2;
+            const transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px))`;
+            
+            currentInner.style.transform = transform;
+            currentInner.style.webkitTransform = transform; // Safari compatibility
+        };
+
+        document.onmouseup = () => {
+            if (currentInner) {
+                currentInner.style.willChange = 'auto';
+            }
+            isDragging = false;
+            currentInner = null;
+        };
+
+        if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+            document.querySelectorAll('.ele_pour_js_drag').forEach(popup => {
+                popup.style.webkitTransform = 'translateZ(0)';
+                popup.style.webkitBackfaceVisibility = 'hidden';
+            });
+        }
+
+
+
+        //   pour le pixelage ! 
+        function pixelateImage(canvasId, imgId, baseBlocks = 80) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const img = document.getElementById(imgId);
+
+            const width = img.naturalWidth;
+            const height = img.naturalHeight;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            const scaleFactor = Math.max(1, Math.floor(width / baseBlocks));
+            const smallW = Math.max(1, Math.floor(width / scaleFactor));
+            const smallH = Math.max(1, Math.floor(height / scaleFactor));
+
+            const tmpCanvas = document.createElement('canvas');
+            tmpCanvas.width = smallW;
+            tmpCanvas.height = smallH;
+            const tmpCtx = tmpCanvas.getContext('2d');
+            tmpCtx.drawImage(img, 0, 0, smallW, smallH);
+
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(tmpCanvas, 0, 0, smallW, smallH, 0, 0, width, height);
+        }
+
+        window.addEventListener('load', () => {
+            pixelateImage('canvas1', 'source-img1', 80);
+            pixelateImage('canvas2', 'source-img2', 80);
+            pixelateImage('canvas3', 'source-img3', 80);
+            pixelateImage('canvas4', 'source-img4', 80);
+        });
+    </script>
+</body>
+</html>

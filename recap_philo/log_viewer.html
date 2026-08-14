@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trafic du site</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Courier New', monospace;
+    background: #0d1117;
+    color: #c9d1d9;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #58a6ff;
+    margin-bottom: 1.5rem;
+  }
+  .upload-zone {
+    border: 1px dashed #30363d;
+    border-radius: 6px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .upload-zone:hover, .upload-zone.drag { border-color: #58a6ff; }
+  .upload-zone input { display: none; }
+  .upload-zone label {
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #8b949e;
+  }
+  .upload-zone label span { color: #58a6ff; }
+  .controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .controls label { font-size: 0.8rem; color: #8b949e; }
+  select {
+    background: #161b22;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .chart-wrap {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+    padding: 1.5rem;
+    display: none;
+  }
+  .stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .stat { font-size: 0.8rem; color: #8b949e; }
+  .stat strong { color: #58a6ff; font-size: 1.1rem; display: block; }
+  #separator-hint { font-size: 0.75rem; color: #8b949e; margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+
+<h1>// Analyse du trafic</h1>
+
+<div class="upload-zone" id="dropZone">
+  <input type="file" id="fileInput" accept=".csv,.tsv,.txt,.log">
+  <label for="fileInput">
+    <span>Choisir un fichier</span> ou glisser-déposer ici<br>
+    <small id="separator-hint">CSV, TSV ou log — séparateur auto-détecté</small>
+  </label>
+</div>
+
+<div class="controls" id="controls" style="display:none">
+  <div>
+    <label>Granularité&nbsp;</label>
+    <select id="granularity">
+      <option value="minute">Par minute</option>
+      <option value="hour" selected>Par heure</option>
+      <option value="day">Par jour</option>
+    </select>
+  </div>
+  <div>
+    <label>Colonne date&nbsp;</label>
+    <select id="colSelect"></select>
+  </div>
+</div>
+
+<div class="chart-wrap" id="chartWrap">
+  <div class="stats" id="stats"></div>
+  <canvas id="chart"></canvas>
+</div>
+
+<script>
+let chartInstance = null;
+let parsedRows = [];
+
+// Drag & drop
+const dz = document.getElementById('dropZone');
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
+dz.addEventListener('drop', e => {
+  e.preventDefault(); dz.classList.remove('drag');
+  handleFile(e.dataTransfer.files[0]);
+});
+document.getElementById('fileInput').addEventListener('change', e => handleFile(e.target.files[0]));
+document.getElementById('granularity').addEventListener('change', render);
+document.getElementById('colSelect').addEventListener('change', render);
+
+function handleFile(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => parseData(e.target.result);
+  reader.readAsText(file);
+}
+
+function detectSeparator(line) {
+  const counts = { '\t': (line.match(/\t/g)||[]).length, ';': (line.match(/;/g)||[]).length, ',': (line.match(/,/g)||[]).length };
+  return Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
+}
+
+function parseDate(str) {
+  // Try ISO / common formats
+  str = str.trim().replace(/^["']|["']$/g,'');
+  const d = new Date(str);
+  if (!isNaN(d)) return d;
+  // Try "2026-04-29 18:12:46" explicitly
+  const m = str.match(/(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2}(:\d{2})?)/);
+  if (m) return new Date(m[1] + 'T' + m[2]);
+  return null;
+}
+
+function parseData(text) {
+  const lines = text.trim().split('\n').filter(l => l.trim());
+  if (!lines.length) return;
+
+  const sep = detectSeparator(lines[0]);
+  const firstLineParsed = lines[0].split(sep);
+
+  // Detect header: if first cell doesn't look like a date, treat as header
+  let headers, dataLines;
+  if (parseDate(firstLineParsed[0])) {
+    headers = firstLineParsed.map((_,i) => 'col'+i);
+    dataLines = lines;
+  } else {
+    headers = firstLineParsed.map(h => h.trim().replace(/^["']|["']$/g,''));
+    dataLines = lines.slice(1);
+  }
+
+  parsedRows = dataLines.map(l => {
+    const vals = l.split(sep);
+    const obj = {};
+    headers.forEach((h,i) => obj[h] = (vals[i]||'').trim().replace(/^["']|["']$/g,''));
+    return obj;
+  });
+
+  // Find date columns
+  const dateCols = headers.filter(h => {
+    let hits = 0;
+    for (let i = 0; i < Math.min(parsedRows.length, 20); i++) {
+      if (parseDate(parsedRows[i][h])) hits++;
+    }
+    return hits > 5;
+  });
+
+  if (!dateCols.length) {
+    alert('Aucune colonne date détectée. Vérifiez le format du fichier.');
+    return;
+  }
+
+  const sel = document.getElementById('colSelect');
+  sel.innerHTML = dateCols.map(c => `<option value="${c}">${c}</option>`).join('');
+  document.getElementById('controls').style.display = 'flex';
+  render();
+}
+
+function bucketKey(date, gran) {
+  const y = date.getFullYear(), mo = String(date.getMonth()+1).padStart(2,'0');
+  const d = String(date.getDate()).padStart(2,'0');
+  const h = String(date.getHours()).padStart(2,'0');
+  const mi = String(date.getMinutes()).padStart(2,'0');
+  if (gran === 'minute') return `${y}-${mo}-${d} ${h}:${mi}`;
+  if (gran === 'hour')   return `${y}-${mo}-${d} ${h}:00`;
+  return `${y}-${mo}-${d}`;
+}
+
+function render() {
+  const col = document.getElementById('colSelect').value;
+  const gran = document.getElementById('granularity').value;
+  const counts = {};
+
+  parsedRows.forEach(r => {
+    const d = parseDate(r[col]);
+    if (!d) return;
+    const k = bucketKey(d, gran);
+    counts[k] = (counts[k] || 0) + 1;
+  });
+
+  const labels = Object.keys(counts).sort();
+  const data = labels.map(l => counts[l]);
+  const total = data.reduce((a,b)=>a+b,0);
+  const peak = Math.max(...data);
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><strong>${total}</strong>Requêtes total</div>
+    <div class="stat"><strong>${labels.length}</strong>Périodes</div>
+    <div class="stat"><strong>${peak}</strong>Pic</div>
+  `;
+
+  const wrap = document.getElementById('chartWrap');
+  wrap.style.display = 'block';
+
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(document.getElementById('chart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Requêtes',
+        data,
+        backgroundColor: 'rgba(88,166,255,0.35)',
+        borderColor: '#58a6ff',
+        borderWidth: 1,
+        borderRadius: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#161b22',
+          borderColor: '#30363d',
+          borderWidth: 1,
+          titleColor: '#58a6ff',
+          bodyColor: '#c9d1d9',
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#8b949e', maxRotation: 45, font: { family: 'Courier New', size: 11 } },
+          grid: { color: '#21262d' }
+        },
+        y: {
+          ticks: { color: '#8b949e', font: { family: 'Courier New', size: 11 } },
+          grid: { color: '#21262d' },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>

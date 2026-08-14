@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <h4 class="lien_retour">HUB</h4>
+    </a>
+<main>
+
+
+<h1>Représentation des Données, Bases Numériques, Entiers Relatifs et Cryptographie</h1>
+
+
+<button type="button" class="TooGle_list"><p>Les Bases ( c'est un bouton ici )</p></button>
+<div class="content">
+    
+
+    <h2>Outils python :</h2>
+
+    <table>
+      <tr>
+        <th>Fonction</th>
+        <th>Description</th>
+        <th>Exemple</th>
+      </tr>
+      <tr>
+        <td><span>ord()</span></td>
+        <td>Renvoie le code Unicode d'un caractère.</td>
+        <td><span>ord('A')</span> → <span>65</span></td>
+      </tr>
+      <tr>
+        <td><span>chr()</span></td>
+        <td>Renvoie le caractère correspondant à un code Unicode.</td>
+        <td><span>chr(65)</span> → <span>'A'</span></td>
+      </tr>
+      <tr>
+        <td><span>hex()</span></td>
+        <td>Convertit un entier en chaîne hexadécimale (base 16).</td>
+        <td><span>hex(65)</span> → <span>'0x41'</span></td>
+      </tr>
+      <tr>
+        <td><span>oct()</span></td>
+        <td>Convertit un entier en chaîne octale (base 8).</td>
+        <td><span>oct(65)</span> → <span>'0o101'</span></td>
+      </tr>
+      <tr>
+        <td><span>bin()</span></td>
+        <td>Convertit un entier en chaîne binaire (base 2).</td>
+        <td><span>bin(65)</span> → <span>'0b1000001'</span></td>
+      </tr>
+      <tr>
+        <td><span>int()</span></td>
+        <td>Convertit une chaîne représentant un nombre dans une base spécifique en entier.</td>
+        <td><span>int('41', 16)</span> → <span>65</span></td>
+      </tr>
+      <tr>
+        <td><span>str()</span></td>
+        <td>Convertit un objet en chaîne de caractères (string).</td>
+        <td><span>str(65)</span> → <span>'65'</span></td>
+      </tr>
+      <tr>
+        <td><span>ascii()</span></td>
+        <td>Renvoie une version lisible ASCII d'un objet, en échappant les caractères non-ASCII avec des séquences d'échappement.</td>
+        <td><span>ascii('é')</span> → <span>"'\\xe9'"</span></td>
+      </tr>
+    </table>
+    
+    
+<h2>Encodage des Caractères</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Étape</th>
+            <th>Description</th>
+            <th>Exemples</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ASCII</td>
+            <td>Un encodage sur 7 bits (128 caractères) utilisé principalement pour les caractères anglais.</td>
+            <td>Lettre "A" → 01000001 (binaire) → 65 (décimal)</td>
+        </tr>
+        <tr>
+            <td>ISO-8859-1</td>
+            <td>Une extension de l'ASCII, encodant sur 8 bits (256 caractères), adaptée aux langues européennes.</td>
+            <td>Lettre "é" en ISO-8859-1 → 11101000 (binaire) → 0xE8 (hexadécimal)</td>
+        </tr>
+        <tr>
+            <td>UNICODE</td>
+            <td>Standard universel attribuant un point de code à chaque caractère, couvrant plus de 143 000 caractères.</td>
+            <td>Lettre "é" → Point de code 233 en décimal → U+00E9 en Unicode</td>
+        </tr>
+        <tr>
+            <td>UTF-8</td>
+            <td>Système de codage compatible avec ASCII, codant les caractères sur 1 à 4 octets.</td>
+            <td>Lettre "é" → 11000011 10101001 (binaire) → 0xC3A9 (hexadécimal)</td>
+        </tr>
+        <tr>
+            <td>UTF-16</td>
+            <td>Encodage Unicode qui utilise 2 ou 4 octets pour coder les caractères.</td>
+            <td>Lettre "é" → 00000000 11101001 (binaire) → 0x00E9 (hexadécimal)</td>
+        </tr>
+        <tr>
+            <td>UTF-32</td>
+            <td>Encodage Unicode qui utilise toujours 4 octets pour chaque caractère.</td>
+            <td>Lettre "é" → 00000000 00000000 00000000 11101001 (binaire) → 0x000000E9 (hexadécimal)</td>
+        </tr>
+        <tr>
+            <td>Point de code</td>
+            <td>Entier attribué à chaque caractère dans Unicode (ex. 65 pour 'A').</td>
+            <td>"A" → Point de code 65 (décimal), "é" → Point de code 232 (décimal), ord('A') → 65, chr(65) → 'A'</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</div>
+
+
+
+<h2>1. Représentation des Nombres</h2>
+<h3>1.1. Systèmes de Numération et Conversions entre Bases</h3>
+<h3>Binaire (Base 2)</h3>
+<ul>
+<li><strong>Principe</strong> : Utilise uniquement les chiffres 0 et 1.</li>
+<li><strong>Conversion Décimal → Binaire</strong> :</li>
+</ul>
+<p>Diviser le nombre par 2, noter les restes, puis lire les restes de bas en haut.</p>
+<p><strong>Exemple</strong> : Convertir 72 en binaire :</p>
+<pre><code class='mathematica'><p>
+    72 ÷ 2 = 36 reste 0
+    36 ÷ 2 = 18 reste 0
+    18 ÷ 2 = 9 reste 0
+    9 ÷ 2 = 4 reste 1
+    4 ÷ 2 = 2 reste 0
+    2 ÷ 2 = 1 reste 0
+    1 ÷ 2 = 0 reste 1
+</p></code></pre>
+<p>Résultat : <span>72_{10} = 1001000_2</span>.</p>
+<ul>
+<li><strong>Conversion Binaire → Décimal</strong> :</li>
+</ul>
+<p>Multiplier chaque bit par <span>2^n</span> (où <span>n</span> est la position du bit, en partant de 0 à droite), puis additionner.</p>
+<p><strong>Exemple</strong> : <span>101_2 = 1×2^2 + 0×2^1 + 1×2^0 = 5_{10}</span>.</p>
+<h3>Hexadécimal (Base 16)</h3>
+<ul>
+<li><strong>Principe</strong> : Utilise 0-9 et A-F (A=10, B=11, ..., F=15).</li>
+<li><strong>Conversion Décimal → Hexadécimal</strong> :</li>
+</ul>
+<p>Diviser le nombre par 16 et noter les restes.</p>
+<p><strong>Exemple</strong> : Convertir 2512 en hexadécimal :</p>
+
+    <pre><code class='mathematica'><p>
+    2512 ÷ 16 = 157 reste 0 (0)
+    157 ÷ 16 = 9 reste 13 (D)
+    </p></code></pre>
+
+<p>Résultat : <span>2512_{10} = 9D0_{16}</span>.</p>
+<ul>
+<li><strong>Conversion Binaire ↔ Hexadécimal</strong> :</li>
+</ul>
+<p>Regrouper les bits par 4 (en partant de la droite) et remplacer chaque groupe par le symbole hexadécimal correspondant.</p>
+<p><strong>Exemple</strong> : <span>101111_2 = 0010 1111_2 = 2F_{16}</span>.</p>
+<h3>Addition Binaire</h3>
+<ul>
+<li><strong>Règles</strong> :</li>
+</ul>
+<p><span>0 + 0 = 0</span>, <span>0 + 1 = 1</span>, <span>1 + 1 = 10</span> (retenue de 1).</p>
+<p><strong>Exemple</strong> :</p>
+    <pre><code class='mathematica'><p>
+      1111_2
+    + 0101_2
+    -------
+      10100_2
+    </p></code></pre>
+<hr>
+<h3>1.2. Entiers Relatifs : Complément à 2</h3>
+<h3>Principe</h3>
+<p>Méthode pour représenter les nombres négatifs en binaire :</p>
+<ol>
+<li>Écrire la valeur absolue en binaire.</li>
+<li>Inverser tous les bits (complément à 1).</li>
+<li>Ajouter 1 au résultat.</li>
+</ol>
+<h3>Exemples</h3>
+<ul>
+<li><strong>Codage de -100 sur 8 bits</strong> :</li>
+</ul>
+    <pre><code class='mathematica'><p>
+    100_{10} = 01100100_2
+    Inversion = 10011011_2
+    Ajout de 1 = 10011100_2
+    </p></code></pre>
+<p>Résultat : <span>-100_{10} = 10011100_2</span>.</p>
+<ul>
+<li><strong>Codage de -5 sur 4 bits</strong> :</li>
+</ul>
+    <pre><code class='mathematica'><p>
+    5_{10} = 0101_2
+    Inversion = 1010_2
+    Ajout de 1 = 1011_2
+    </p></code></pre>
+<p>Résultat : <span>-5_{10} = 1011_2</span>.</p>
+<h3>Addition avec Complément à 2</h3>
+<ul>
+<li><strong>Exemple</strong> : Additionner <span>5_{10}</span> et <span>3_{10}</span> sur 4 bits :</li>
+</ul>
+    <pre><code class='mathematica'><p>
+    5_{10} = 0101_2
+    -3_{10} = 1101_2 (complément à 2)
+    Addition = 0101_2 + 1101_2 = 10010_2
+    </p></code></pre>
+<p>On ignore le bit de dépassement (overflow) : Résultat = <span>0010_2 = 2_{10}</span>.</p>
+<hr>
+<h2>2. Représentation des Caractères</h2>
+<h3>2.1. ASCII (7 bits)</h3>
+<ul>
+<li><strong>Caractéristiques</strong> :</li>
+</ul>
+<p>128 caractères (lettres A-Z/a-z, chiffres 0-9, symboles).</p>
+<ul>
+<li><strong>Limitations</strong> : Pas d'accents ni de caractères spéciaux.</li>
+<li><strong>Fonctions Python</strong> :</li>
+</ul>
+    <pre><code class='python'><p>
+    print(ord('A'))  # Affiche 65
+    print(chr(65))   # Affiche 'A'
+    </p></code></pre>
+<h3>2.2. ISO-8859 (8 bits)</h3>
+<ul>
+<li><strong>Caractéristiques</strong> :</li>
+</ul>
+<p>Étend l'ASCII avec des caractères européens (accents, symboles).</p>
+<ul>
+<li><strong>Limitations</strong> : Non universel, limité à 256 caractères.</li>
+</ul>
+<h3>2.3. Unicode et UTF-8</h3>
+<ul>
+<li><strong>Unicode</strong> : Standard universel (plus d'1 million de caractères).</li>
+<li><strong>UTF-8</strong> : Codage variable (1 à 4 octets), compatible ASCII.</li>
+<li><strong>Exemple en Python</strong> :</li>
+</ul>
+    <pre><code class='python'><p>
+    texte = "Bonjour"
+    texte_utf8 = texte.encode('utf-8')  # Encodage
+    texte_original = texte_utf8.decode('utf-8')  # Décodage
+    </p></code></pre>
+<hr>
+<h2>3. Cryptographie : Chiffrement de César</h2>
+<h3>3.1. Principe</h3>
+<ul>
+<li><strong>Décalage</strong> : Chaque lettre est décalée d<em>un nombre fixe dans l</em>alphabet.</li>
+<li><strong>Exemple</strong> : Décalage de 3 → A → D, B → E, ..., Z → C.</li>
+</ul>
+<h3>3.2. Implémentation en Python</h3>
+    <pre><code class='python'><p>
+    def cesar_chiffrement(texte, decalage):
+        resultat = ""
+        for caractere in texte:
+            if caractere.isalpha():
+                base = ord('A') if caractere.isupper() else ord('a')
+                resultat += chr((ord(caractere) - base + decalage) % 26 + base)
+            else:
+                resultat += caractere
+        return resultat
+
+    message = "Bonjour, le monde!"
+    message_code = cesar_chiffrement(message, 3)
+    print(message_code)  # Affiche "Erqmrxu, oh prqgh!"
+    </p></code></pre>
+
+
+</main>
+<br><br><br><br>
+<script src="font-favicon/js.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Horloge avec fond dynamique (thème auto)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap');
+
+    :root {
+      --bg-color: #000;
+      --text-color: #fff;
+      --stick-color: #fff;
+      --blur-color: #000;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg-color: #f8f9fa;
+        --text-color: #333;
+        --stick-color: #666;
+        --blur-color: #e9ecef;
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* === FOND DE BÂTONS === */
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* === box_blur === */
+    .box_blur{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30rem;
+      height: 7rem;
+      background-color: var(--blur-color);
+      filter: blur(70px);
+      transition: background-color 0.3s ease;
+    }
+
+    /* === HORLOGE === */
+    .clock {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      font-size: 9rem;
+      font-weight: 300;
+    }
+
+    .digit-container {
+      position: relative;
+      height: 7rem;
+      width: 20rem;
+      margin: 0 0.3rem;
+      display: flex;
+    }
+
+    #hour {
+      text-align: right;
+      align-items: flex-end;
+    }
+    #minute {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .separator {
+      font-size: 5rem;
+      margin: 0 0.3rem;
+      animation: pulse 1s infinite;
+    }
+
+    .digit {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      opacity: 0;
+      transform: translateY(100%);
+      filter: blur(10px);
+      transition: all 1s cubic-bezier(0.4, 0, 0, 1);
+    }
+
+    /* Ensure hour digits are aligned to the right and minute digits to the left.
+       These override the .digit absolute stretch so each digit hugs the container edge. */
+    #hour .digit {
+      left: auto;
+      right: 0;
+      justify-content: flex-end;
+      padding-right: 1.2rem;
+      text-align: right;
+    }
+    #minute .digit {
+      left: 0;
+      right: auto;
+      justify-content: flex-start;
+      padding-left: 1.2rem;
+      text-align: left;
+    }
+
+    .digit.current {
+      opacity: 0.9;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .digit.previous {
+      opacity: 0;
+      transform: translateY(-90%);
+      filter: blur(20px);
+      font-variation-settings: 'wght' 200;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="background"></canvas>
+
+  <div class="box_blur"></div>
+
+  <div class="clock">
+    <div class="digit-container" id="hour">
+      <div class="digit current">00</div>
+    </div>
+    <div class="separator">:</div>
+    <div class="digit-container" id="minute">
+      <div class="digit current">00</div>
+    </div>
+  </div>
+
+  <script>
+    /* === DÉTECTION DU THÈME SYSTÈME === */
+    function updateTheme() {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const root = document.documentElement;
+      
+      if (isDark) {
+        root.style.setProperty('--bg-color', '#000');
+        root.style.setProperty('--text-color', '#fff');
+        root.style.setProperty('--stick-color', '#fff');
+        root.style.setProperty('--blur-color', '#000');
+      } else {
+        root.style.setProperty('--bg-color', '#fff');
+        root.style.setProperty('--text-color', '#000');
+        root.style.setProperty('--stick-color', '#000');
+        root.style.setProperty('--blur-color', '#fff');
+      }
+    }
+
+    // Écouteur pour les changements de thème
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+
+    // Initialisation du thème
+    updateTheme();
+
+    // Fonction pour appliquer les couleurs douces
+    function applySoftColors() {
+      const root = document.documentElement;
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (!isDark) {
+        // Couleurs plus douces pour le thème clair
+        root.style.setProperty('--bg-color', '#f8f9fa');
+        root.style.setProperty('--text-color', '#333');
+        root.style.setProperty('--stick-color', '#666');
+        root.style.setProperty('--blur-color', '#e9ecef');
+      }
+    }
+
+    // Appliquer les couleurs douces
+    applySoftColors();
+
+    /* === HORLOGE === */
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      updateDigit('hour', hours);
+      updateDigit('minute', minutes);
+    }
+
+    function updateDigit(containerId, newValue) {
+      const container = document.getElementById(containerId);
+      const currentDigit = container.querySelector('.digit.current');
+
+      if (!currentDigit || currentDigit.textContent !== newValue) {
+        if (currentDigit) {
+          currentDigit.classList.remove('current');
+          currentDigit.classList.add('previous');
+          setTimeout(() => currentDigit.remove(), 500);
+        }
+
+        const newDigit = document.createElement('div');
+        newDigit.classList.add('digit');
+        newDigit.textContent = newValue;
+        container.appendChild(newDigit);
+        void newDigit.offsetHeight; // force reflow
+        newDigit.classList.add('current');
+      }
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    /* === FOND DYNAMIQUE DE BÂTONS === */
+    const canvas = document.getElementById('background');
+    const ctx = canvas.getContext('2d');
+
+    let width, height, sticks = [];
+    const stickLength = 20;
+    const spacing = 50;
+    const baseAngle = 45 * Math.PI / 180;
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        sticks = [];
+        // Crée une grille de bâtons
+        for (let x = 0; x < width; x += spacing) {
+            for (let y = 0; y < height; y += spacing) {
+                sticks.push({ x, y });
+            }
+        }
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    function draw(time) {
+        // Efface le canvas
+        ctx.clearRect(0, 0, width, height);
+        
+        // Récupère la couleur des bâtons depuis les variables CSS
+        const stickColor = getComputedStyle(document.documentElement).getPropertyValue('--stick-color').trim();
+        
+        // Configuration du style des bâtons
+        ctx.strokeStyle = stickColor;
+        
+        // Calcul de l'angle global (rotation sur 60 secondes)
+        const t = (time / 1000) % 60;
+        const globalAngle = (t / 60) * 2 * Math.PI;
+
+        // Dessine chaque bâton
+        for (const s of sticks) {
+            // Calcul de l'angle entre le bâton et le centre
+            const dx = s.x - width / 2;
+            const dy = s.y;
+            const angle = Math.atan2(dy, dx);
+            
+            // Calcul de la différence d'angle pour l'animation
+            let diff = ((globalAngle - angle + Math.PI * 2) % (Math.PI * 2));
+
+            let factor_Length = 0;
+            if (diff < Math.PI*1.5) { // 270° grace aux *1.5
+              factor_Length = 1 - diff / (Math.PI*1.5);
+            }
+
+            // zone pour la couleur ( on fais a 60 °)
+            let factor_couleur = 0;
+            if (diff < Math.PI / 3) { // 60° grace aux /3
+                factor_couleur = 1 - diff / (Math.PI / 3 );
+            }
+
+            // Calcul de la longueur et de l'opacité du bâton
+            const len = stickLength * (0.3 + factor_Length * 3.3);
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const alpha = isDark ? (0.2 + factor_couleur * 0.8) : (0.1 + factor_couleur * 0.4);
+
+            // Dessin du bâton
+            ctx.beginPath();
+            ctx.lineWidth = 1 + factor_Length * 3;
+            ctx.globalAlpha = alpha;
+
+            // Calcul des coordonnées du bâton
+            const x1 = s.x - Math.cos(baseAngle) * len / 2;
+            const y1 = s.y - Math.sin(baseAngle) * len / 2;
+            const x2 = s.x + Math.cos(baseAngle) * len / 2;
+            const y2 = s.y + Math.sin(baseAngle) * len / 2;
+
+            // Trace le bâton
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+
+        // Réinitialise l'opacité globale
+        ctx.globalAlpha = 1;
+        
+        // Programme la prochaine frame
+        requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>

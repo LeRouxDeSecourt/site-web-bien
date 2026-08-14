@@ -1,0 +1,246 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('Lato-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato_bold';
+    src: url('Lato-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lexend';
+    src: url('Lexend-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Fira Code';
+    src: url('FiraCode-VariableFont_wght.ttf') format('truetype');
+}
+
+
+:root {
+    --noir_case: rgb(18, 18, 18); 
+    --blanc: #f5f1ee;
+    --gris: rgba(255, 255, 255, 0.09);
+    --gris_noir: rgba(25, 25, 25, 1);
+
+    --orange: #d7ba7d;
+    --orange_gris: #5b4e3b;
+}
+
+::selection {
+    background-color: var(--orange_gris);
+    border-radius: 6px;
+}
+
+
+body {
+    background-color: var(--noir_case);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: auto;
+    max-width: 55rem;
+    padding: 1rem;
+}
+
+h1, h2, h3, p, h5 {
+    color: var(--blanc);
+    font-family: "Lato", Arial, sans-serif;
+    width: fit-content;
+}
+
+h1 {
+    font-family: "Lexend", Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-family: "Lato_bold";
+    font-weight: 900;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+a {
+    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: var(--blanc);
+
+    font-size: 1rem;
+    font-weight: 300;
+
+    color: var(--blanc);
+    font-family: "Lato", Arial, sans-serif;
+    width: fit-content;
+
+    transition: all 0.4s cubic-bezier(0.26, 0.96, 0.26, 0.98);
+}
+
+a:hover {
+    background-color: var(--orange_gris);
+}
+
+span {
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-family: "Fira Code",monospace;
+
+    padding: 0.1rem 0.2rem;
+    border-radius: 6px;
+
+    color: var(--orange);
+    background-color: var(--gris_noir);
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background-color: var(--gris);
+    margin: 2rem 0;
+}
+
+pre {
+    font-family: "Fira Code",monospace;
+    font-weight: 300;
+
+    margin: 1rem 0;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    list-style-type: disc;
+
+
+    background-color: var(--gris_noir);
+}
+pre p {
+    font-family: "Fira Code",monospace;
+    font-weight: 300;
+}
+
+ul, ol {
+    color: var(--blanc);
+    font-family: "Lato", Arial, sans-serif;
+}
+
+li {
+    margin: 0rem 0;
+}
+
+.bouton_retour {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--noir_case);
+    width: 100%;
+    border-top: solid 3px var(--gris);
+
+    text-decoration: none;
+	z-index: 3;
+}
+
+svg {
+    height: 1rem;
+    width: 2rem;
+}
+
+.lien_retour {
+    height: 1rem;
+    font-size: 1rem;
+    padding-bottom: 0.3rem;
+}
+
+.TooGle_list {
+    width: 100%;
+    margin: 1rem 0 0 0;
+    padding: 0 1rem;
+    background-color: var(--gris_noir);
+    border: solid 3px var(--gris_noir);
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.26, 0.96, 0.26, 0.98);
+}
+  
+.active, .TooGle_list:hover {
+    background-color: var(--noir_case);
+    border-radius: 3px 3px 0 0;
+}
+
+.download {
+    width: 100%;
+    margin: 1rem 0 0 0;
+    padding: 0 1rem;
+    background-color: var(--gris_noir);
+    border: solid 3px var(--gris_noir);
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.26, 0.96, 0.26, 0.98);
+}
+  
+.download:hover {
+    background-color: var(--noir_case);
+    border-radius: 3px;
+}
+
+.download:active {
+    background-color: var(--orange_gris);
+    border-radius: 3px;
+}
+  
+.content {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--gris_noir);
+    border-radius: 0 0 3px 3px;
+    transition: 1s cubic-bezier(1, 0, 0, 1);
+}
+
+.content pre {
+    background-color: var(--noir_case);
+}
+
+table {
+    color: var(--blanc);
+    font-family: "Lato", Arial, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+    display: table; 
+}
+
+table th, 
+table td {
+    padding: 0.5rem;
+    border: 2px solid var(--gris);
+    font-size: 1rem;
+    font-weight: 100;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+table th {
+    font-weight: 600;
+    background-color: var(--gris_noir);
+    -webkit-background-clip: padding-box; 
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HUB de Alexandre</title>
+        <link rel="icon" href="element_styles/favicon.png" type="image/png">
+        <link rel="icon" href="element_styles/favicon.svg" type="image/svg+xml">
+
+        <style>
+            
+            
+            @font-face {
+                font-family: 'Plus Jakarta Sans';
+                src: url('element_styles/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+                font-weight: 200 800;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'IBMPlexSans';
+                src: url('element_styles/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
+                font-weight: 100 700;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'FSEX300';
+                src: url('element_styles/FSEX300.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            :root {
+                --blanc: #ffffff;
+                --gris: #2b2928;
+                --noir: #000000;
+                --orange: #6a4000;
+                --orange_fonce: #6a4000;
+            }
+
+            body {
+                margin: 0;
+                width: 100%;
+                background: var(--noir);
+                color: var(--blanc);
+                font-family: 'Plus Jakarta Sans', sans-serif;
+            }
+
+            h1 {
+                margin: 5rem 0 3.75rem 5rem;
+                font-size: 4rem;
+                font-weight: 200;
+            }
+
+            span {
+                font-family: 'FSEX300', cursive;
+                font-size: 5.1rem;
+                color: #FFA100;
+            }
+
+            main {
+                display: flex;
+                flex-direction: column;
+            }
+
+            a {
+                padding: 1.5rem 1.5rem 1.5rem 5rem;
+                display: block;
+
+                text-decoration: none;
+                position: relative;
+                cursor: pointer;
+
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+
+                color: var(--blanc);
+                font-family: 'IBMPlexSans', sans-serif;
+                font-variation-settings: 'wght' 300; /* light */
+
+                transition: border-color 0.5s ease;
+                transition: font-variation-settings 0.7s cubic-bezier(0.03, 0.26, 0, 0.94);
+            }
+
+            a:hover {
+                border-top: 1px solid var(--gris);
+                border-bottom: 1px solid var(--gris);
+
+                font-variation-settings: 'wght' 700; /* bold */
+            }
+
+            .hover-image {
+                display: none;
+                position: fixed;
+                right: 5%;
+                top: 50%;
+                opacity: 0;
+                z-index: 9999;
+                pointer-events: none;
+                transform: translateY(-50%);
+                transition: opacity 0.3s ease, height 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+                border: 1px solid var(--blanc);
+                border-radius: 2.5rem;
+                height: 0;
+                width: 65vh;
+                overflow: hidden;
+            }
+
+            .hover-image.active {
+                opacity: 1;
+                height: 65vh;
+            }
+
+            img {
+                width: 60vh;
+                height: 60vh;
+                object-fit: cover;
+                box-shadow: 0 0 20rem 5rem rgb(0 0 0),
+                    /* inset 0 0 10px 1rem rgb(255 255 255); */
+            }
+
+            @media screen and (max-width: 1000px) {
+                h1 {
+                    margin: 5rem 2rem 3.75rem 2rem;
+                    font-size: 3rem;
+                }
+                a {
+                    padding: 1.5rem 1.5rem 1.5rem 2rem;
+                    transition: font-variation-settings 0.2s cubic-bezier(0.03, 0.26, 0, 0.94);
+                }
+                }
+
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Enjoy creating <br />
+                some <span>stuff</span>.
+            </h1>
+        </header>
+        <main>
+            <a href="cv/cv.html"
+                target="_blank" class="hover-text" data-image="img1">
+                Le Curriculum vitae.
+            </a>
+            <a href="https://51.210.102.53/2ACAPON/recap-cour/home.html"
+                class="hover-text" data-image="img2">
+                Les récap de cour.
+            </a>
+            <a href="https://51.210.102.53/2ACAPON/php/test.html"
+                class="hover-text" data-image="img3">
+                Du PHP inutle.
+            </a>
+            <a href="js/calculateurMoyenne.html"
+                class="hover-text" data-image="img4">
+                Calculateur de moyenne.
+            </a>
+            <a href="horloge/"
+                class="hover-text" data-image="img7">
+                Une horlogue minimaliste.
+            </a>
+            <a href="https://51.210.102.53/2ACAPON/hub/hub1/index.html"
+                class="hover-text" data-image="img5">
+                L'encien hub.
+            </a>
+            <a href="indices/recherche.html"
+                target="_blank" class="hover-text" data-image="img6">
+                Exercice html 1.
+            </a>
+            <a href="https://51.210.102.53/2ACAPON/exo/exo.html"
+                class="hover-text">
+                Exo du cours.
+            </a>
+
+            </main>
+
+        <img
+            src="hub/IMG_1_cv.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img1"
+        />
+        <img
+            src="hub/IMG_2_recapCour.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img2"
+        />
+        <img
+            src="hub/IMG_6_phpProjet.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img3"
+        />
+       <img
+            src="hub/IMG_5_calculateur_moyenne.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img4"
+        />
+        <img
+            src="hub/IMG_4_hub1.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img5"
+        />
+        <img
+            src="hub/IMG_3_Exercicehtml1.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img6"
+        />
+        <img
+            src="hub/IMG_7_horlogueMinimaliste.png"
+            alt="Hover effect image"
+            class="hover-image"
+            id="img7"
+        />
+        <br><br><br><br><br>
+
+        <script>
+            if (window.innerWidth > 1000 || window.innerWidth > window.innerHeight) {
+                console.log("Condition remplie : largeur > 1000 ou largeur > hauteur");
+
+                document.querySelectorAll('.hover-text').forEach((link) => {
+                    const imageId = link.getAttribute('data-image');
+                    const image = document.getElementById(imageId);
+
+                    if (image) {
+                        link.addEventListener('mouseenter', () => {
+                            console.log("Mouse enter sur l'élément :", link);
+                            image.style.display = 'block';
+                            setTimeout(() => {
+                                image.classList.add('active');
+                            }, 10);
+                        });
+
+                        link.addEventListener('mouseleave', () => {
+                            console.log("Mouse leave sur l'élément :", link);
+                            image.classList.remove('active');
+                            setTimeout(() => {
+                                image.style.display = 'none';
+                            }, 300);
+                        });
+                    } else {
+                        console.error("Image non trouvée pour l'ID :", imageId);
+                    }
+                });
+            } else {
+                console.log("Condition non remplie : largeur <= 1000 et largeur <= hauteur");
+            }
+
+
+            document.addEventListener('mousemove', (e) => {
+                const hoverImages = document.querySelectorAll('.hover-image')
+
+                hoverImages.forEach((image) => {
+                    const moveX = (e.clientX - window.innerWidth / 2) / 5
+                    const moveY = (e.clientY - window.innerHeight / 2) / 5
+
+                    image.style.transform = `
+                        translateY(-50%)
+                        translate(${moveX}px, ${moveY}px)
+                    `
+                })
+            })
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const links = document.querySelectorAll('main a');
+                
+                links.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (window.innerWidth < 1000) {
+                            e.preventDefault();
+                            
+                            // ici ca prechharge le lien pr que se soit pl rapide !
+                            const preloadRequest = new XMLHttpRequest();
+                            preloadRequest.open('GET', this.href, true);
+                            preloadRequest.send();
+
+                            setTimeout(() => {
+                                if (this.getAttribute('target') === '_blank') {
+                                    window.open(this.href, '_blank');
+                                } else {
+                                    window.location.href = this.href;
+                                }
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

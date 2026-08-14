@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap JS</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+  <a href="home.html" class="bouton_retour">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3.48099H2.07885L4.9533 0.733878L4.1854 0L0 4L4.1854 8L4.9533 7.26612L2.07885 4.51901H10V3.48099Z" fill="#F5F1EE"/>
+        </svg>
+        <h4 class="lien_retour">Revenir au HUB</h4>
+    </a>
+<main>
+
+<h1>Notions Clés JavaScript :</h1>
+
+
+<button type="button" class="TooGle_list"><p>touts les outils pour le js</p></button>
+<div class="content">
+
+  <h2>Types de Variables en JavaScript</h2>
+  <ul>
+  <li><strong>Types Primitifs</strong> :</li>
+  <ul>
+  <li><strong>Number</strong> : Entiers ou décimaux (<span>42</span>, <span>3.14</span>).</li>
+  <li><strong>String</strong> (<span>string</span>) : Texte entre <span>""</span> ou <span><em></em></span> (<span>"Bonjour"</span>).</li>
+  <li><strong>Boolean</strong> (<span>true</span>/<span>false</span>).</li>
+  <li><strong>null</strong> : Valeur intentionnellement vide.</li>
+  <li><strong>undefined</strong> : Variable non initialisée.</li>
+  <li><strong>Symbol</strong> : Unique et immuable (ES6).</li>
+  </ul>
+  <li><strong>Objets</strong> :</li>
+  <ul>
+  <li><strong>Object</strong> : <span>{ clé: "valeur" }</span>.</li>
+  <li><strong>Array</strong> : <span>["él1", "él2"]</span>.</li>
+  <li><strong>Function</strong> : <span>function() {}</span>.</li>
+  </ul>
+  </ul>
+  <hr>
+  <h2>Déclaration de Variables</h2>
+  <ul>
+  <li><strong>Mots-clés</strong> :</li>
+  <ul>
+  <li><strong><span>let</span></strong> : Variable modifiable (portée bloc).</li>
+  <li><strong><span>const</span></strong> : Constante non réaffectable (portée bloc).</li>
+  <li><strong><span>var</span></strong> : Ancienne déclaration (portée fonction).</li>
+  </ul>
+  <li><strong>Exemples</strong> :</li>
+  <pre><code class='javascript'><p>
+    let age = 30;
+    const TAUX = 1.2;
+    var nom = "Alice";
+  </p></code></pre>
+  </ul>
+  <hr>
+  <h2>Affectation et Opérateurs</h2>
+  <ul>
+  <li><strong>Opérateurs d'affectation</strong> :</li>
+  <ul>
+  <li><span>+=</span>, <span>-=</span>, <span>*=</span>, <span>/=</span>.</li>
+  <pre><code class='javascript'><p>
+    let x = 5;
+    x += 3; // x = 8
+  </p></code></pre>
+  </ul>
+  <li><strong>Transtypage</strong> :</li>
+  <ul>
+  <li><strong>Explicite</strong> : <span>Number("123")</span>, <span>String(123)</span>, <span>Boolean(0)</span> (→ <span>false</span>).</li>
+  <li><strong>Implicite</strong> : <span>"5" + 2</span> → <span>"52"</span>.</li>
+  </ul>
+  </ul>
+  <hr>
+  <h2>Comparaisons et Booléens</h2>
+  <ul>
+  <li><strong>Opérateurs de comparaison</strong> :</li>
+  <ul>
+  <li><strong>Stricts</strong> : <span>===</span> (valeur et type), <span>!==</span>.</li>
+  <li><strong>Non stricts</strong> : <span>==</span>, <span>!=</span> (éviter).</li>
+  </ul>
+  <li><strong>Opérateurs logiques</strong> :</li>
+  <ul>
+  <li><span>&&</span> (ET), <span>||</span> (OU), <span>!</span> (NON).</li>
+  </ul>
+  <li><strong>Valeurs "falsy"</strong> : <span>false</span>, <span>0</span>, <span>""</span>, <span>null</span>, <span>undefined</span>, <span>NaN</span>.</li>
+  </ul>
+  <hr>
+  <h2>Structures Conditionnelles</h2>
+  <ul>
+  <li><strong>Syntaxe</strong> :</li>
+  <pre><code class='javascript'><p>
+    if (heure &lt; 18) {
+      console.log("Bonjour !");
+    } else {
+      console.log("Bonsoir !");
+    }
+  </p></code></pre>
+  <li><strong>Condition ternaire</strong> :</li>
+  <pre><code class='javascript'><p>
+    const message = (heure &lt; 18) ? "Bonjour" : "Bonsoir";
+  </p></code></pre>
+  </ul>
+  <hr>
+  <h2>Boucles</h2>
+  <ul>
+  <li><strong>Boucle <span>for</span></strong> :</li>
+  <pre><code class='javascript'><p>
+    for (let i = 0; i &lt; 5; i++) {
+      console.log(i); // 0 à 4
+    }
+  </p></code></pre>
+  <li><strong>Boucle <span>while</span></strong> :</li>
+  <pre><code class='javascript'><p>
+    let i = 0;
+    while (i &lt; 5) {
+      console.log(i);
+      i++;
+    }
+  </p></code></pre>
+  </ul>
+  <hr>
+  <h2>Fonctions</h2>
+  <ul>
+  <li><strong>Déclaration</strong> :</li>
+  <pre><code class='javascript'><p>
+    function calculerSomme(a, b) {
+      return a + b;
+    }
+  </p></code></pre>
+  <li><strong>Flèche (ES6)</strong> :</li>
+  <pre><code class='javascript'><p>
+    const calculerSomme = (a, b) =&gt; a + b;
+  </p></code></pre>
+  </ul>
+  <hr>
+  <h2>Portée des Variables</h2>
+  <ul>
+  <li><strong><span>let</span>/<span>const</span></strong> : Visibles uniquement dans leur bloc.</li>
+  <li><strong><span>var</span></strong> : Visible dans toute la fonction.</li>
+  <pre><code class='javascript'><p>
+    if (true) {
+      let x = 1;
+      var y = 2;
+    }
+    console.log(y); // 2
+    console.log(x); // Erreur
+  </p></code></pre>
+  </ul>
+  <hr>
+  <h2>Manipulation du DOM</h2>
+  <ul>
+  <li><strong>Sélection d'éléments</strong> :</li>
+  <pre><code class='javascript'><p>
+    const btn = document.getElementById("monBouton");
+    const paragraphes = document.querySelectorAll(".texte");
+  </p></code></pre>
+  <li><strong>Modifier les styles</strong> :</li>
+  <pre><code class='javascript'><p>
+    const content = document.querySelector(".contenu");
+    content.style.maxHeight = "0"; // Masquer
+    content.style.color = "blue";
+  </p></code></pre>
+  <ul>
+  <li><strong><span>maxHeight</span></strong> : Utile pour les animations de dépliage.</li>
+  <pre><code class='javascript'><p>
+      // Basculer la visibilité avec animation
+      btn.addEventListener("click", () =&gt; {
+        content.style.maxHeight = content.style.maxHeight ? "0" : "500px";
+      });
+  </p></code></pre>
+  </ul>
+  </ul>
+  <hr>
+  <h2>Gestion des Événements</h2>
+  <ul>
+  <li><strong>Événements courants</strong> : <span>click</span>, <span>mouseover</span>, <span>keydown</span>, <span>submit</span>.</li>
+  <li><strong>Ajouter un écouteur</strong> :</li>
+  <pre><code class='javascript'><p>
+    btn.addEventListener("click", () =&gt; {
+      console.log("Bouton cliqué !");
+    });
+  </p></code></pre>
+  </ul>
+  <hr>
+  <h2>Tableaux (Arrays)</h2>
+  <ul>
+  <li><strong>Méthodes utiles</strong> :</li>
+  <ul>
+  <li><span>map()</span> : Crée un nouveau tableau transformé.</li>
+  <pre><code class='javascript'><p>
+      const nombresCarres = [1, 2, 3].map(n =&gt; n * n); // [1, 4, 9]
+  </p></code></pre>
+  <li><span>filter()</span> : Filtre les éléments.</li>
+  <pre><code class='javascript'><p>
+      const pairs = [1, 2, 3].filter(n =&gt; n % 2 === 0); // [2]
+  </p></code></pre>
+  </ul>
+  </ul>
+  <hr>
+  <h2>Méthodes Intégrées</h2>
+  <ul>
+  <li><strong><span>Math</span></strong> :</li>
+  <pre><code class='javascript'><p>
+    Math.random(); // Nombre aléatoire entre 0 et 1
+    Math.floor(3.7); // 3
+  </p></code></pre>
+  <li><strong>Chaînes de caractères</strong> :</li>
+  <pre><code class='javascript'><p>
+    const texte = "Bonjour";
+    console.log(texte.toUpperCase()); // "BONJOUR"
+  </p></code></pre>
+  </ul>
+  <hr>
+  <p><strong>Astuce pour les animations</strong> :</p>
+  <p>Utilisez <span>maxHeight</span> avec des transitions CSS pour des effets fluides :</p>
+  <pre><code class='css'><p>
+  .contenu {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+  }
+  </p></code></pre>
+
+
+
+</div>
+
+<h2>1. Notion de fonction JavaScript</h2>
+<ul>
+<li><strong>Définition</strong> : Une fonction est un bloc de code réutilisable qui effectue une tâche précise. Elle est définie avec le mot-clé <span>function</span>, un nom, des paramètres (facultatifs) et un corps de fonction.</li>
+</ul>
+<ul>
+<li><strong>Phases d’une fonction</strong> :</li>
+<ol>
+<li><strong>Déclaration</strong> : On crée la fonction avec <span>function nomFonction()</span>.</li>
+<li><strong>Appel</strong> : La fonction est exécutée lorsque son nom est appelé avec ses éventuels arguments.</li>
+<li><strong>Retour</strong> : La fonction peut renvoyer une valeur avec le mot-clé <span>return</span>.</li>
+</ol>
+</ul>
+<ul>
+<li><strong>Étude des fonctions</strong> : Elles permettent de mieux organiser le code, d’éviter la duplication et d’améliorer la lisibilité.</li>
+</ul>
+<hr>
+<h2>2. Introduction aux événements</h2>
+<ul>
+<li><strong>Qu’est-ce qu’un événement ?</strong> : Un événement est une action déclenchée par l’utilisateur ou le navigateur (clic, soumission d’un formulaire, chargement de la page).</li>
+</ul>
+<ul>
+<li><strong>Avantages</strong> :</li>
+<ul>
+<li>Permet d’interagir avec l’utilisateur.</li>
+<li>Permet de créer des interfaces dynamiques.</li>
+<li>Utilisé pour la gestion des interactions utilisateur, telles que le clic sur un bouton ou la modification d’un champ.</li>
+</ul>
+</ul>
+<ul>
+<li><strong>Outils de gestion des événements</strong> : Les événements sont gérés à l’aide d’attributs HTML comme <span>onclick</span>, ou via JavaScript avec <span>addEventListener</span>.</li>
+</ul>
+<hr>
+<h2>3. Les conditions (if/else)</h2>
+<ul>
+<li><strong>Rôle</strong> : Les conditions permettent d’exécuter des blocs de code spécifiques selon le résultat d’une expression booléenne (vrai ou faux).</li>
+</ul>
+<ul>
+<li><strong>Syntaxe</strong> :</li>
+<pre><code class='javascript'><p>
+  if (condition) {
+      // bloc de code exécuté si condition est vraie
+  } else {
+      // bloc de code exécuté si condition est fausse
+  } 
+</p></code></pre>
+</ul>
+<ul>
+<li><strong>Utilité</strong> : Permet de contrôler le flux d’exécution en fonction des situations rencontrées dans le programme.</li>
+</ul>
+<hr>
+<h2>4. Boucles (for, while)</h2>
+<ul>
+<li><strong>Types de boucles</strong> :</li>
+<ul>
+<li><strong>Boucle for</strong> : Répète un bloc de code un nombre défini de fois.</li>
+<li><strong>Boucle while</strong> : Répète un bloc de code tant qu’une condition est vraie.</li>
+</ul>
+</ul>
+<ul>
+<li><strong>Syntaxe de la boucle for</strong> :</li>
+<pre><code class='javascript'><p>
+  for (let i = 0; i &lt; 10; i++) {
+      console.log(i);
+  }
+</p></code></pre>
+</ul>
+<ul>
+<li><strong>Initialisation</strong> : <span>let i = 0;</span></li>
+<li><strong>Condition</strong> : <span>i &lt; 10;</span></li>
+<li><strong>Incrémentation</strong> : <span>i++</span></li>
+</ul>
+<ul>
+<li><strong>Utilité</strong> : Les boucles sont utilisées pour répéter des instructions, parcourir des listes ou effectuer des calculs répétitifs.</li>
+</ul>
+<hr>
+<h2>5. Fonction Math.random()</h2>
+<ul>
+<li><strong>Définition</strong> : Génère un nombre décimal aléatoire entre 0 et 1.</li>
+</ul>
+<ul>
+<li><strong>Utilité</strong> : Générer de l’aléatoire pour des jeux, des simulations ou des tirages au sort.</li>
+</ul>
+<ul>
+<li><strong>Exemple</strong> :</li>
+<pre><code class='javascript'><p>
+  let nombreAleatoire = Math.floor(Math.random() * 101);
+</p></code></pre>
+</ul>
+<hr>
+<h2>6. Validation d’entrées utilisateur</h2>
+<ul>
+<li><strong>Définition</strong> : La validation d’entrées permet de vérifier que les données fournies par l’utilisateur respectent certains critères.</li>
+</ul>
+<ul>
+<li><strong>Événement onChange</strong> : Se déclenche lorsqu’une entrée est modifiée.</li>
+</ul>
+<ul>
+<li><strong>Exemple de validation de numéro de téléphone</strong> :</li>
+<pre><code class='javascript'><p>
+  function validerNumero(numero) {
+      return /^0[67]\d{8}$/.test(numero);
+  }
+</p></code></pre>
+</ul>
+<hr>
+<h2>7. Manipulation du DOM (Document Object Model)</h2>
+<ul>
+<li><strong>Définition</strong> : Le DOM est la représentation en mémoire de la structure d’un document HTML. Il permet d’accéder et de modifier dynamiquement le contenu d’une page.</li>
+</ul>
+<ul>
+<li><strong>Exemple d’accès au DOM</strong> :</li>
+<pre><code class='javascript'><p>
+  document.getElementById("monElement").textContent = "Nouveau message";
+</p></code></pre>
+</ul>
+<ul>
+<li><strong>Utilité</strong> : Manipuler les éléments HTML pour interagir avec l’utilisateur ou changer le contenu en fonction des événements.</li>
+</ul>
+<hr>
+<h2>8. Projet : Calcul dynamique de surfaces</h2>
+<ul>
+<li><strong>Objectif</strong> : Créer une page web qui calcule la surface de différentes figures géométriques (carré, rectangle, cercle) sans recharger la page.</li>
+</ul>
+<ul>
+<li><strong>Fonctionnement</strong> :</li>
+<ul>
+<li>Utilisation de formulaires pour entrer les dimensions.</li>
+<li>Calcul de la surface dans une fonction JavaScript appelée lors de la modification des entrées.</li>
+</ul>
+</ul>
+<hr>
+<h2>9. Projet : Quiz interactif</h2>
+<ul>
+<li><strong>Objectif</strong> : Créer un quiz avec au moins trois questions (Vrai/Faux, QCM, réponse ouverte).</li>
+</ul>
+<ul>
+<li><strong>Fonctionnement</strong> :</li>
+<ul>
+<li>Chaque question est liée à un événement.</li>
+<li>Le score est affiché une fois que toutes les réponses ont été fournies.</li>
+</ul>
+</ul>
+<hr>
+<h2>10. Projet : Frise chronologique interactive</h2>
+<ul>
+<li><strong>Objectif</strong> : Créer une frise interactive où l’utilisateur peut cliquer sur des dates pour afficher des événements importants de l’histoire de l’informatique.</li>
+</ul>
+<ul>
+<li><strong>Fonctionnement</strong> :</li>
+<ul>
+<li>Utilisation d’événements <span>onclick</span> pour afficher du texte supplémentaire sur la page.</li>
+</ul>
+</ul>
+<hr>
+<h2>11. Projet : Calcul dynamique de la moyenne du BAC</h2>
+<ul>
+<li><strong>Objectif</strong> : Créer une page permettant de calculer la moyenne d’un élève en entrant toutes ses notes du BAC.</li>
+</ul>
+<ul>
+<li><strong>Fonctionnement</strong> :</li>
+<ul>
+<li>Les notes sont saisies dans des formulaires.</li>
+<li>Une fonction JavaScript effectue le calcul dynamique et affiche la moyenne sans rechargement de la page.</li>
+</ul>
+</ul>
+
+</main>
+<br><br><br><br>
+<script src="font-favicon/js.js"></script>
+</body>
+</html>

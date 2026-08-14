@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <h4 class="lien_retour">HUB</h4>
+    </a>
+<main>
+
+
+
+
+
+    <h1>Comment est développé ce site :</h1>
+    <p>Alors, j'ai réalisé ce site avec l'objectif de réunir en une base solide différents exercices et cours faits en classe sur un support plus agréable et plus accessible, auquel on peut accéder à tout moment sur tout appareil. (… Plus honnêtement, je me suis ennuyé.)</p>
+    <p>Bref ! Voici la base de son fonctionnement :</p>
+    <h2>Organisation :</h2>
+    <pre><code class=''><p>
+    /DocumentPrincipal/
+      ├── home.html
+      ├── recap_chapitre_nomDuChapitre.html
+      ├── recap_chapitre_nomDuChapitre.html
+      └── /font-favicon/
+            ├── favicon.png
+            ├── favicon.svg
+            ├── style.css
+            ├── js.js
+            ├── FiraCode-VariableFont_wght.ttf
+            ├── Lato-Bold.ttf
+            ├── Lato-Regular.ttf
+            ├── Lexend-VariableFont_wght.ttf
+            └── /fichier+/
+    </p></code></pre>
+    <h2>Convertisseur Markdown → HTML :</h2>
+    <p>Markdown est un formatage de texte qui combine facilité d’écriture, d’exportation et de modifications par des algorithmes. Le code Python ci-dessous vous permet de convertir la mise en page Markdown en texte HTML qui pourra être lu par le <span>style.css</span>. Voici ce qui est pris en charge et par quoi il est remplacé :</p>
+    <h3>Remplacements :</h3>
+    <ul>
+    <li><span>&lt;</span> → <span>&lt;</span></li>
+    <li><span>&gt;</span> → <span>&gt;</span></li>
+    <li><span>```python</span> → <span>&lt;pre&gt;&lt;code class='python'&gt;&lt;p&gt;</li></span>
+    <li><span>```</span> → <span>&lt;/p&gt;&lt;/code&gt;&lt;/pre&gt;</li></span>
+    </ul>
+    <h3>Mise en page :</h3>
+    <ul>
+    <li><span>#</span> → <span>&lt;h1&gt; ... &lt;/h1&gt;</span></li>
+    <li><span>##</span>  → <span>&lt;h2&gt; ... &lt;/h2&gt;</span></li>
+    <li><span>###</span> → <span>&lt;h3&gt; ... &lt;/h3&gt;</span></li>
+    <li><span>---</span>  → <span>&lt;hr&gt;</span></li>
+    <li><span> ` ... `</span> → <span>&lt;span&gt; ... &lt;/span&gt;</span></li>
+    <li><span>' ... '</span> → <span>&lt;em&gt; ... &lt;/em&gt;</span></li>
+    <li><span>-</span> → <span>&lt;ul&gt;&lt;li&gt; ... &lt;/li&gt;&lt;/ul&gt;</span></li>
+    <li><span>('1','2','3','…').</span> → <span>&lt;ol&gt;&lt;li&gt; ... &lt;/li&gt;&lt;/ol&gt;</span></li>
+    <li><span>&lt;a href="http://..."&gt...&lt;/a&gt</span> → <span>&lt;a href="..."&gt; ... &lt;/a&gt;</span></li>
+    </ul>
+
+
+
+
+
+    
+    <button type="button" class="TooGle_list"><p>🔽  Le code Python qui convertit : </p></button>
+    <div class="content">
+    
+<pre><code class='python'><p>
+    import re
+    
+    def escape_html_characters(text):
+        text = text.replace('&lt;', '&lt;')
+        text = text.replace('&gt;', '&gt;')
+        return text
+    
+    def markdown_to_html(markdown_text):
+        markdown_text = escape_html_characters(markdown_text)
+        html_output = []
+        lines = markdown_text.split('
+    ')
+        code_block = False
+        code_lang = ''
+        list_stack = []  # Chaque entrée est {'type': 'ul'/'ol', 'indent': int}
+    
+        for line in lines:
+            stripped_line = line.lstrip()
+            # Vérification du début/fin de bloc de code
+            if stripped_line.startswith("```"):
+                if not code_block:
+                    code_lang = stripped_line[3:].strip()
+                    html_output.append(f"&lt;pre&gt;&lt;code class='{code_lang}'&gt;&lt;p&gt;")
+                    code_block = True
+                else:
+                    html_output.append("&lt;/p&gt;&lt;/code&gt;&lt;/pre&gt;")
+                    code_block = False
+                continue
+            if code_block:
+                html_output.append(line)
+                continue
+    
+            # Traitement des en-têtes et des règles horizontales
+            if line.startswith('###'):
+                html_output.append(f"&lt;h3&gt;{line[3:].strip()}&lt;/h3&gt;")
+            elif line.startswith('##'):
+                html_output.append(f"&lt;h2&gt;{line[2:].strip()}&lt;/h2&gt;")
+            elif line.startswith('#'):
+                html_output.append(f"&lt;h1&gt;{line[1:].strip()}&lt;/h1&gt;")
+            elif line.strip() == '---':
+                html_output.append("&lt;hr&gt;")
+            else:
+                # Vérification si c'est un élément de liste
+                current_indent = len(line) - len(line.lstrip(' '))
+                stripped_line = line.lstrip(' ')
+                list_type = None
+                content = ''
+    
+                # Vérification pour un élément de liste non ordonnée
+                if re.match(r'^[-+*]\s+', stripped_line):
+                    list_type = 'ul'
+                    content = re.sub(r'^[-+*]\s+', '', stripped_line, 1).strip()
+                # Vérification pour un élément de liste ordonnée
+                elif re.match(r'^\d+\.\s+', stripped_line):
+                    list_type = 'ol'
+                    content = re.sub(r'^\d+\.\s+', '', stripped_line, 1).strip()
+    
+                if list_type:
+                    # Fermeture des listes plus indentées
+                    while list_stack and list_stack[-1]['indent'] &gt; current_indent:
+                        html_output.append(f"&lt;/{list_stack[-1]['type']}&gt;")
+                        list_stack.pop()
+    
+                    # Vérification si la liste actuelle continue ou si une nouvelle liste commence
+                    if list_stack:
+                        top = list_stack[-1]
+                        if top['indent'] == current_indent:
+                            if top['type'] != list_type:
+                                # Fermeture de la liste actuelle et ouverture d'un nouveau type
+                                html_output.append(f"&lt;/{top['type']}&gt;")
+                                list_stack.pop()
+                                html_output.append(f"&lt;{list_type}&gt;")
+                                list_stack.append({'type': list_type, 'indent': current_indent})
+                        else:
+                            # Nouvelle sous-liste
+                            html_output.append(f"&lt;{list_type}&gt;")
+                            list_stack.append({'type': list_type, 'indent': current_indent})
+                    else:
+                        # Début d'une nouvelle liste
+                        html_output.append(f"&lt;{list_type}&gt;")
+                        list_stack.append({'type': list_type, 'indent': current_indent})
+    
+                    # Traitement du contenu
+                    processed_content = re.sub(r"`(.*?)`", r"&lt;span&gt;&lt;/span&gt;", content)
+                    processed_content = re.sub(r"\*\*(.*?)\*\*", r"&lt;strong&gt;&lt;/strong&gt;", processed_content)
+                    processed_content = re.sub(r"'(.*?)'", r"&lt;em&gt;&lt;/em&gt;", processed_content)
+                    processed_content = re.sub(r'\[(.*?)\]\((.*?)\)', r'&lt;a href=""&gt;&lt;/a&gt;', processed_content)
+                    html_output.append(f"&lt;li&gt;{processed_content}&lt;/li&gt;")
+                else:
+                    # Ce n'est pas un élément de liste, fermeture de toutes les listes ouvertes
+                    while list_stack:
+                        html_output.append(f"&lt;/{list_stack.pop()['type']}&gt;")
+                    # Traitement comme paragraphe si non vide
+                    if line.strip():
+                        processed_line = re.sub(r"`(.*?)`", r"&lt;span&gt;&lt;/span&gt;", line)
+                        processed_line = re.sub(r"\*\*(.*?)\*\*", r"&lt;strong&gt;&lt;/strong&gt;", processed_line)
+                        processed_line = re.sub(r"'(.*?)'", r"&lt;em&gt;&lt;/em&gt;", processed_line)
+                        processed_line = re.sub(r'\[(.*?)\]\((.*?)\)', r'&lt;a href=""&gt;&lt;/a&gt;', processed_line)
+                        html_output.append(f"&lt;p&gt;{processed_line.strip()}&lt;/p&gt;")
+    
+        # Fermeture de toutes les listes restantes ouvertes
+        while list_stack:
+            html_output.append(f"&lt;/{list_stack.pop()['type']}&gt;")
+    
+        return '
+    '.join(html_output)
+    
+    # Votre entrée Markdown
+    markdown_text = ''
+    ... ici votre .md
+    
+    ''
+    
+    # Conversion et obtention du HTML
+    html_code = markdown_to_html(markdown_text)
+    print(html_code)
+</p></code></pre>
+    
+    </div>
+
+
+
+
+
+
+
+
+    <h2>La base HTML :</h2>
+    <p>Une fois que votre conversion est faite, vous devez placer le nouveau code HTML dans une base déjà préconçue, que vous pouvez trouver ci-dessous :</p>
+
+    <button type="button" class="TooGle_list"><p>🔽  Base HTML :</p></button>
+<div class="content">
+
+    <pre><code class='html'><p>
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Recap&lt;/title&gt;
+        &lt;link rel="icon" href="font-favicon/favicon.png" type="image/png"&gt;
+        &lt;link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml"&gt;
+        &lt;link rel="stylesheet" href="font-favicon/style.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;a href="https://nsi.stefa.org/2ACAPON/recap-cour/home.html" class="bouton_retour"&gt;
+            &lt;h4 class="lien_retour"&gt;HUB&lt;/h4&gt;
+        &lt;/a&gt;
+        &lt;main&gt;
+    
+            ...
+    
+        &lt;/main&gt;
+        &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+        &lt;script src="font-favicon/js.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </p></code></pre>
+
+</div>
+
+
+
+    <p>Par contre, si vous souhaitez faire un menu déroulant, vous devez insérer la partie du code que vous retourne le convertisseur dans cette <span>div</span> reliée à un script JS (<span>js.js</span>) qui fera fonctionner le tout.</p>
+
+
+    <button type="button" class="TooGle_list"><p>🔽  Base pour une toggle list :</p></button>
+<div class="content">
+    <pre><code class='html'><p>
+    &lt;button type="button" class="toggle_list"&gt;&lt;p&gt;Tous les outils pour le JS&lt;/p&gt;&lt;/button&gt;
+    &lt;div class="content"&gt;
+    
+        ...
+    
+    &lt;/div&gt;
+    </p></code></pre>
+</div>
+
+    <p>Si vous souhaitez insérer un lien de téléchargement, ci-dessous la base :</p>
+
+    <button type="button" class="TooGle_list"><p>🔽  Bouton de téléchargement :</p></button>
+<div class="content">
+    <pre><code class='html'><p>
+    &lt;button type="button" class="download" id=" ... "&gt;&lt;p&gt; ... &lt;/p&gt;&lt;/button&gt;
+    </p></code></pre>
+</div>
+
+
+    <h2>Reste des fichiers :</h2>
+    <p>Vous pourrez trouver ci-dessous un bouton qui vous donnera, en fichier zip, tout le reste des fichiers nécessaires () pour faire fonctionner tout cela !</p>
+    <button type="button" class="download" id="font-favicon/fichier+/recap-cour.zip"><p>⤵️  Ici pour télécharger touts les fichiers Nécessaire.</p></button>
+
+
+    <p>Bref, merci d'avoir lu j'usquici. Si vous trouvez l'énergie, vous pouvez essayer de m'aider à compléter les cours.</p>
+    <p>À part ça, je vous dis ciao 👌.</p>
+
+
+
+
+</main>
+<br><br><br><br>
+<script src="font-favicon/js.js"></script>
+</body>
+</html>

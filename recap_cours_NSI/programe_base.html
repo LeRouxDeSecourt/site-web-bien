@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <h4 class="lien_retour">HUB</h4>
+    </a>
+<main>
+
+
+<h1>Algorithmes essentiels</h1>
+<h2>Les listes</h2>
+<h3>1. Maximum d'une liste :</h3>
+<p>Retourne l'élément le plus grand d’une liste. (Sans utiliser la fonction max ou des tris)</p>
+<pre><code class='python'><p>
+def e1(t):
+    val = 0
+    c = t[0]
+    for i in t:
+        if c &lt;= i:
+            c = i
+        val += 1
+    print(c)
+
+print(e1([5, 3, 12, -4, 6, 9]))
+</p></code></pre>
+<h3>2. Minimum d'une liste :</h3>
+<p>Retourne l<em>élément le plus petit d</em>une liste. (Sans utiliser la fonction min ou des tris)</p>
+<pre><code class='python'><p>
+def e2(t):
+    val = 0
+    c = t[0]
+    for i in t:
+        if c &gt;= i:
+            c = i
+        val += 1
+    print(c)
+
+print(e2([5, 3, 12, -4, 6, 9]))
+</p></code></pre>
+<h3>3. Indice du minimum d'une liste :</h3>
+<p>Retourne l<em>indice du plus petit élément d</em>une liste. (Sans utiliser la fonction min ou des tris)</p>
+<pre><code class='python'><p>
+def e3(t):
+    val = 0
+    c = t[0]
+    indice = 0
+    for i in range(len(t)):
+        if c &gt;= t[i]:
+            c = t[i]
+            indice = i
+        val += 1
+    print(indice)
+
+print(e3([5, 3, 12, -4, 6, 9]))
+</p></code></pre>
+<h3>4. Compteur d'éléments d'une liste :</h3>
+<p>Retourne le nombre d<em>éléments d</em>une liste. (Sans utiliser la fonction len)</p>
+<pre><code class='python'><p>
+def e4(t):
+    val = 0
+    for i in t:
+        val += 1
+    print(val)
+
+print(e4([5, 3, 12, 6, 9]))
+</p></code></pre>
+<h3>5. Augmente les valeurs d'une liste :</h3>
+<p>Retourne une liste avec toutes les valeurs de la liste donnée en paramètre augmentées d'un nombre x.</p>
+<pre><code class='python'><p>
+def e5(t, x):
+    val = 0
+    t2 = []
+    for i in t:
+        t2.append(i + x)
+        val += 1
+    print(t2)
+
+print(e5([5, 3, 12, 6, 9], 10))
+</p></code></pre>
+<h3>6. Somme des éléments d'une liste :</h3>
+<p>Retourne la somme de tous les éléments d'une liste. (Sans utiliser la fonction sum)</p>
+<pre><code class='python'><p>
+def e6(t):
+    val = 0
+    somme = 0
+    for i in t:
+        somme += i
+        val += 1
+    print(somme)
+
+print(e6([5, 3, 12, -5, 6, 9]))
+</p></code></pre>
+<h3>7. Moyenne des éléments d'une liste :</h3>
+<p>Retourne la moyenne de tous les éléments d'une liste. (Sans utiliser la fonction sum)</p>
+<pre><code class='python'><p>
+def e7(t):
+    val = 0
+    somme = 0
+    for i in t:
+        somme += i
+        val += 1
+    moyenne = somme / val
+    print(moyenne)
+
+print(e7([5, 3, 12, -5, 6, 9]))
+</p></code></pre>
+<h3>8. Somme des éléments d'une liste plus grand que x :</h3>
+<p>Retourne la somme de tous les éléments d'une liste qui sont plus grand que le paramètre x. (Sans utiliser la fonction sum)</p>
+<pre><code class='python'><p>
+def e8(t, x):
+    val = 0
+    somme = 0
+    for i in t:
+        if i &gt; x:
+            somme += i
+        val += 1
+    print(somme)
+
+print(e8([5, 3, 12, -4, 6, 9], 8))
+</p></code></pre>
+<h3>9. Compteur de nombres pairs d'une liste :</h3>
+<p>Retourne le nombre de nombres pairs d'une liste.</p>
+<pre><code class='python'><p>
+def e9(t):
+    val = 0
+    for i in t:
+        if i % 2 == 0:
+            val += 1
+    print(val)
+
+print(e9([5, 3, 12, 6, 9]))
+</p></code></pre>
+<h3>10. Compteur de nombres négatifs d'une liste :</h3>
+<p>Retourne le nombre de nombres négatifs d'une liste.</p>
+<pre><code class='python'><p>
+def e10(t):
+    val = 0
+    for i in t:
+        if i &lt; 0:
+            val += 1
+    print(val)
+
+print(e10([5, 3, -12, 6, -9]))
+</p></code></pre>
+<h3>11. Inverser tous les éléments d'une liste :</h3>
+<p>Retourne une liste dans l'ordre inverse de la liste donnée en paramètre. (Sans utiliser la fonction reverse)</p>
+<pre><code class='python'><p>
+def e11(t):
+    val = 0
+    t2 = []
+    for i in range(len(t) - 1, -1, -1):
+        t2.append(t[i])
+        val += 1
+    print(t2)
+
+print(e11([5, 3, 12, 6, 9]))
+</p></code></pre>
+<h3>12. Cherche une valeur d'une liste :</h3>
+<p>Retourne l<em>indice de la première valeur x donnée en paramètre de la liste. (-1 si x n</em>est pas trouvé)</p>
+<pre><code class='python'><p>
+def e12(t, x):
+    val = 0
+    indice = -1
+    for i in range(len(t)):
+        if t[i] == x:
+            indice = i
+            break
+        val += 1
+    print(indice)
+
+print(e12([5, 3, 12, 6, 9], 12))
+</p></code></pre>
+<h3>13. Cherche une valeur multiple d'une liste :</h3>
+<p>Retourne une liste des indices de la valeur x donnée en paramètre de la liste. (Liste vide si x n'est pas trouvé)</p>
+<pre><code class='python'><p>
+def e13(t, x):
+    val = 0
+    indices = []
+    for i in range(len(t)):
+        if t[i] == x:
+            indices.append(i)
+        val += 1
+    print(indices)
+
+print(e13([5, 3, 12, 5, 6, 9], 5))
+</p></code></pre>
+<h3>14. Insérer un élément d'une liste :</h3>
+<p>Insère un élément x à un indice i de la liste. (Sans utiliser la fonction insert)</p>
+<p>Retourne la nouvelle liste.</p>
+<pre><code class='python'><p>
+def e14(t, x, i):
+    val = 0
+    t2 = []
+    for j in range(len(t)):
+        if j == i:
+            t2.append(x)
+        t2.append(t[j])
+        val += 1
+    print(t2)
+
+print(e14([5, 3, 12, 5, 6, 9], 99, 3))
+</p></code></pre>
+<h3>15. Doublons d'une liste :</h3>
+<p>La fonction prend en paramètre une liste d'entiers compris entre 0 et 100.</p>
+<p>Retourne True, si la liste contient des doublons, False sinon.</p>
+<pre><code class='python'><p>
+def e15(t):
+    val = 0
+    doublons = False
+    for i in range(len(t)):
+        for j in range(i + 1, len(t)):
+            if t[i] == t[j]:
+                doublons = True
+                break
+        if doublons:
+            break
+        val += 1
+    print(doublons)
+
+print(e15([5, 3, 12, 55, 6, 9]))
+print(e15([5, 6, 12, 14, 6, 9]))
+</p></code></pre>
+<h3>16. Doublons max d'une liste :</h3>
+<p>La fonction prend en paramètre une liste d'entiers compris entre 0 et 100.</p>
+<p>Retourne le nombre qui apparaît le plus de fois dans la liste.</p>
+<pre><code class='python'><p>
+def e16(t):
+    val = 0
+    max_count = 0
+    max_elem = t[0]
+    for i in t:
+        count = t.count(i)
+        if count &gt; max_count:
+            max_count = count
+            max_elem = i
+        val += 1
+    print(max_elem)
+
+print(e16([5, 6, 12, 6, 9, 5, 6, 9, 5, 2, 6]))
+</p></code></pre>
+<h1>Les chaînes</h1>
+<h3>17. Nombre de caractères d'une chaîne :</h3>
+<p>Retourne le nombre de caractères d'une chaîne. (Sans utiliser la fonction len)</p>
+<pre><code class='python'><p>
+def e17(chaine):
+    val = 0
+    for c in chaine:
+        val += 1
+    print(val)
+
+print(e17("abcde"))
+</p></code></pre>
+<h3>18. Remplace un caractère d'une chaîne :</h3>
+<p>Remplace toutes les occurrences d'un caractère par un autre caractère donné en paramètres.</p>
+<p>Retourne la nouvelle chaîne. (Sans utiliser la fonction replace)</p>
+<pre><code class='python'><p>
+def e18(chaine, old_char, new_char):
+    val = 0
+    nouvelle_chaine = ""
+    for c in chaine:
+        if c == old_char:
+            nouvelle_chaine += new_char
+        else:
+            nouvelle_chaine += c
+        val += 1
+    print(nouvelle_chaine)
+
+print(e18("abcde", "c", "Z"))
+</p></code></pre>
+<h3>19. Compteur d'occurrences d'un caractère d'une chaîne :</h3>
+<p>Retourne le nombre d<em>occurrences d</em>un caractère dans une chaîne.</p>
+<pre><code class='python'><p>
+def e19(chaine, char):
+    val = 0
+    for c in chaine:
+        if c == char:
+            val += 1
+    print(val)
+
+print(e19("abcdefgbhijbkl", "b"))
+</p></code></pre>
+<h3>20. Indice d'un caractère d'une chaîne :</h3>
+<p>Retourne l<em>indice de la première occurrence d</em>un caractère dans une chaîne. (None si le caractère n'est pas trouvé)</p>
+<pre><code class='python'><p>
+def e20(chaine, char):
+    val = 0
+    indice = None
+    for i in range(len(chaine)):
+        if chaine[i] == char:
+            indice = i
+            break
+        val += 1
+    print(indice)
+
+print(e20("abcde", "d"))
+</p></code></pre>
+<h3>21. Indices multiples d'un caractère d'une chaîne :</h3>
+<p>Retourne la liste des indices des occurrences d<em>un caractère dans une chaîne. (Liste vide si le caractère n</em>est pas trouvé)</p>
+<pre><code class='python'><p>
+def e21(chaine, char):
+    val = 0
+    indices = []
+    for i in range(len(chaine)):
+        if chaine[i] == char:
+            indices.append(i)
+        val += 1
+    print(indices)
+
+print(e21("abcdedturip", "d"))
+</p></code></pre>
+<h3>22. Inverser tous les caractères d'une chaîne :</h3>
+<p>Retourne une chaîne inversée de la chaîne donnée.</p>
+<pre><code class='python'><p>
+def e22(chaine):
+    val = 0
+    nouvelle_chaine = ""
+    for i in range(len(chaine) - 1, -1, -1):
+        nouvelle_chaine += chaine[i]
+        val += 1
+    print(nouvelle_chaine)
+
+print(e22("abcde"))
+</p></code></pre>
+<h3>23. Insérer un caractère dans une chaîne :</h3>
+<p>Retourne une chaîne avec un caractère donné en paramètre inséré à l'indice i. (Sans utiliser la fonction insert)</p>
+<p>Si i est plus grand que la longueur de la chaîne, le caractère sera inséré à la fin de la chaîne.</p>
+<pre><code class='python'><p>
+def e23(chaine, char, i):
+    val = 0
+    nouvelle_chaine = ""
+    for j in range(len(chaine)):
+        if j == i:
+            nouvelle_chaine += char
+        nouvelle_chaine += chaine[j]
+        val += 1
+    if i &gt;= len(chaine):
+        nouvelle_chaine += char
+    print(nouvelle_chaine)
+
+print(e23("abcde", "b", 4))
+</p></code></pre>
+<h1>Les dictionnaires</h1>
+<h2>1. Ajoute un élément dans un dictionnaire</h2>
+<p>Fonction prenant en paramètre un dictionnaire et un élément à ajouter</p>
+<pre><code class='python'><p>
+def D1(a, b, c):
+    a[b] = c
+    return a
+
+print(D1({"abel": 5, "babar": 7, "clement": 36}, "Titi", 50))
+</p></code></pre>
+<h2>2. Cherche une valeur d'un dictionnaire :</h2>
+<p>Retourne <span>True</span> si la valeur donnée en paramètre est dans le dictionnaire, <span>False</span> sinon.</p>
+<pre><code class='python'><p>
+def D2(a, b):
+    for i in a:
+        if a[i] == b:
+            return True
+    return False
+
+print(D2({"abel": 5, "babar": 7, "clement": 36}, 7))
+print(D2({"abel": 5, "babar": 7, "clement": 36}, 1334))
+</p></code></pre>
+<h2>3. Cherche une clé d'un dictionnaire :</h2>
+<p>Retourne <span>True</span> si la clé donnée en paramètre est dans le dictionnaire, <span>False</span> sinon</p>
+<pre><code class='python'><p>
+def D3(a, b):
+    for i in a:
+        if i == b:
+            return True
+    return False
+
+print(D3({"abel": 5, "babar": 7, "clement": 36}, 1334))
+print(D3({"abel": 5, "babar": 7, "clement": 36}, "abel"))
+</p></code></pre>
+<h2>4. Longueur de chaînes :</h2>
+<p>Fonction prenant en paramètre une liste de chaîne de caractères.</p>
+<p>Retourne un dictionnaire contenant chacune des chaînes en clé et la longueur de la chaîne correspondante en valeur.</p>
+<pre><code class='python'><p>
+def E4(a):
+    t = {"abel": 5, "babar": 7, "clement": 36}
+    r = {}
+    for i in a:
+        for y in t:
+            if i == y:
+                r[i] = t[y]
+    return r
+
+print(E4(["abel", "babar", "clement"]))
+</p></code></pre>
+<h2>5. Plus petite valeur :</h2>
+<p>Fonction prenant en paramètre un dictionnaire dont les valeurs sont des entiers.</p>
+<p>Retourne la clé dont la valeur est la plus petite.</p>
+<pre><code class='python'><p>
+def D5(a):
+    min_key = list(a)[0]
+    for i in a:
+        if a[i] &lt; a[min_key]:
+            min_key = i
+    return min_key
+
+print(D5({"abel": 5, "babar": 7, "autre_test": 2, "clement": 36}))
+</p></code></pre>
+
+
+    
+</main>
+<br><br><br><br>
+<script src="js.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3.48099H2.07885L4.9533 0.733878L4.1854 0L0 4L4.1854 8L4.9533 7.26612L2.07885 4.51901H10V3.48099Z" fill="#F5F1EE"/>
+        </svg>
+        <h4 class="lien_retour">Revenir au HUB</h4>
+    </a>
+<main>
+
+    <h1>Structure de base HTML et CSS</h1>
+    <hr>
+    <h1>Le HTML</h1>
+    <p>Le HTML est la base de toute page web. Il est structuré pour être compréhensible autant par nous que par les navigateurs. Voici qq explications plus détaillées :</p>
+    <pre><code class='html'><p>
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="fr"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Titre de la page&lt;/title&gt;
+        &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Le contenu va ici --&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </p></code></pre>
+    <p>Les composants essentiels :</p>
+    <ul>
+    <li><span>&lt;!DOCTYPE html&gt;</span> : Déclare qu'on utilise HTML5</li>
+    <li><span>&lt;html lang="fr"&gt;</span> : Englobe tout le contenu, avec le français comme langue principale</li>
+    <li>Dans le <span>&lt;head&gt;</span>, on retrouve les métadonnées essentielles :</li>
+    <ul>
+    <li><span>&lt;meta charset="UTF-8"&gt;</span> : Pour la gestion des caractères spéciaux</li>
+    <li><span>&lt;meta name="viewport"&gt;</span> : Pour l'adaptation aux différents écrans</li>
+    <li><span>&lt;title&gt;</span> : Le titre qui apparaît dans l'onglet</li>
+    <li><span>&lt;link&gt;</span> : Connection avec la feuille de style CSS</li>
+    </ul>
+    <li><span>&lt;body&gt;</span> : Tout le contenu visible de la page</li>
+    </ul>
+    <h2>Les balises principales</h2>
+    <h3>Structure</h3>
+    <ul>
+    <li><span>&lt;header&gt;</span> : En-tête de page ou de section</li>
+    <li><span>&lt;nav&gt;</span> : Navigation</li>
+    <li><span>&lt;main&gt;</span> : Contenu principal</li>
+    <li><span>&lt;section&gt;</span> : Section thématique</li>
+    <li><span>&lt;article&gt;</span> : Contenu autonome</li>
+    <li><span>&lt;footer&gt;</span> : Pied de page</li>
+    </ul>
+    <h3>Texte</h3>
+    <ul>
+    <li><span>&lt;h1&gt;</span> à <span>&lt;h6&gt;</span> : Hiérarchie des titres</li>
+    <li><span>&lt;p&gt;</span> : Paragraphes</li>
+    <li><span>&lt;span&gt;</span> : Conteneur en ligne</li>
+    <li><span>&lt;strong&gt;</span> : Mise en valeur forte</li>
+    <li><span>&lt;em&gt;</span> : Emphase</li>
+    </ul>
+    <h3>Listes</h3>
+    <ul>
+    <li><span>&lt;ul&gt;</span> : Pour les listes à puces</li>
+    <li><span>&lt;ol&gt;</span> : Pour les listes numérotées</li>
+    <li><span>&lt;li&gt;</span> : Chaque élément de la liste</li>
+    </ul>
+    <h3>Médias et liens</h3>
+    <ul>
+    <li><span>&lt;a href="..."&gt;</span> : Les liens vers d'autres pages</li>
+    <li><span>&lt;img src="..." alt="..."&gt;</span> : Pour intégrer des images</li>
+    <li><span>&lt;video&gt;</span> : Pour les vidéos</li>
+    <li><span>&lt;audio&gt;</span> : Pour l'audio</li>
+    </ul>
+    <h3>Tableaux</h3>
+    <ul>
+    <li><span>&lt;table&gt;</span> : Structure du tableau</li>
+    <li><span>&lt;tr&gt;</span> : Les lignes</li>
+    <li><span>&lt;td&gt;</span> : Les cellules</li>
+    <li><span>&lt;th&gt;</span> : Les en-têtes de colonnes</li>
+    </ul>
+    <h3>Divisions et formulaires</h3>
+    <ul>
+    <li><span>&lt;div&gt;</span> : Le couteau suisse des conteneurs block</li>
+    <li><span>&lt;span&gt;</span> : Pareil mais en inline</li>
+    <li><span>&lt;form&gt;</span> : Pour les formulaires</li>
+    <li><span>&lt;input&gt;</span>, <span>&lt;textarea&gt;</span>, <span>&lt;button&gt;</span> : Les éléments de formulaire</li>
+    </ul>
+    <p>Voici un exemple basique qui combine qq éléments :</p>
+    <pre><code class='html'><p>
+    &lt;article&gt;
+        &lt;h1&gt;Mon titre principal&lt;/h1&gt;
+        &lt;p&gt;Un paragraphe avec du texte &lt;strong&gt;important&lt;/strong&gt;.&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Premier élément&lt;/li&gt;
+            &lt;li&gt;Second élément&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;img src="image.jpg" alt="Description de l'image"&gt;
+    &lt;/article&gt;
+    
+    </p></code></pre>
+    <h1>Les props CSS essentielles</h1>
+    <p>Le CSS permet de styliser tous ces éléments HTML comme un example directement une balise comme <span>body</span> ou <span>main</span> ou encore <span>h1</span> , <span>h2</span> … . ou sinon une classe avec <span>class=””</span>  <span>.LeNomDeLaClasse</span> ou encore d’une <span>id:””</span> <span>#LeNomDeLaClasse</span></p>
+    <p>Voici les propriétés principales à connaître :</p>
+    <h2>Texte</h2>
+    <pre><code class='css'><p>
+    .texte {
+        color: #000000;                    /* Couleur */
+        font-family: Arial, sans-serif;    /* Police */
+        font-size: 16px;                   /* Taille */
+        font-weight: bold;                 /* Graisse */
+        text-align: center;                /* Alignement */
+        text-decoration: underline;        /* Décoration */
+        line-height: 1.5;                  /* Interlignage */
+    }
+    </p></code></pre>
+    <h2>Boîte et mise en page</h2>
+    <pre><code class='css'><p>
+    .element {
+        width: 100px;                      /* Largeur */
+        height: 100px;                     /* Hauteur */
+        margin: 10px;                      /* Marge externe */
+        padding: 15px;                     /* Marge interne */
+        border: 1px solid black;           /* Bordure */
+        border-radius: 5px;                /* Coins arrondis */
+    }
+    </p></code></pre>
+    <h2>Positionnement</h2>
+    <pre><code class='css'><p>
+    .position {
+        position: relative;               /* Position par rapport au parent */
+        top: 10px;                        /* Décalage haut */
+        left: 20px;                       /* Décalage gauche */
+        display: flex;                    /* Mode d'affichage */
+        float: left;                      /* Flottement */
+    }
+    </p></code></pre>
+    <h2>Fond</h2>
+    <pre><code class='css'><p>
+    .background {
+        background-color: #ffffff;         /* Couleur de fond */
+        background-image: url('image.jpg'); /* Image */
+        background-size: cover;            /* Taille */
+        background-position: center;       /* Position */
+    }
+    </p></code></pre>
+    <h2>Flexbox</h2>
+    <pre><code class='css'><p>
+    .conteneur-flex {
+        display: flex;                     /* Activation flexbox */
+        justify-content: center;           /* Alignement horizontal */
+        align-items: center;               /* Alignement vertical */
+        flex-direction: row;               /* Direction */
+        flex-wrap: wrap;                   /* Retour à la ligne */
+    }
+    </p></code></pre>
+    <p>C'est les bases essentielles pour démarrer. Avec ça, tu peux déjà créer pas mal de mises en page !</p>
+
+</main>
+<br><br><br><br>
+<script src="js.js"></script>
+</body>
+</html>

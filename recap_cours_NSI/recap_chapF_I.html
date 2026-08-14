@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récap Algorithmes</title>
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <h4 class="lien_retour">HUB</h4>
+    </a>
+<main>
+
+<h1>Algorithmes de Recherche et de Tri</h1>
+
+<!-- Section Recherche -->
+<button type="button" class="TooGle_list"><p>Algorithmes de Recherche</p></button>
+<div class="content">
+    
+    <h2>Recherche Linéaire</h2>
+    <table>
+        <tr>
+            <th>Fonction</th>
+            <th>Description</th>
+            <th>Paramètres</th>
+            <th>Retour</th>
+            <th>Exemple</th>
+        </tr>
+        <tr>
+            <td><code>linear_search</code></td>
+            <td>Parcourt séquentiellement la liste jusqu'à trouver l'élément</td>
+            <td>element, liste</td>
+            <td>booléen</td>
+            <td><code>linear_search(5, [1,3,5]) → True</code></td>
+        </tr>
+    </table>
+
+    <pre><code class="python"><p>
+def linear_search(element, liste):
+    for elt in liste:
+        if elt == element:
+            return True
+    return False
+    </p></code></pre>
+
+
+    <h3>Complexité</h3>
+    <p>O(n) dans le pire cas - Parcourt toute la liste</p>
+
+    <h2>Recherche Dichotomique</h2>
+    <table>
+        <tr>
+            <th>Fonction</th>
+            <th>Description</th>
+            <th>Paramètres</th>
+            <th>Retour</th>
+            <th>Exemple</th>
+        </tr>
+        <tr>
+            <td><code>binary_search</code></td>
+            <td>Divise la liste triée par 2 à chaque étape</td>
+            <td>element, liste_triée</td>
+            <td>booléen</td>
+            <td><code>binary_search(7, [1,3,5,7,9]) → True</code></td>
+        </tr>
+    </table>
+
+    <pre><code class="python"><p>
+def binary_search(element, sorted_list):
+    low = 0
+    high = len(sorted_list) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if sorted_list[mid] == element:
+            return True
+        elif element < sorted_list[mid]:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return False
+    </p></code></pre>
+
+</div>
+
+<!-- Section Tri -->
+<button type="button" class="TooGle_list"><p>Algorithmes de Tri</p></button>
+<div class="content">
+    
+    <h2>Tri par Sélection</h2>
+    <ol>
+        <li>Trouver le minimum dans la partie non triée</li>
+        <li>L'échanger avec le premier élément non trié</li>
+        <li>Répéter jusqu'à ce que la liste soit triée</li>
+    </ol>
+
+    <pre><code class="python"><p>
+def tri_selection(liste):
+    n = len(liste)
+    for i in range(n-1):
+        min_index = i
+        for j in range(i+1, n):
+            if liste[j] < liste[min_index]:
+                min_index = j
+        liste[i], liste[min_index] = liste[min_index], liste[i]
+    return liste
+    </p></code></pre>
+
+
+    <h2>Tri par Insertion</h2>
+    <ol>
+        <li>Prendre un élément non trié</li>
+        <li>Le comparer avec les éléments triés</li>
+        <li>Insérer à la bonne position</li>
+    </ol>
+
+    <pre><code class="python"><p>
+def tri_insertion(liste):
+    for i in range(1, len(liste)):
+        cle = liste[i]
+        j = i-1
+        while j >= 0 and cle < liste[j]:
+            liste[j+1] = liste[j]
+            j -= 1
+        liste[j+1] = cle
+    return liste
+    </p></code></pre>
+
+
+    <h3>Comparaisons</h3>
+    <table>
+        <tr>
+            <th>Algorithme</th>
+            <th>Complexité</th>
+            <th>Stable</th>
+            <th>En place</th>
+        </tr>
+        <tr>
+            <td>Sélection</td>
+            <td>O(n²)</td>
+            <td>Non</td>
+            <td>Oui</td>
+        </tr>
+        <tr>
+            <td>Insertion</td>
+            <td>O(n²)</td>
+            <td>Oui</td>
+            <td>Oui</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Section Applications -->
+<h2>Applications Pratiques</h2>
+<ul>
+    <li>Tris personnalisés avec <code>key=</code></li>
+    <li>Recherche dans les bases de données</li>
+    <li>Optimisation des temps d'exécution</li>
+</ul>
+
+</main>
+<br><br><br><br>
+<script src="font-favicon/js.js"></script>
+</body>
+</html>

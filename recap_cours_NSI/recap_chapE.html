@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récapitulatif sur les listes et les dictionnaires</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+  <a href="home.html" class="bouton_retour">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3.48099H2.07885L4.9533 0.733878L4.1854 0L0 4L4.1854 8L4.9533 7.26612L2.07885 4.51901H10V3.48099Z" fill="#F5F1EE"/>
+        </svg>
+        <h4 class="lien_retour">Revenir au HUB</h4>
+    </a>
+<main>
+    <h1>Notions Clés des listes et dictionnaires</h1>
+    <h1>Listes :</h1>
+    <h2>1. Préambule : Représentation des données avec des listes</h2>
+    <ul>
+    <li><strong>Définition</strong> : Une liste est une séquence ordonnée d'éléments. Ces éléments peuvent être de types différents et sont modifiables.</li>
+    <li><strong>Exemple de structure</strong> : <span>[élément1, élément2, ...]</span>.</li>
+    <li><strong>Avantage</strong> : Permet de stocker et manipuler des collections de données de manière flexible.</li>
+    </ul>
+    <hr>
+    <h2>2. Généralités sur les listes</h2>
+    <ul>
+    <li><strong>Définition</strong> : Une liste est délimitée par des crochets <span>[]</span>, et les éléments sont séparés par des virgules.</li>
+    <li><strong>Structure ordonnée</strong> : Les éléments d'une liste sont stockés dans un ordre particulier et sont accessibles via des indices.</li>
+    <li><strong>Fonctions de base</strong> :</li>
+    <ul>
+    <li><span>len(liste)</span> : Renvoie le nombre d'éléments dans la liste.</li>
+    <li><span>list()</span> : Convertit un itérable en liste.</li>
+    </ul>
+    </ul>
+    <hr>
+    <h2>3. Création d'une liste</h2>
+    <ul>
+    <li><strong>Méthodes de création</strong> :</li>
+    <ol>
+    <li>À partir d’une séquence d'éléments.</li>
+    <li>Utilisation directe de la fonction <span>list()</span>.</li>
+    <li>Par compréhension, tout comme pour les listes.</li>
+    </ol>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      liste1 = [1, 2, 3, 4, 5]
+      liste2 = list("NSI")
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>4. Ajout et modification d’éléments dans une liste</h2>
+    <ul>
+    <li><strong>Ajout</strong> : Pour ajouter un élément, il suffit d’utiliser la méthode <span>append()</span> ou <span>insert()</span>.</li>
+    <li><strong>Modification</strong> : On peut modifier un élément en accédant à son indice.</li>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      fruits.append("fraise")           # rajoute "fraise" a la fin
+      fruits.insert(1, "mangue")        # insert "mangue" ( ici la 2 position )
+      fruits[0] = "kiwi"                # écrase/rajoute "kiwi" à la 1e place
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>5. Accès aux éléments</h2>
+    <ul>
+    <li><strong>Méthodes courantes</strong> :</li>
+    <ul>
+    <li><span>liste[indice]</span> : Accède à l'élément à l'indice spécifié.</li>
+    <li><span>liste[-1]</span> : Accède au dernier élément de la liste.</li>
+    </ul>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      premier_element = liste1[0]
+      dernier_element = liste1[-1]
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>6. Fonctions et méthodes des listes</h2>
+    <ul>
+    <li><strong>Suppression d’éléments</strong> :</li>
+    <ul>
+    <li><span>del liste[indice]</span> : Supprime l'élément à l'indice donné.</li>
+    <li><span>remove(valeur)</span> : Supprime la première occurrence de la valeur spécifiée.</li>
+    <li><span>clear()</span> : Vide la liste.</li>
+    </ul>
+    <li><strong>Tri et inversion</strong> :</li>
+    <ul>
+    <li><span>sort()</span> : Trie la liste en place.</li>
+    <li><span>reverse()</span> : Inverse l'ordre des éléments de la liste.</li>
+    </ul>
+    <li><strong>Copie de listes</strong> :</li>
+    <ul>
+    <li><span>copy()</span> : Crée une copie superficielle.</li>
+    <li><span>deepcopy()</span> : Crée une copie indépendante (pour les valeurs mutables).</li>
+    </ul>
+    </ul>
+    <hr>
+    <h1>Notions Clés des dictionnaires</h1>
+    <h2>1. Préambule : Représentation des données avec des dictionnaires</h2>
+    <ul>
+    <li><strong>Définition</strong> : Un dictionnaire est un ensemble de paires clé-valeur. Il permet d’associer des clés uniques à des valeurs et facilite la récupération de ces valeurs.</li>
+    <li><strong>Exemple de structure</strong> : <span>{clé1: valeur1, clé2: valeur2, ...}</span>.</li>
+    <li><strong>Avantage</strong> : Accès direct aux valeurs par leur clé sans nécessiter de parcourir toutes les données.</li>
+    </ul>
+    <hr>
+    <h2>2. Généralités sur les dictionnaires</h2>
+    <ul>
+    <li><strong>Définition</strong> : Un dictionnaire est délimité par des accolades <span>{}</span>, et chaque paire clé-valeur est séparée par des deux points <span>:</span>.</li>
+    <li><strong>Structure non ordonnée</strong> : Les éléments d'un dictionnaire ne sont pas stockés dans un ordre particulier.</li>
+    <li><strong>Fonctions de base</strong> :</li>
+    <ul>
+    <li><span>len(dico)</span> : Renvoie le nombre de paires dans le dictionnaire.</li>
+    <li><span>dict()</span> : Convertit une liste de tuples ou de listes en dictionnaire.</li>
+    </ul>
+    </ul>
+    <hr>
+    <h2>3. Création d'un dictionnaire</h2>
+    <ul>
+    <li><strong>Méthodes de création</strong> :</li>
+    <ol>
+    <li>À partir d’une liste de tuples ou de listes.</li>
+    <li>Utilisation directe de la fonction <span>dict()</span>.</li>
+    <li>Par compréhension, tout comme pour les listes.</li>
+    </ol>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      capitales = {"France": "Paris", "Allemagne": "Berlin"}
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>4. Ajout et modification d’éléments dans un dictionnaire</h2>
+    <ul>
+    <li><strong>Ajout</strong> : Pour ajouter un élément, il suffit d’utiliser la clé entre crochets et d’y associer une valeur.</li>
+    <li><strong>Modification</strong> : Le même procédé est utilisé pour modifier une valeur existante.</li>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      capitales["Islande"] = "Reykjavik"
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>5. Accès aux éléments</h2>
+    <ul>
+    <li><strong>Méthodes courantes</strong> :</li>
+    <ul>
+    <li><span>keys()</span> : Renvoie les clés du dictionnaire.</li>
+    <li><span>values()</span> : Renvoie les valeurs du dictionnaire.</li>
+    <li><span>items()</span> : Renvoie les couples clé-valeur.</li>
+    </ul>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      for pays in capitales.keys():
+          print(pays)
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>6. Fonctions et méthodes des dictionnaires</h2>
+    <ul>
+    <li><strong>Suppression d’éléments</strong> :</li>
+    <ul>
+    <li><span>del dico[clé]</span> : Supprime l'élément correspondant à la clé donnée.</li>
+    <li><span>clear()</span> : Vide le dictionnaire.</li>
+    </ul>
+    <li><strong>Comparaison</strong> :</li>
+    <ul>
+    <li><span>d1.keys() & d2.keys()</span> : Renvoie les clés communes entre deux dictionnaires.</li>
+    <li><span>d1.items() & d2.items()</span> : Renvoie les paires clé-valeur communes.</li>
+    </ul>
+    <li><strong>Copie de dictionnaires</strong> :</li>
+    <ul>
+    <li><span>copy()</span> : Crée une copie superficielle.</li>
+    <li><span>deepcopy()</span> : Crée une copie indépendante (pour les valeurs mutables).</li>
+    </ul>
+    </ul>
+</main>
+<br><br><br><br>
+<script src="js.js"></script>
+</body>
+</html>

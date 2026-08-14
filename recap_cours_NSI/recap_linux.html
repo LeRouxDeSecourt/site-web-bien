@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap JS</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3.48099H2.07885L4.9533 0.733878L4.1854 0L0 4L4.1854 8L4.9533 7.26612L2.07885 4.51901H10V3.48099Z" fill="#F5F1EE"/>
+        </svg>
+        <h4 class="lien_retour">Revenir au HUB</h4>
+    </a>
+    <main>
+        <h1>Commandes de Base Linux (Terminal)</h1>
+        
+        <h2>Navigation dans les dossiers</h2>
+        
+        <ul>
+            <li><code>cd</code> : Change de répertoire</li>
+            <li><code>cd ~</code> : Retour au répertoire personnel</li>
+            <li><code>cd /chemin/vers/dossier</code> : Aller dans un dossier précis</li>
+            <li><code>cd .</code> : Rester dans le dossier actuel</li>
+            <li><code>cd ..</code> : Revenir au dossier parent</li>
+            <li><code>cd ../..</code> : Revenir deux dossiers en arrière</li>
+            <li><code>pwd</code> : Affiche le chemin absolu du répertoire actuel</li>
+            <li><code>ls</code> : Liste les fichiers du dossier courant</li>
+            <li><code>ls dossier1 dossier2</code> : Liste les contenus de plusieurs dossiers (ex : <code>ls images mes_docs</code>)</li>
+        </ul>
+        
+        <h2>Gestion des fichiers et dossiers</h2>
+        
+        <ul>
+            <li><code>mkdir nom_dossier</code> : Crée un nouveau dossier</li>
+            <li><code>touch nom_fichier</code> : Crée un fichier vide</li>
+            <li><code>rm fichier</code> : Supprime un fichier</li>
+            <li><code>rm -r dossier</code> : Supprime un dossier et son contenu</li>
+            <li><code>rmdir</code> : Supprime un dossier (doit être vide)</li>
+            <li><code>cp source destination</code> : Copie un fichier ou dossier</li>
+            <li><code>mv source destination</code> : Déplace ou renomme un fichier ou dossier</li>
+            <li><code>cat fichier</code> : Affiche le contenu d'un fichier</li>
+        </ul>
+        
+        <h2>Infos système et utilisateur</h2>
+        
+        <ul>
+            <li><code>whoami</code> : Affiche le nom de l'utilisateur connecté</li>
+            <li><code>passwd</code> : Change le mot de passe de l'utilisateur courant</li>
+            <li><code>man commande</code> : Affiche le manuel d'aide d'une commande</li>
+            <li><code>find /chemin -name "fichier"</code> : Cherche un fichier dans l'arborescence</li>
+        </ul>
+        
+        <h2>Exemples pratiques</h2>
+        
+        <pre><code class='bash'>
+            # Aller dans le dossier /home/max
+            cd /home/max
+            
+            # Créer le dossier mes_docs dans le répertoire courant
+            mkdir mes_docs
+            
+            # Revenir en arrière et aller dans elsa
+            cd ../elsa
+            
+            # Lister les fichiers dans plusieurs dossiers
+            ls /home/max/images photos_vac ski
+        </code></pre>
+        
+        <h2>Gestion des permissions</h2>
+        
+        <h3>Types d'utilisateurs</h3>
+        
+        <table>
+            <tr>
+                <th>Symbole</th>
+                <th>Type d'utilisateur</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><span>u</span></td>
+                <td>Propriétaire (user)</td>
+                <td>La personne qui a créé le fichier ou en est propriétaire</td>
+            </tr>
+            <tr>
+                <td><span>g</span></td>
+                <td>Groupe (group)</td>
+                <td>Les utilisateurs appartenant au groupe associé au fichier</td>
+            </tr>
+            <tr>
+                <td><span>o</span></td>
+                <td>Autres (others)</td>
+                <td>Tous les autres utilisateurs</td>
+            </tr>
+            <tr>
+                <td><span>a</span></td>
+                <td>Tous (all)</td>
+                <td>Tous les utilisateurs (<span>u+g+o</span>)</td>
+            </tr>
+        </table>
+        
+        <h3>Types de droits</h3>
+        
+        <table>
+            <tr>
+                <th>Symbole</th>
+                <th>Valeur numérique</th>
+                <th>Droit</th>
+                <th>Description pour fichiers</th>
+                <th>Description pour répertoires</th>
+            </tr>
+            <tr>
+                <td><span>r</span></td>
+                <td><span>4</span></td>
+                <td>Lecture (read)</td>
+                <td>Permet de lire le contenu</td>
+                <td>Permet de lister le contenu (<code>ls</code>)</td>
+            </tr>
+            <tr>
+                <td><span>w</span></td>
+                <td><span>2</span></td>
+                <td>Écriture (write)</td>
+                <td>Permet de modifier</td>
+                <td>Permet de créer/renommer/supprimer</td>
+            </tr>
+            <tr>
+                <td><span>x</span></td>
+                <td><span>1</span></td>
+                <td>Exécution (execute)</td>
+                <td>Permet d'exécuter</td>
+                <td>Permet d'accéder (<code>cd</code>)</td>
+            </tr>
+        </table>
+        
+        <h3>Commandes de gestion des droits</h3>
+        
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Exemples</th>
+            </tr>
+            <tr>
+                <td><code>chmod</code></td>
+                <td>Modifie les permissions</td>
+                <td>
+                    <code>chmod 751 NSI</code> (notation absolue)<br>
+                    <code>chmod go-r fichier</code> (notation relative)
+                </td>
+            </tr>
+            <tr>
+                <td><code>ls -l</code></td>
+                <td>Affiche les droits actuels</td>
+                <td><code>ls -l fichier.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>chown</code></td>
+                <td>Change le propriétaire</td>
+                <td><code>chown utilisateur fichier</code></td>
+            </tr>
+            <tr>
+                <td><code>chgrp</code></td>
+                <td>Change le groupe</td>
+                <td><code>chgrp groupe fichier</code></td>
+            </tr>
+        </table>
+        
+        <h3>Notation des droits</h3>
+        
+        <h4>Notation absolue</h4>
+        <p>Utilise un nombre à 3 chiffres (<span>propriétaire</span>, <span>groupe</span>, <span>autres</span>) :</p>
+        <pre><code class='bash'>
+            chmod 755 fichier  # rwx r-x r-x
+            chmod 644 fichier  # rw- r-- r--
+            chmod 700 fichier  # rwx --- ---
+        </code></pre>
+        
+        <h4>Notation relative</h4>
+        <p>Permet d'ajouter (<span>+</span>) ou retirer (<span>-</span>) des droits :</p>
+        <pre><code class='bash'>
+            chmod u+x fichier  # ajoute exécution au propriétaire
+            chmod go-r fichier # retire lecture au groupe/autres
+            chmod a+r fichier  # ajoute lecture à tous
+        </code></pre>
+        
+        <div>
+            <p>Points importants :</p>
+            <ul>
+                <li>Seuls le propriétaire et root peuvent modifier les droits</li>
+                <li>Pour accéder à un fichier, besoin de droit <span>x</span> sur le répertoire</li>
+                <li>Pour lister un répertoire, besoin de droit <span>r</span></li>
+                <li>Pour modifier un fichier, besoin de <span>w</span> sur le fichier et <span>x</span> sur le répertoire</li>
+            </ul>
+        </div>
+        </main>
+
+</body>
+</html>

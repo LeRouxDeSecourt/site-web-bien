@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recap</title>
+    <link rel="icon" href="font-favicon/favicon.png" type="image/png">
+    <link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+    <a href="home.html" class="bouton_retour">
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3.48099H2.07885L4.9533 0.733878L4.1854 0L0 4L4.1854 8L4.9533 7.26612L2.07885 4.51901H10V3.48099Z" fill="#F5F1EE"/>
+        </svg>
+        <h4 class="lien_retour">Revenir au HUB</h4>
+    </a>
+<main>
+
+    <h1>Résumé chap 1</h1>
+    <h2>1. Préambule : Notion d'algorithme</h2>
+    <ul>
+    <li><strong>Définition</strong> : Un algorithme est une suite finie d'instructions permettant de résoudre un problème.</li>
+    <li><strong>Phases de l’algorithme</strong> :</li>
+    <ol>
+    <li><strong>Entrée des données</strong> : L’algorithme reçoit des données en entrée.</li>
+    <li><strong>Traitement</strong> : Les données sont traitées via des opérations.</li>
+    <li><strong>Sortie</strong> : Le résultat final est produit.</li>
+    </ol>
+    <li><strong>Étude des algorithmes</strong> : Elle permet de prouver leur correction, de comparer leur efficacité (complexité) et de fournir des exemples concrets.</li>
+    </ul>
+    <hr>
+    <h2>2. Introduction à Python</h2>
+    <ul>
+    <li><strong>Qu’est-ce que Python ?</strong> : Un langage de programmation de haut niveau, interprété, inventé en 1991 par Guido van Rossum.</li>
+    <li><strong>Avantages</strong> :</li>
+    <ul>
+    <li>Simple à utiliser pour écrire des scripts basiques.</li>
+    <li>Puissant grâce à ses nombreuses bibliothèques (sciences, data, web, etc.).</li>
+    <li>Utilisé par des entreprises comme Google, Microsoft et la NASA.</li>
+    </ul>
+    <li><strong>Outils de programmation</strong> : Pour écrire du code Python, il faut un IDE (Environnement de Développement Intégré). Exemple : EduPython.</li>
+    </ul>
+    <hr>
+    <h2>3. Variables</h2>
+    <ul>
+    <li><strong>Rôle</strong> : Les variables stockent des valeurs utilisées au cours de l<em>exécution d</em>un programme.</li>
+    <li><strong>Nommage</strong> : Une variable a un nom explicite, formé de lettres et de chiffres, sans espace. En Python, le nom ne commence pas par un chiffre, et les majuscules/minuscules sont distinctes.</li>
+    <li><strong>Type dynamique</strong> : En Python, une variable prend automatiquement le type de la valeur assignée (pas de déclaration explicite comme dans d'autres langages).</li>
+    </ul>
+    <hr>
+    <h2>4. Types de variables en Python</h2>
+    <ul>
+    <li><strong>Types courants</strong> :</li>
+    <ul>
+    <li><strong>Entiers</strong> (<span>int</span>) : Nombres sans décimales.</li>
+    <li><strong>Réels</strong> (<span>float</span>) : Nombres avec décimales.</li>
+    <li><strong>Booléens</strong> (<span>bool</span>) : Vrai ou Faux (<span>True</span> ou <span>False</span>).</li>
+    <li><strong>Chaînes de caractères</strong> (<span>str</span>) : Séquences de caractères (texte).</li>
+    <li><strong>Listes</strong> (<span>list</span>) : Séquences d’éléments modifiables.</li>
+    <li><strong>Tuples</strong> (<span>tuple</span>) : Séquences d’éléments non modifiables.</li>
+    </ul>
+    </ul>
+    <hr>
+    <h2>5. Affectations</h2>
+    <ul>
+    <li><strong>Affectation de valeur</strong> : Le symbole <span>=</span> est utilisé pour affecter une valeur à une variable.</li>
+    <li><strong>Exemples d’opérateurs</strong> :</li>
+    <ul>
+    <li><span>a += b</span> équivaut à <span>a = a + b</span>.</li>
+    <li><span>a -= b</span> équivaut à <span>a = a - b</span>.</li>
+    <li><span>a *= b</span> équivaut à <span>a = a * b</span>.</li>
+    <li><span>a /= b</span> équivaut à <span>a = a / b</span>.</li>
+    </ul>
+    <li><strong>Fonction <span>input()</span></strong> : Permet de récupérer une entrée de l'utilisateur sous forme de chaîne de caractères.</li>
+    </ul>
+    <hr>
+    <h2>6. Séquence d'instructions</h2>
+    <ul>
+    <li>Les instructions sont exécutées dans l’ordre où elles apparaissent, sauf mention contraire.</li>
+    <li>Exemple : Avec <span>a, b = 3, 7</span>, puis <span>a = b</span> et <span>b = a</span>, l’ordre des lignes influe sur le résultat.</li>
+    </ul>
+    <hr>
+    <h2>7. Transtypage</h2>
+    <ul>
+    <li><strong>Définition</strong> : Le transtypage permet de changer le type d'une variable.</li>
+    <li><strong>Fonctions utiles</strong> :</li>
+    <ul>
+    <li><span>int(chaîne)</span> : Convertit une chaîne de caractères en entier.</li>
+    <li><span>float(chaîne)</span> : Convertit une chaîne en nombre réel.</li>
+    <li><span>str(nombre)</span> : Convertit un nombre en chaîne de caractères.</li>
+    </ul>
+    </ul>
+    <hr>
+    <h2>8. Expressions booléennes</h2>
+    <ul>
+    <li><strong>Définition</strong> : Une expression booléenne est soit vraie (<span>True</span>), soit fausse (<span>False</span>).</li>
+    <li><strong>Opérateurs de comparaison</strong> : <span>==</span> (égal), <span>!=</span> (différent), <span>&lt;</span>, <span>&gt;</span>, <span>&lt;=</span>, <span>&gt;=</span>.</li>
+    <li><strong>Opérateurs logiques</strong> : <span>and</span>, <span>or</span>, <span>not</span>, <span>xor</span> (ou exclusif).</li>
+    </ul>
+    <hr>
+    <h2>9. Structures conditionnelles</h2>
+    <ul>
+    <li>Les conditions permettent de réaliser des branches de code différentes en fonction de la valeur d'une expression.</li>
+    <li><strong>Syntaxe</strong> :</li>
+    <ul>
+    <li><span>if condition :</span> ... (exécuter le bloc si la condition est vraie).</li>
+    <li><span>else :</span> (bloc exécuté si la condition est fausse).</li>
+    <li><span>elif condition :</span> (autre condition si la première est fausse).</li>
+    </ul>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      a = int(input("Entrer un nombre :"))
+      if a &gt; 100:
+          print("Nombre à 3 chiffres")
+      elif a == 100:
+          print("Plein dans le mille")
+      else:
+          print("Tu joues petit")
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>10. Boucles bornées (for)</h2>
+    <ul>
+    <li><strong>Définition</strong> : Les boucles permettent de répéter des instructions un nombre défini de fois.</li>
+    <li><strong>Syntaxe</strong> :</li>
+    <pre><code class='python'><p>
+      for i in range(début, fin, pas):
+          # instructions
+    </p></code></pre>
+    <ul>
+    <li><span>range()</span> : Génère une séquence d'entiers entre le début et la fin (exclus).</li>
+    </ul>
+    <li><strong>Boucles imbriquées</strong> : Une boucle peut contenir une autre boucle.</li>
+    </ul>
+    <hr>
+    <h2>11. Boucles non bornées (while)</h2>
+    <ul>
+    <li><strong>Définition</strong> : Une boucle <span>while</span> répète les instructions tant qu’une condition est vraie.</li>
+    <li><strong>Syntaxe</strong> :</li>
+    <pre><code class='python'><p>
+      while condition :
+          # instructions
+    </p></code></pre>
+    <li>Attention aux boucles infinies : une mauvaise gestion des conditions d'arrêt peut bloquer le programme.</li>
+    </ul>
+    <hr>
+    <h2>12. Fonctions</h2>
+    <ul>
+    <li><strong>Définition</strong> : Une fonction est un bloc de code réutilisable défini avec le mot-clé <span>def</span>.</li>
+    <li><strong>Syntaxe</strong> :</li>
+    <pre><code class='python'><p>
+      def nom_de_la_fonction(paramètres):
+          # instructions
+          return valeur
+    </p></code></pre>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      def est_pair(n):
+          return n % 2 == 0
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>13. Portée des variables</h2>
+    <ul>
+    <li><strong>Variables locales</strong> : Définies dans une fonction, elles ne sont accessibles qu’à l’intérieur de celle-ci.</li>
+    <li><strong>Variables globales</strong> : Définies à l'extérieur des fonctions, accessibles partout.</li>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      x = 1
+      def f(x):
+          x = x + 1
+          return x
+    </p></code></pre>
+    </ul>
+    <hr>
+    <h2>14. Fonctions et procédures intégrées dans Python</h2>
+    <ul>
+    <li><strong>Exemples</strong> : <span>print()</span>, <span>input()</span>, <span>len()</span>, etc.</li>
+    <li><strong>Modules</strong> : Des fichiers contenant des fonctions supplémentaires (ex : <span>math</span> pour les fonctions mathématiques).</li>
+    <ul>
+    <li>Importer un module :</li>
+    <pre><code class='python'><p>
+        import math
+        print(math.sin(math.pi / 2))
+    </p></code></pre>
+    </ul>
+    </ul>
+    <hr>
+    <h2>15. Spécifications</h2>
+    <ul>
+    <li><strong>Définition</strong> : Les spécifications indiquent ce qu'une fonction est censée faire (préconditions et postconditions).</li>
+    <li><strong>Docstring</strong> : La documentation est inscrite entre <span>"""</span> au début de la fonction.</li>
+    <ul>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+        def est_pair(n):
+            """
+            Description : Retourne True si n est pair.
+            Entrée : entier n
+            Sortie : booléen
+            """
+            return n % 2 == 0
+    </p></code></pre>
+    </ul>
+    </ul>
+    <hr>
+    <h2>16. Mise au point d'un jeu de tests</h2>
+    <ul>
+    <li><strong>Objectif</strong> : Valider le comportement des fonctions en testant différents cas.</li>
+    <li><strong>Exemple</strong> :</li>
+    <pre><code class='python'><p>
+      print(est_pair(3))  # False
+      print(est_pair(-2)) # True
+      print(est_pair(0))  # True
+    </p></code></pre>
+    <li><strong>Remarque</strong> : Le succès d’un test ne garantit pas l’absence d’erreurs dans le programme.</li>
+    </ul>
+
+</main>
+<br><br><br><br>
+<script src="js.js"></script>
+</body>
+</html>

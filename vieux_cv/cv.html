@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capon Alexandre</title>
+    <link rel="shortcut icon" href="logoSite.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lang = navigator.language || navigator.userLanguage;
+            if (lang.startsWith('de')) {
+                // Traduction de l'en-tête
+                document.querySelector('.txHeader').textContent = "Alexandre";
+                
+                // Traduction de l'entrée
+                document.querySelector('.txEntree').textContent = "Guten Tag!";
+                
+                // Traduction des textes sous les images Blender
+                const imagesBlenderTexts = document.querySelectorAll('.divImageTel .textImageTel-Stage');
+                imagesBlenderTexts.forEach(element => {
+                    if (element.textContent === "Image faite sur blender") {
+                        element.textContent = "Mit Blender erstelltes Bild";
+                    }
+                });
+                
+                // Traduction du texte de présentation
+                document.querySelector('.textTextPresentation').innerHTML =
+                    '<span class="quote">"</span>' +
+                    'Ich heiße Alexandre und bin derzeit Schüler am Lycée Sainte-Famille. Seit meiner Kindheit interessiere ich mich für Informatik, Technologie und UI/UX-Design. Neugierig und kreativ, bastle und entwickle ich gerne Projekte in diesen Bereichen. Ich bin auch eine ruhige Person, die sich gerne durch Sport herausfordert, was mir Gleichgewicht und Konzentration bringt. Ich bin immer bereit zu lernen und neue Herausforderungen anzunehmen, mit dem Wunsch, in allem, was ich unternehme, zu innovieren.' +
+                    '<span class="quote">"</span>';
+                
+                // Traduction des sections de stage
+                const stageHDF = document.querySelector('.textStageHDF');
+                stageHDF.querySelector('h2').textContent = "Praktikum bei La Savonnerie des Hauts-de-France";
+                stageHDF.querySelectorAll('h3')[0].textContent = "Ich habe mein Praktikum bei La Savonnerie des Hauts-de-France absolviert, einem sehr schönen Geschäft, wo ich die harte und repetitive Arbeit, aber auch die Kunst, ein Produkt an Kunden zu verkaufen, entdeckt habe.";
+                
+                const stageCDS = document.querySelector('.textStageCDS');
+                stageCDS.querySelector('h2').textContent = "Praktikum bei Les Compagnons des saisons";
+                stageCDS.querySelectorAll('h3')[0].textContent = "Ich habe ein freiwilliges Praktikum bei Les Compagnons des Saisons in Wambrechies und Villeneuve d'Ascq absolviert, wo ich die tägliche Arbeit in einer anspruchsvollen und bereichernden Umgebung kennenlernen konnte. Ich habe gelernt, mich an verschiedene Aufgaben anzupassen, sei es im Kundenservice oder in der Pflanzenpflege. Diese Erfahrung hat mir geholfen, die Funktionsweise eines Gartenunternehmens besser zu verstehen und gleichzeitig meine sozialen Fähigkeiten zu entwickeln.";
+                
+                // Traduction des textes de la section de compétences (box3)
+                const sousPartiesBox3 = document.querySelectorAll('.sousPartieBox3 h3');
+                sousPartiesBox3[0].textContent = "Ich beherrsche Programmiersprachen wie HTML/CSS oder Python.";
+                sousPartiesBox3[1].textContent = "Oder auch die Figma-Software, mit der ich diese Seite konzipiert habe.";
+                sousPartiesBox3[2].textContent = "Und alle 3D-Bilder, die Sie hier gesehen haben, wurden von mir mit Blender erstellt.";
+                
+                // Traduction du texte sous les images box4
+                const imgBox4Texts = document.querySelectorAll('.imgBox4 .textImageTel-Stage');
+                if (imgBox4Texts[0]) imgBox4Texts[0].textContent = "Nutzloses PHP.";
+                if (imgBox4Texts[1]) imgBox4Texts[1].textContent = "Kurszusammenfassungen.";
+                if (imgBox4Texts[2]) imgBox4Texts[2].textContent = "Abiturpunktberechnung.";
+                
+                // Traduction de la section box4_haut
+                document.querySelector('.box4_haut h3').textContent = "Ansonsten können Sie diesem Link folgen, der Sie zu meinem Hub führt, wo Sie auf alle meine anderen Projekte und Kreationen zugreifen und sie ansehen können.";
+                
+                // Traduction de la section de contact
+                document.querySelector('.divFin h2').textContent = "Kontakt aufnehmen";
+                
+                // Traduction des images spécifiques
+                const infoImageTexts = document.querySelectorAll('.infoImageTel-Stage .textImageTel-Stage');
+                infoImageTexts.forEach(element => {
+                    if (element.textContent === "Entrée de La Savonnerie des Hauts-de-France") {
+                        element.textContent = "Eingang von La Savonnerie des Hauts-de-France";
+                    }
+                    if (element.textContent === "Magasin Les Compagnons des saisons") {
+                        element.textContent = "Geschäft Les Compagnons des saisons";
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="cacheHeader"></div>
+    <header>
+        <h3 class="txHeader">Alexandre</h3>
+        <a href="https://www.instagram.com/roux.de.secourt/profilecard/?igsh=MW1vMXlmaWY1YnFwNw=="><img class="logoHeader" src="LogoInsta.svg" alt=""></a>
+    </header>
+    <div class="page">
+        <div class="entree">
+            <img class="imgDebut" src="imgDebut.PNG" alt="">
+            <h2 class="txEntree">Bien le Bonjour !</h2>
+        </div>
+        <div class="box1">
+            <div class="divImageTel" id="divImageTel1">
+                <div class="infoImageTel-Stage">
+                    <h3 class="textImageTel-Stage">Image faite sur blender</h3>
+                </div>
+            </div>
+            <div class="divImageTel" id="divImageTel2">
+                <div class="infoImageTel-Stage">
+                    <h3 class="textImageTel-Stage">Image faite sur blender</h3>
+                </div>
+            </div>
+            <div class="divImageTel" id="divImageTel3">
+                <div class="infoImageTel-Stage">
+                    <h3 class="textImageTel-Stage">Image faite sur blender</h3>
+                </div>
+            </div>
+        </div>
+        <div class="divTextPresentation">
+            <h3 class="textTextPresentation">
+                <span class="quote">"</span>
+                Je m’appelle Alexandre, actuellement étudiant au lycée Sainte-Famille. Depuis mon enfance, je suis passionné par l’informatique, la technologie et le design UI/UX. Toujours curieux et créatif, j’aime bricoler et développer des projets dans ces domaines. Je suis également quelqu’un de calme, qui aime se dépasser à travers le sport, ce qui m’apporte équilibre et concentration. Je suis toujours prêt à apprendre et à relever de nouveaux défis, avec l’envie d’innover dans tout ce que j’entreprends.
+                <span class="quote">"</span>
+            </h3>
+        </div>
+        <div class="box2">
+            <div class="textStage textStageHDF">
+                <h2>Stage à La Savonnerie des Hauts-de-France</h2>
+                <h3>J'ai effectué un stage de seconde à la Savonnerie des Hauts-de-France, un très joli commerce où j'ai découvert le travail dur et répétitif, mais aussi l'art de vendre un produit à la clientèle.</h3>
+                <h3><a href="https://maps.apple.com/?address=5%20bis%20Rue%20des%20Moutiers,%2080480%20Salou%C3%ABl,%20France&auid=5592958765869849223&ll=49.869631,2.244563&lsp=9902&q=Savonnerie%20des%20Hauts-de-France&t=m">/maps.apple</a></h3>
+            </div>
+            <div class="divImageStage" id="divImageStage1">
+                <div class="infoImageTel-Stage">
+                    <h3 class="textImageTel-Stage">Entrée de La Savonnerie des Hauts-de-France </h3>
+                </div>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="divImageStage" id="divImageStage2">
+                <div class="infoImageTel-Stage">
+                    <h3 class="textImageTel-Stage">Magasin Les Compagnons des saisons</h3>
+                </div>
+            </div>
+            <div class="textStage textStageCDS">
+                <h2>Stage chez les Compagnons des saisons</h2>
+                <h3>J'ai réalisé un stage volontaire aux Compagnons des Saisons à Wambrechies et Villeneuve d'Ascq, où j'ai pu découvrir le travail quotidien dans un environnement à la fois exigeant et enrichissant. J'y ai appris à m'adapter aux différentes tâches, qu'il s'agisse du service à la clientèle ou de l'entretien des plantes. Cette expérience m'a permis de mieux comprendre le fonctionnement d'une entreprise de jardinage tout en développant mes compétences relationnelles.</h3>
+                <h3><a href="https://maps.apple.com/?address=644%20Rue%20de%20Bondues,%2059118%20Wambrechies,%20France&auid=13138273599583604783&ll=50.689080,3.067286&lsp=9902&q=Les%20Compagnons%20Des%20Saisons&t=m">/maps.apple</a></h3>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="sousPartieBox3">
+                <div class="imgBox3" id="imgCodeBox3">
+                    <div class="divLogoBox3">
+                        <img src="logoHtml.svg" alt="logoHtml" class="logoBox3">
+                        <img src="logoCss.svg" alt="logoCss" class="logoBox3">
+                        <img src="logoPython.svg" alt="logoPython" class="logoBox3">
+                    </div>
+                </div>
+                <h3>Je maitrise les langages de codage comme l’HTML / CSS ou encode le Python.</h3>
+            </div>
+            <div class="sousPartieBox3">
+                <div class="imgBox3" id="imgfigmaBox3">
+                    <div class="divLogoBox3">
+                        <img src="logoFigma.svg" alt="logoFigma" class="logoBox3">
+                    </div>
+                </div>
+                <h3>Ou encore le logiciel Figma sur le quel j’ai conceptualisé cette page.</h3>
+            </div>
+            <div class="sousPartieBox3">
+                <div class="imgBox3" id="imgBlenderBox3">
+                    <div class="divLogoBox3">
+                        <img src="logoBlender.svg" alt="logoBlender" class="logoBox3">
+                    </div>
+                </div>
+                <h3>Et toutes les images 3D que vous avez vue ici ont été realisées par mes soints sur Blender.</h3>
+            </div>
+        </div>
+
+        <div class="box4">
+            <a href="../" target="_blank">
+                <div class="box4_haut">
+                    <h1 class="fleche">←</h1>
+                    <h3>Sinon, vous pouvez suivre ce lien qui vous emmènera vers mon hub sur lequelle vous pouvez accéder et regarder touts mes autres projets et création.</h3>
+                </div>
+                <div class="box4_bas">
+                    <div class="imgBox4" id="imgPHPBox4">
+                        <div class="infoImageTel-Stage">
+                            <h3 class="textImageTel-Stage">Du PHP inutile.</h3>
+                        </div>
+                    </div>
+                    <div class="imgBox4" id="imgrecapBox4">
+                        <div class="infoImageTel-Stage">
+                            <h3 class="textImageTel-Stage">Les recap de cour.</h3>
+                        </div>
+                    </div>
+                    <div class="imgBox4" id="imgcalcBox4">
+                        <div class="infoImageTel-Stage">
+                            <h3 class="textImageTel-Stage">Calcule de point Bac.</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="divFin">
+            <table>
+                <tr>
+                    <td id="imgDivFin"></td>
+                    <td><h2>get in touch</h2></td>
+                </tr>
+            </table>
+            <a href="mailto:alexcapon33@gmail.com">Mail : alexcapon33@gmail.com</a>
+            <a href="tel:+33769861696">Téléphone : +33 7 69 86 16 96</a>
+        </div>
+    </div>
+</body>
+</html>

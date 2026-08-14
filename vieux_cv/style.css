@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+h1, h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #E7E7E7;
+    margin: 0;
+}
+
+h3 {
+    font-weight: 300;
+    color: #E7E7E7;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+
+body {
+    background-color: #050505;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+
+
+.cacheHeader {
+    width: 100%;
+    height: 5rem;
+    max-height: 10vh;
+    background: rgb(5,5,5);
+    background: linear-gradient(0deg, rgba(5,5,5,0) 0%, rgba(0,0,0,1) 100%);
+
+    z-index: 1;
+    top: 0;
+    position: fixed;
+}
+
+
+
+
+
+header {
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    margin: 20%;
+    margin-top: 1rem;
+    width: 60%;
+    border: 0.15rem solid #ffffff20;
+    border-radius: 100vh;
+    box-shadow: #000000 0 0 5rem ;
+    backdrop-filter: blur(20px);
+    background-color: #07080880;
+}
+
+.txHeader {
+    color: #ffffff20;
+    margin: 0.5rem;
+    margin-left: 0.9rem;
+}
+
+header a {
+    text-decoration: none;
+    padding: 0;
+    margin-left: auto;
+    height: min-content;
+    display: flex;
+    align-items: center;
+}
+
+.logoHeader {
+    height: 1rem;
+    margin: 0.5rem;
+    margin-right: 0.9rem;
+}
+
+.page {
+    max-width: 70rem;
+    margin: auto;
+    position: relative;
+}
+
+.entree{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.imgDebut {
+    width: 100%;
+}
+
+.txEntree {
+    position: absolute;
+    left: 55%;
+    top: calc(50% - 1rem);
+    font-size: 2rem;
+    margin: 0;
+}
+
+
+
+
+
+
+
+.box1 {
+    max-width: 50rem;
+    margin: auto;
+    margin-bottom: 8rem;
+    padding: 2rem;
+
+    position: relative;
+    display: flex;
+
+    border: 0.15rem solid #ffffff20;
+    border-radius: 5rem;
+    box-shadow: #000000 0 0 7rem 0;
+    overflow: hidden;
+
+}
+
+
+.divImageTel {
+    width: -webkit-fill-available;
+    min-width: 1%;
+    height: 40rem;
+    margin: 0.5rem;
+
+    background-position: center; /* Centre l'image horizontalement et verticalement */
+    background-repeat: no-repeat; /* EmpÃªche la rÃ©pÃ©tition de l'image */
+    background-size: cover; /* Redimensionne l'image pour couvrir toute la div */
+
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    position: relative; /* NÃ©cessaire pour que les enfants positionnÃ©s absolument se basent sur ce conteneur */
+
+    border-radius: 3rem;
+    box-sizing: border-box;
+    border: 0.15rem solid #050505;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.divImageTel:hover  {
+    min-width: 12rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    height: 42rem;
+    border: 0.15rem solid #242424;
+}
+
+.infoImageTel-Stage {
+    position: absolute; /* Positionnement absolu */
+    bottom: 0; /* Colle l'Ã©lÃ©ment au bas de son parent */
+    left: 0; /* Facultatif, pour s'assurer qu'il est alignÃ© Ã  gauche */
+    right: 0; /* Facultatif, pour qu'il s'Ã©tende sur toute la largeur */
+
+    opacity: -1;
+    margin: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    
+    border-radius: 2.5rem;
+    border: 0.15rem solid #ffffff20;
+    backdrop-filter: blur(20px);
+    background-color: #07080880;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.divImageTel:hover .infoImageTel-Stage {
+    opacity: 1;
+    margin: 0.5rem;
+    padding: 1.5rem;
+}
+
+.imgBox4:hover .infoImageTel-Stage {
+    opacity: 1;
+    margin: 0.5rem;
+    padding: 1.5rem;
+}
+
+.divImageStage:hover .infoImageTel-Stage {
+    opacity: 1;
+    margin: 0.5rem;
+    padding: 1.5rem;
+}
+
+.textImageTel-Stage {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#divImageTel1 {
+    background-image: url("imageTel1.png");
+    box-shadow: rgb(149 89 50) 0 0 7rem -2rem;
+}
+#divImageTel2 {
+    background-image: url("imageTel2.png");
+    box-shadow: rgb(67 74 89) 0 0 7rem -2rem;
+}
+
+#divImageTel3 {
+    background-image: url("imageTel3.png");
+    box-shadow: rgb(92 139 147) 0 0 7rem -2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+.divTextPresentation {
+    max-width:40rem;
+    margin: auto;
+    margin-bottom: 8rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.textTextPresentation {
+    font-size: 1.25em;
+    font-weight: 400;
+    text-align: justify;
+}
+
+h1 .quote {
+    display: inline; /* S'assurer que les guillemets restent sur la mÃªme ligne */
+    font-weight: 900; /* Style en gras pour les guillemets */
+    height:1rem;
+}
+
+
+
+
+
+
+
+
+
+.box2 {
+    max-width: 50rem;
+    margin: auto;
+    margin-bottom: 8rem;
+    padding: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    border: 0.15rem solid #ffffff20;
+    border-radius: 5rem;
+    box-shadow: #000000 0 0 7rem 0;
+
+    overflow :hidden;
+}
+
+.divImageStage {
+    min-height: 20rem;
+    position: relative;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 45%;
+
+    border-radius: 3rem;
+    object-fit: cover;
+    border: 0.15rem solid #050505;
+
+    background-position: center;
+    background-repeat:none ;
+    background-size: cover;
+
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.divImageStage:hover {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    min-height: 22rem;
+    border: 0.15rem solid #242424;
+}
+
+#divImageStage1{
+    background-image: url("stage1.png");
+    box-shadow: rgb(120 87 40)  0 0 7rem -2rem;
+}
+
+#divImageStage2{
+    background-image: url("stage2.jpg");
+    box-shadow: rgb(94 110 49) 0 0 7rem -2rem;
+}
+
+.textStage {
+    max-width: 50%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.box2 a {
+    color: #E7E7E7;
+}
+
+
+
+
+
+
+
+
+
+
+.box3 {
+    width: auto;
+    max-width: 50rem;
+    margin: auto;
+    margin-bottom: 8rem;
+    padding: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+
+    border: 0.15rem solid #ffffff20;
+    border-radius: 5rem;
+    box-shadow: #000000 0 0 7rem 0;
+
+    overflow: hidden;
+}
+
+.sousPartieBox3 {
+    margin: 0.5rem;
+    width: -webkit-fill-available;
+}
+
+.imgBox3 {
+    height: 10rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    
+    border-radius: 2.5rem;
+    border: 0.15rem solid #050505;
+    transition: all 0.3s cubic-bezier(0.495, 0.385, 0.005, 1.28);
+    position: relative; /* Ajouté pour que les enfants puissent être positionnés */
+}
+
+.sousPartieBox3:hover .imgBox3 {
+    height: 11.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 0.15rem solid #242424;
+}
+
+#imgCodeBox3 {
+    background-image: url(code.PNG);
+    box-shadow: rgb(30 168 201)  0 0 7rem -2rem;
+}
+
+#imgfigmaBox3 {
+    background-image: url(figma.PNG);
+    box-shadow: #f24e1e  0 0 7rem -2rem;
+}
+
+#imgBlenderBox3 {
+    background-image: url(blender.PNG);
+    box-shadow: #EA7600  0 0 7rem -2rem;
+}
+
+.divLogoBox3 {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    
+    margin: 0.5rem; /* Centre horizontalement l'élément */
+    padding: 1.5rem;
+    padding-bottom: 0;
+    opacity: 0;
+    
+    border-radius: 2rem;
+    border: 0.15rem solid #ffffff20;
+    backdrop-filter: blur(20px);
+    background-color: #07080880;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+
+.sousPartieBox3:hover .divLogoBox3 {
+    opacity: 1;
+    margin: 0.5rem;
+    padding: 1.5rem;
+}
+
+.logoBox3 {
+    height: 3rem;
+}
+
+.sousPartieBox3 h3 {
+    margin: 1rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+
+
+
+
+
+.box4 {
+    max-width: 50rem;
+    margin: auto;
+    margin-bottom: 8rem;
+    padding: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    justify-content: space-between;
+    border: 0.15rem solid #ffffff20;
+    border-radius: 5rem;
+    box-shadow: #000000 0 0 7rem 0;
+
+    overflow :hidden;
+
+}
+
+.box4 a {
+    display: flex;
+    flex-direction: column;
+
+    color: #E7E7E7;
+    text-decoration: none;
+}
+
+.box4_haut {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fleche {
+    font-size: 5rem;
+    margin: 0;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.box4_haut h3 {
+    text-decoration: underline;
+}
+
+.box4_bas {
+    display: flex;
+    width: 100%;
+}
+
+#imgPHPBox4 {
+    background-image: url(IMG_1_phpProjet.png);
+    box-shadow: rgb(47, 188, 0)  0 0 7rem -2rem;
+    border-radius: 2.5rem 0 0 2.5rem;
+}
+#imgPHPBox4:hover {
+    border-radius: 2.5rem 1rem 1rem 2.5rem;
+}
+#imgrecapBox4 {
+    background-image: url(IMG_2_recapCour.png);
+    box-shadow: rgb(170, 170, 170)  0 0 7rem -2rem;
+}#imgcalcBox4 {
+    background-image: url(IMG_3_calculateur_moyenne.png);
+    box-shadow: rgb(165, 165, 0)  0 0 7rem -2rem;
+    border-radius: 0 2.5rem 2.5rem 0;
+}
+#imgcalcBox4:hover {
+    border-radius: 1rem 2.5rem 2.5rem 1rem;
+}
+
+.imgBox4 {
+    height: 12rem;
+    margin: 0rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: -webkit-fill-available;
+    
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    
+    border-radius: 0;
+    border: 0.15rem solid #050505;
+    transition: all 0.3s cubic-bezier(0.495, 0.385, 0.005, 1.28);
+    position: relative; /* Ajouté pour que les enfants puissent être positionnés */
+}
+
+.imgBox4:hover {
+    height: 14rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 0.15rem solid #242424;
+    border-radius: 1rem;
+}
+
+
+
+
+
+
+
+
+
+.divFin {
+    width: auto;
+    max-width: 50rem;
+    margin: auto;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 0.15rem solid #ffffff20;
+    border-radius: 5rem;
+}
+
+#imgDivFin {
+    height: 5rem;
+    width: 5rem;
+    background-image: url(Bey1.png);
+    background-size: cover;
+}
+
+table:hover #imgDivFin {
+    background-image: url(Bey2.png);
+}
+
+
+table{
+    margin: 1rem;
+}
+
+table td h2 {
+    margin: 0;
+}
+
+.divFin a {
+    color: #E7E7E7;
+    text-decoration: none !important;
+    margin: 0.5rem;
+}
+

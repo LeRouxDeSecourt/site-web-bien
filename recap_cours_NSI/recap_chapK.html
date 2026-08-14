@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Récapitulatif k-NN</title>
+<link rel="icon" href="font-favicon/favicon.png" type="image/png">
+<link rel="icon" href="font-favicon/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="font-favicon/style.css">
+</head>
+<body>
+<a href="home.html" class="bouton_retour">
+<h4 class="lien_retour">HUB</h4>
+</a>
+<main>
+
+<h1>Récapitulatif de l'algorithme des k plus proches voisins (k-NN)</h1>
+
+
+<h2>Principes fondamentaux</h2>
+<ul>
+<li><strong>Type d'algorithme</strong> : Apprentissage supervisé <span>(données étiquetées)</span></li>
+<li><strong>Objectif</strong> : Classifier selon <span>similarités</span></li>
+<li><strong>Origine</strong> : Terme <span>"machine learning"</span> (1959), popularisé années 2000</li>
+</ul>
+
+<h2>Formule de calcul de distance</h2>
+<p>Distance euclidienne entre <span>I = (xI, yI)</span> et <span>C = (xC, yC)</span> :</p>
+<p><span>IC = &radic;[(xC - xI)² + (yC - yI)²]</span></p>
+
+<pre><code class='python'><p>
+    import math
+
+    def distance(pok_inconnu, pok_de_la_base):
+        d = math.sqrt((int(pok_inconnu[0]) - int(pok_de_la_base[1]))**2
+        + (int(pok_inconnu[1]) - int(pok_de_la_base[2]))**2)
+        return d
+        
+</p></code></pre>
+
+<h2>Fonctionnement de l'algorithme en pseudocode</h2>
+<pre><code class='mathematica'><p>
+    Algorithme k-NN (base apprentissage, k, inconnu)
+    Pour chaque donnée dans la base d'apprentissage
+      Calculer la distance entre l'inconnu et la donnée courante.
+      Mémoriser cette distance et la donnée associée dans une liste de couple (distance, donnée).
+      Triez la liste distance_Donnée par ordre croissant des distances.
+      Choisissez les k premières entrées de cette liste.
+      Obtenir les étiquettes des k données de la base d'apprentissage sélectionnée.
+      Renvoyer l'étiquette majoritaire.
+      
+</p></code></pre>
+
+<h2>Implémentation complète en Python</h2>
+
+<h3>1. Chargement des données</h3>
+<pre><code class='python'><p>
+    ListeDesPok = []
+    with open('pokemon.csv', 'r', newline="") as fichier:
+        table = [ligne.rstrip().split(',') for ligne in fichier]
+        for i in range(1, len(table)):
+            pok = (table[i][0], table[i][1], table[i][2], table[i][3] == 'OUI')
+            ListeDesPok.append(pok)
+            
+</p></code></pre>
+
+<h3>2. Visualisation des données</h3>
+<pre><code class='python'><p>
+    import matplotlib.pyplot as plt
+
+    x_True = [int(x[1]) for x in ListeDesPok if x[-1] == True]
+    y_True = [int(x[2]) for x in ListeDesPok if x[-1] == True]
+    x_False = [int(x[1]) for x in ListeDesPok if x[-1] == False]
+    y_False = [int(x[2]) for x in ListeDesPok if x[-1] == False]
+
+    plt.scatter(x_True, y_True, color='red', label='legendes')
+    plt.scatter(x_False, y_False, color='blue')
+    plt.xlabel('attack')
+    plt.ylabel('defense')
+
+    plt.show()
+    
+</p></code></pre>
+
+<h3>3. Calcul des distances</h3>
+<pre><code class='python'><p>
+    def liste_distances(pok_inconnu, table_pokemon):
+        """Description : retourne la liste des t-uples (Nom_pokemon, distance entre le pok_inconnu et pokemon, classe du pokemon)
+        Entrée : deux listes pok_inconnu et table_pokemon de type list
+        Sortie : liste de t-uples de type list"""
+        
+        l = []
+        for pok in table_pokemon:
+            dist = distance(pok_inconnu, pok)
+            l.append((pok[0], dist, pok[3]))
+        
+        return l
+        
+</p></code></pre>
+
+<h3>4. Tri de la liste des distances</h3>
+<pre><code class='python'><p>
+    def tri_insertion(liste):
+        """Trie une liste de tuples par ordre croissant des distances (2ème élément du tuple)"""
+        for i in range(1, len(liste)):
+            element = liste[i]
+            j = i - 1
+            while j >= 0 and liste[j][1] > element[1]:
+                liste[j+1] = liste[j]
+                j -= 1
+            liste[j+1] = element
+        return liste
+        
+</p></code></pre>
+
+<h3>5. Détermination de la classe majoritaire</h3>
+<pre><code class='python'><p>
+    def classe_majoritaire(liste_triee, k):
+        """Détermine la classe majoritaire parmi les k premiers éléments
+        Entrée : liste de tuples (Nom_Pokemon, distance, Booleen), entier k
+        Sortie : valeur booléenne majoritaire"""
+        
+        # Extraction des k premiers éléments
+        k_premiers = liste_triee[:k]
+        
+        # Comptage des True et False
+        compte_true = sum(1 for _, _, classe in k_premiers if classe == True)
+        compte_false = k - compte_true
+        
+        # Retourne la classe majoritaire
+        return compte_true > compte_false
+        
+</p></code></pre>
+
+<h3>6. Implémentation complète de l'algorithme k-NN</h3>
+<pre><code class='python'><p>
+    def knn_prediction(pok_inconnu, base_apprentissage, k):
+        """Prédit la classe d'un pokemon inconnu en utilisant l'algorithme k-NN
+        Entrée : pok_inconnu (liste), base_apprentissage (liste de pokemons), k (entier)
+        Sortie : booléen (True si légendaire, False sinon)"""
+        
+        # Calcul des distances
+        liste_dist = liste_distances(pok_inconnu, base_apprentissage)
+        
+        # Tri des distances
+        liste_triee = tri_insertion(liste_dist)
+        
+        # Détermination de la classe majoritaire
+        resultat = classe_majoritaire(liste_triee, k)
+        
+        return resultat
+        
+</p></code></pre>
+
+<h3>6. Utilisation pour prédire si Mega Heracross est légendaire</h3>
+<pre><code class='python'><p>
+    # Caractéristiques de Mega Heracross
+    mega_heracross = [80, 185]
+
+    # Prédiction avec différentes valeurs de k
+    resultat_k3 = knn_prediction(mega_heracross, ListeDesPok, 3)
+    resultat_k5 = knn_prediction(mega_heracross, ListeDesPok, 5)
+    resultat_k7 = knn_prediction(mega_heracross, ListeDesPok, 7)
+
+    print(f"Avec k=3, Mega Heracross est légendaire : {resultat_k3}")
+    print(f"Avec k=5, Mega Heracross est légendaire : {resultat_k5}")
+    print(f"Avec k=7, Mega Heracross est légendaire : {resultat_k7}")
+    
+</p></code></pre>
+
+
+
+<h2>Avantages et limitations</h2>
+<ul>
+<li><strong>Avantages</strong> :
+<ul>
+<li><span>Simple à implémenter</span></li>
+<li><span>Aucun entraînement requis</span></li>
+</ul>
+</li>
+<li><strong>Limitations</strong> :
+<ul>
+<li><span>Coûteux en mémoire</span></li>
+<li><span>Sensible au choix de k</span></li>
+</ul>
+</li>
+</ul>
+
+<h2>Applications</h2>
+<ul>
+<li>Classification de <span>textes</span></li>
+<li>Reconnaissance d'<span>images</span></li>
+<li>Systèmes de <span>recommandation</span></li>
+</ul>
+
+</main>
+<br><br><br><br>
+<script src="font-favicon/js.js"></script>
+</body>
+</html>
