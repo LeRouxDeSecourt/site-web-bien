@@ -105,6 +105,10 @@
             color: var(--blanc);
         }
 
+        .mobile-title {
+            display: none;
+        }
+
         h1 {
             margin: var(--margin) 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -723,22 +727,42 @@
                 max-width: 420px;
             }
 
+            .desktop-title {
+                display: none;
+            }
+
+            .mobile-title {
+                display: block;
+                margin: 1.25rem 0 0.75rem;
+                line-height: 1.05;
+                letter-spacing: 0.02em;
+                margin-bottom: 2.2rem;
+            }
+
+            .mobile-title span {
+                display: block;
+                margin-top: 0.2rem;
+                font-size: 2.8rem;
+                line-height: 1;
+                color: var(--orange);
+            }
+
             /* Icon grid: 3 cols on mobile */
             .div_boutons {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 1.2rem 0.8rem;
-                margin: 1.2rem 1rem;
+                gap: var(--margin) var(--padding);
+                margin: var(--margin) var(--padding);
                 justify-items: center;
             }
 
             .img_boutton_main {
-                width: 4rem;
-                height: 4rem;
+                width: 4.5rem;
+                height: 4.5rem;
             }
 
             .bouton_plus_texte h4 {
-                font-size: 0.78rem;
+                font-weight: 400;
             }
 
             /* ---- Mobile Full-Screen Panels ---- */
@@ -1004,7 +1028,8 @@
         <div class="window open" id="window1">
             <div class="haut_page"></div>
             <div class="window_main">
-                <h1>Hi, ici <span>Alexandre</span></h1>
+                <h1 class="desktop-title">Hi, ici <span>Alexandre</span></h1>
+                <h1 class="mobile-title">Bienvenue chez<br><span>Alexandre</span></h1>
                 <div class="div_boutons">
                     <div class="bouton_plus_texte" id="icon_about">
                         <div class="img_boutton_main"></div>
