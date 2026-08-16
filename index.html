@@ -257,17 +257,20 @@
         }
 
         .img_art_grand {
-            width: calc(50rem - var(--border2)*2);
+            width: calc(50rem - (var(--border2) * 2));
             height: auto;
             margin: var(--padding);
             border: solid var(--border2) var(--blanc);
             background-color: black;
         }
         body.safari .img_art_grand {
-            width: calc(50rem - var(--border2)*2);
+            margin-bottom: 0;
+        }
+
+        .img_art_grand_autre{
+            width: calc(50rem - (var(--border2) * 2));
             height: auto;
             margin: var(--padding);
-            margin-bottom: 0;
             border: solid var(--border2) var(--blanc);
             background-color: black;
         }
@@ -483,7 +486,7 @@
             align-items: center;
         }
 
-        .info_part1 h1 {
+        .text_bonjour_dans_info_part1 {
             margin-left: 2rem;
         }
 
@@ -516,6 +519,10 @@
             transform-origin: bottom left;
             -webkit-transform-origin: bottom left;
             background-color: var(--noir);
+        }
+
+        .box_pour_texte_de_box_info{
+            margin-left: var(--margin);
         }
 
         .img_contact_icon {
@@ -570,6 +577,10 @@
 
         #pop_up_flotant_work .window_main {
             padding-top: 0;
+        }
+
+        .text_de_entree_projet_work {
+            margin-left: -2rem;
         }
 
         .projet_titre {
@@ -665,14 +676,312 @@
             border-top: var(--border2) solid var(--blanc);
             margin: 0 var(--padding);
             height: 0;
-            width: clac(100%- 4*var(--padding));
+            width: calc(100% - (4 * var(--padding)));
         }
 
 
 
-        /*-------------------------*/
+    
 
-    </style>
+        /* Mobile panels: hidden everywhere by default, only shown on mobile via @media */
+        .mobile-panel {
+            display: none;
+        }
+
+        /* =====================================================
+           MOBILE STYLES — max-width: 768px
+           Desktop is completely untouched above.
+           ===================================================== */
+
+        @media (max-width: 768px) {
+
+            /* Hide desktop drag overlays entirely on mobile */
+            .ele_pour_js_drag {
+                display: none !important;
+            }
+
+            /* Main window: centered card on the background */
+            .window {
+                position: static;
+                transform: none !important;
+                -webkit-transform: none !important;
+                width: calc(100vw - 2.4rem) !important;
+                max-width: 420px;
+                max-height: none !important;
+                height: auto !important;
+                border: solid var(--border1) var(--blanc);
+            }
+
+            /* Disable cursor:move on mobile */
+            .haut_page {
+                cursor: default;
+            }
+
+            /* Main hub window: narrower padding */
+            #window1 {
+                width: calc(100vw - 2.4rem);
+                max-width: 420px;
+            }
+
+            /* Icon grid: 3 cols on mobile */
+            .div_boutons {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.2rem 0.8rem;
+                margin: 1.2rem 1rem;
+                justify-items: center;
+            }
+
+            .img_boutton_main {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            .bouton_plus_texte h4 {
+                font-size: 0.78rem;
+            }
+
+            /* ---- Mobile Full-Screen Panels ---- */
+            .mobile-panel {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 2000;
+                background-color: var(--background_color);
+                flex-direction: column;
+                overflow: hidden;
+                /* Slide up animation */
+                transform: translateY(100%);
+                -webkit-transform: translateY(100%);
+                transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+                -webkit-transition: -webkit-transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .mobile-panel.mp-visible {
+                display: flex;
+            }
+            .mobile-panel.mp-open {
+                transform: translateY(0);
+                -webkit-transform: translateY(0);
+            }
+
+            /* Panel top bar — same pixel aesthetic as .haut_page */
+            .mobile-panel-bar {
+                padding: 0.55rem var(--padding);
+                background-color: var(--blanc);
+                border-bottom: solid var(--border1) var(--gris);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-shrink: 0;
+            }
+
+            .mobile-panel-bar .window-title {
+                color: var(--noir);
+                font-family: 'Pixeled', cursive;
+                font-size: 0.95rem;
+                margin: 0;
+                line-height: 1;
+                margin-bottom: 0.15rem;
+            }
+
+            /* Back button in panel bar */
+            .mobile-back-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                -webkit-appearance: none;
+                appearance: none;
+                outline: none;
+                height: 1.2rem;
+                color: var(--noir);
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-family: 'Pixeled', cursive;
+                font-size: 0.75rem;
+            }
+
+            .mobile-back-btn svg {
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+
+            /* Panel scrollable body */
+            .mobile-panel-body {
+                flex: 1 1 auto;
+                overflow-y: auto;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+                padding-top: var(--padding);
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+            }
+
+            /* Reuse .window_main content inside mobile panels */
+            .mobile-panel-body .window_main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding-top: 0;
+                overflow: visible;
+                min-height: 0;
+                flex: none;
+            }
+
+            /* Shrink oversized images on mobile */
+            .img_salut_info {
+                height: 15rem;
+            }
+
+            .info_part1 {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .info_part1 h1 {
+                margin-left: 0;
+            }
+
+            /* Boxes: stack vertically */
+            .box, .box_transparent {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .box_transparent {
+                margin: var(--margin) var(--padding);
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .img_petit {
+                height: 5rem;
+                width: 5rem;
+            }
+
+            .img_grand {
+                height: 8rem;
+                width: auto;
+                flex-shrink: 0;
+            }
+
+            /* Badges: keep row layout but shrink */
+            .img_6rem img {
+                height: 5rem;
+                margin: 0.1rem;
+            }
+
+            /* Contact cards: column on mobile */
+            #pop_up_flotant_contact .window .window_main {
+                flex-direction: column;
+            }
+
+            .box_horizontale {
+                width: auto;
+                height: auto;
+                margin: var(--gap) var(--gap);
+                padding: var(--padding);
+            }
+
+            .box_horizontale a {
+                width: auto;
+                margin: 0;
+                padding: 0.8rem;
+                margin-top: auto;
+            }
+
+            /* Work popup */
+            .projet_image_contexte {
+                height: 10rem;
+                max-height: 10rem;
+            }
+
+            /* Art popup: single column grid */
+            .grid {
+                column-count: 1;
+            }
+
+            .img_art_grand {
+                width: calc(100% - (var(--padding) * 2));
+                height: auto;
+                margin: var(--padding);
+            }
+
+            /* Links popup: vertical pairs */
+            #pop_up_flotant_link .window_main > div[style*="display: flex"] {
+                flex-direction: column;
+            }
+
+            .box_petit_transparent {
+                width: calc(100% - 2rem);
+                margin: 0.5rem var(--padding);
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: var(--padding);
+            }
+            .rotate_90 {
+                margin: 0;
+                height: 1rem;
+                width: 1rem;
+                margin-top: -9rem;
+                margin-left: -1rem;
+            }
+
+            .rotate_90 span {
+                font-size: 1rem;
+
+            }
+
+            /* Work header image adjustment */
+            .info_part1 img[style*="margin-left: -2rem"] {
+                margin-left: 0 !important;
+                height: 11rem !important;
+            }
+
+            #pop_up_flotant_work .info_part1 h1 {
+                margin-left: 0 !important;
+            }
+
+            /* h1, h3 scaling */
+            h1 {
+                font-size: 1.9rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            /* Footer safe area */
+            .mobile-panel-body {
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+            }
+
+
+            /*  AJOUTé PAR MOI */
+
+            .box_pour_texte_de_box_info{
+                margin-left: 0;
+            }
+
+            .mobile-panel-body .window_main .info_part1 {
+                flex-direction: column;
+            }
+
+            .mobile-panel-body .window_main .info_part1 h1{
+                margin-left: 0;
+            }
+        }
+
+</style>
 </head>
 <body>
   <svg style="display: none;">
@@ -735,7 +1044,7 @@
             <div class="window_main">
                 <div class="info_part1">
                     <img src="hub_elements/images/avatar.png" class="img_salut_info">
-                    <h1>Bonjour !</h1>
+                    <h1 class="text_bonjour_dans_info_part1" >Bonjour !</h1>
                 </div>
                 <div class="box">
                     <h4>Je suis <span>Alexandre</span>, étudiant au lycée Sainte-Famille. Depuis toujours, je suis passionné par l'informatique, la technologie et le design UI/UX. Curieux et créatif, j'aime bricoler et développer des projets dans ces domaines. Le sport me permet de me dépasser et de me concentrer. Je suis toujours prêt à apprendre et à relever de nouveaux défis, avec l'envie d'innover.</h4>
@@ -743,28 +1052,28 @@
                 <h3>Open Badges :</h3>
                 <div class="box">
                     <a href="https://openbadgepassport.com/app/badge/info/970419" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_creativite_niveau_3.png" alt=""></a>
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>CRÉATIVITÉ NIVEAU III :</span></h4>
                         <h4>Ce badge valorise ma créativité : j’ai su générer et développer des idées originales, prendre des risques pour tester de nouvelles approches et combiner mes connaissances pour résoudre un problème de façon innovante.</h4>
                     </div>
                 </div>
                 <div class="box">
                     <a href="https://openbadgepassport.com/app/badge/info/970422" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_esprit_equipe_niveau_2.png" alt=""></a>
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>ESPRIT D'ÉQUIPE NIVEAU II :</span></h4>
                         <h4>Ce badge reconnaît mon esprit d’équipe : j’ai collaboré sur plusieurs projets, aidé mes coéquipiers en cas de besoin, partagé l’information et contribué activement à l’atteinte d’objectifs communs.</h4>
                     </div>
                 </div>
                 <div class="box">
                     <a href="https://openbadgepassport.com/app/badge/info/970421" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_engagement_niveau_2.png" alt=""></a>
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>ENGAGEMENT NIVEAU II :</span></h4>
                         <h4>Ce badge illustre mon engagement : j’ai respecté les règles de l’établissement, participé à des actions solidaires, pris des initiatives pour organiser des projets et soutenu mes camarades tout au long de leur parcours.</h4>
                     </div>
                 </div>
                 <div class="box">
                     <a href="https://openbadgepassport.com/app/badge/info/970420" target="_blank" class="img_6rem"><img src="hub_elements/badges/badge_merite_niveau_2.png" alt=""></a>
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>MÉRITE NIVEAU II :</span></h4>
                         <h4>Ce badge récompense ma persévérance : j’ai fourni des efforts constants malgré les difficultés, sollicité de l’aide quand nécessaire, saisi des opportunités de stages et maintenu une attitude positive et solidaire dans l’établissement.</h4>
                     </div>
@@ -774,7 +1083,7 @@
                 <div class="box">
                     <canvas id="canvas1" class="img_petit"></canvas>
                     <img id="source-img1" src="hub_elements/images/logos_technologies.png" style="display: none">
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4>Je maîtrise plusieurs langages de programmation et outils comme le HTML, CSS, PHP, JS ou encore Python. J'ai également designé cette page avec Figma, et rendu toutes les images 3D que vous voyez ici a l'aide de l'outil Blender.</h4>
                     </div>
                 </div>
@@ -783,7 +1092,7 @@
                 <div class="box">
                     <canvas id="canvas2" class="img_petit"></canvas>
                     <img id="source-img2" src="hub_elements/images/travail_standbick.png" style="display: none">
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>Strandblick Leipzig Cospudener See</span></h4>
                         <h4>J’ai travaillé dans un bar de plage au bord du Cospudener See, près de Leipzig. Entre service et ambiance estivale, j’ai appris à gérer le rythme intense de la restauration tout en pratiquant l’allemand avec les locaux. Une expérience à la fois conviviale et formatrice.</h4>
                     </div>
@@ -793,7 +1102,7 @@
                 <div class="box">
                     <canvas id="canvas3" class="img_petit"></canvas>
                     <img id="source-img3" src="hub_elements/images/stage_savonnerie.png" style="display: none">
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>La Savonnerie des Hauts-de-France</span></h4>
                         <h4>J'ai effectué un stage de seconde à la Savonnerie des Hauts-de-France, un très joli commerce où j'ai découvert le travail dur et répétitif, mais aussi l'art de vendre un produit à la clientèle.</h4>
                     </div>
@@ -801,7 +1110,7 @@
                 <div class="box">
                     <canvas id="canvas4" class="img_petit"></canvas>
                     <img id="source-img4" src="hub_elements/images/stage_compagnons_saisons.png" style="display: none">
-                    <div style="margin-left: var(--margin);">
+                    <div class="box_pour_texte_de_box_info">
                         <h4><span>Les Compagnons des saisons</span></h4>
                         <h4>J'ai aussi fait un stage volontaire aux Compagnons des Saisons à Wambrechies et Villeneuve d'Ascq, où j'ai découvert un environnement exigeant, appris à m'adapter à diverses tâches et renforcé mes compétences relationnelles.</h4>
                     </div>
@@ -828,7 +1137,7 @@
             <div class="window_main">
                 <div class="info_part1" style="margin: 2rem 0;">
                     <img    style="margin-left: -2rem;height: 16rem;"      src="hub_elements/images/projet_papier_crayon.png" class="img_salut_info">
-                    <h1 style="margin-left: -3rem;">Mes projets :</h1>
+                    <h1 class="text_de_entree_projet_work">Mes projets :</h1>
                 </div>
                 <h3 class="projet_titre">Application iOS - Arts Plastiques</h3>
                 <div class="projet_card">
@@ -924,7 +1233,7 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
                         <h4>Ici les liens pour accéder aux récaps que j'ai faits sur tous les cours de NSI Première !</h4>
                     </div>
                 </a>
-                <div style="display: flex; ">
+                <div style="display: flex; width: 100%; ">
                     <a class="box_petit_transparent" target="_blank" href="horloge_clean/horloge.php" >
                         <img src="hub_elements/images/project_horloge_propre.png" class="img_grand">
                         <h4 class="rotate_90"><span>Horloge clean</span></h4>
@@ -941,7 +1250,7 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
                         <h4>Voici mon premier CV, que je trouve toujours stylé ! Bien sûr, il n’est plus à jour, mais n’hésitez pas à le consulter.</h4>
                     </div>
                 </a>
-                <div style="display: flex; ">
+                <div style="display: flex; width: 100%; ">
                     <a class="box_petit_transparent" target="_blank" href="hub_1/index.html" >
                         <img src="hub_elements/images/project_hub.png" class="img_grand">
                         <h4 class="rotate_90"><span>1ᵉhub (périmé)</span></h4>
@@ -967,7 +1276,7 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
             </div>
             <div class="window_main">
                 <h2>Et ici toutes mes productions :</h2>
-                <img src="hub_elements/images/art_1.png" class="img_art_grand">
+                <img src="hub_elements/images/art_1.png" class="img_art_grand img_art_grand_autre">
                 <div class="grid">
                     <img src="hub_elements/images/art_2.png" class="img_art_petit">
                     <img src="hub_elements/images/art_3.png" class="img_art_petit">
@@ -1011,6 +1320,74 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
             </div>
         </div>
     </div>
+
+    <!-- ============ MOBILE PANELS (hidden on desktop via CSS) ============ -->
+    <div class="mobile-panel" id="mobile-panel-about" data-for="icon_about">
+        <div class="mobile-panel-bar">
+            <button class="mobile-back-btn" data-close="mobile-panel-about">
+                <svg width="20" height="20" viewBox="0 0 500 500"><use href="#icon-close" /></svg>
+            </button>
+            <h3 class="window-title">Info</h3>
+        </div>
+        <div class="mobile-panel-body">
+            <div class="window_main" id="mobile-about-content">
+                <!-- content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-panel" id="mobile-panel-work" data-for="icon_work">
+        <div class="mobile-panel-bar">
+            <button class="mobile-back-btn" data-close="mobile-panel-work">
+                <svg width="20" height="20" viewBox="0 0 500 500"><use href="#icon-close" /></svg>
+            </button>
+            <h3 class="window-title">Projets</h3>
+        </div>
+        <div class="mobile-panel-body">
+            <div class="window_main" id="mobile-work-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-panel" id="mobile-panel-link" data-for="icon_link">
+        <div class="mobile-panel-bar">
+            <button class="mobile-back-btn" data-close="mobile-panel-link">
+                <svg width="20" height="20" viewBox="0 0 500 500"><use href="#icon-close" /></svg>
+            </button>
+            <h3 class="window-title">Liens</h3>
+        </div>
+        <div class="mobile-panel-body">
+            <div class="window_main" id="mobile-link-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-panel" id="mobile-panel-art" data-for="icon_art">
+        <div class="mobile-panel-bar">
+            <button class="mobile-back-btn" data-close="mobile-panel-art">
+                <svg width="20" height="20" viewBox="0 0 500 500"><use href="#icon-close" /></svg>
+            </button>
+            <h3 class="window-title">Art 3D</h3>
+        </div>
+        <div class="mobile-panel-body">
+            <div class="window_main" id="mobile-art-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-panel" id="mobile-panel-contact" data-for="icon_contact">
+        <div class="mobile-panel-bar">
+            <button class="mobile-back-btn" data-close="mobile-panel-contact">
+                <svg width="20" height="20" viewBox="0 0 500 500"><use href="#icon-close" /></svg>
+            </button>
+            <h3 class="window-title">Contact</h3>
+        </div>
+        <div class="mobile-panel-body">
+            <div class="window_main" id="mobile-contact-content">
+            </div>
+        </div>
+    </div>
+    <!-- ============ END MOBILE PANELS ============ -->
 
     <script>
         // Le système de sons est maintenant géré par sounds.js
@@ -1060,12 +1437,35 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
 
 
 
+        /* ---- Detect mobile ---- */
+        function isMobile() {
+            return window.matchMedia('(max-width: 768px)').matches;
+        }
+
+        /* ---- Desktop popup system (unchanged) ---- */
         const buttons = document.querySelectorAll(".bouton_plus_texte");
         const allPopUps = document.querySelectorAll(".pop_up_flotant");
 
         buttons.forEach(btn => {
             btn.addEventListener("click", () => {
                 const iconClass = btn.id; // ex : icon_about
+
+                /* --- MOBILE: open full-screen panel --- */
+                if (isMobile()) {
+                    const panelMap = {
+                        icon_about:   'mobile-panel-about',
+                        icon_work:    'mobile-panel-work',
+                        icon_link:    'mobile-panel-link',
+                        icon_art:     'mobile-panel-art',
+                        icon_contact: 'mobile-panel-contact',
+                    };
+                    const panelId = panelMap[iconClass];
+                    if (!panelId) return;
+                    openMobilePanel(panelId, iconClass);
+                    return;
+                }
+
+                /* --- DESKTOP: existing behaviour --- */
                 const targetPopUp = document.querySelector(`.ele_pour_js_drag.${iconClass}`);
                 const inner = targetPopUp.querySelector('.window');
                 const windowMain = inner.querySelector('.window_main');
@@ -1089,6 +1489,95 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
                     targetPopUp.classList.remove("open");
                     targetPopUp.style.opacity = '';
                 };
+            });
+        });
+
+        /* ---- Mobile Panel Logic ---- */
+        // Map each icon to which desktop popup to clone content from
+        const mobileContentMap = {
+            'mobile-panel-about':   { sourceId: 'pop_up_flotant_about',   contentId: 'mobile-about-content' },
+            'mobile-panel-work':    { sourceId: 'pop_up_flotant_work',    contentId: 'mobile-work-content' },
+            'mobile-panel-link':    { sourceId: 'pop_up_flotant_link',    contentId: 'mobile-link-content' },
+            'mobile-panel-art':     { sourceId: 'pop_up_flotant_art',     contentId: 'mobile-art-content' },
+            'mobile-panel-contact': { sourceId: 'pop_up_flotant_contact', contentId: 'mobile-contact-content' },
+        };
+
+        let mobilePanelInitialized = {};
+
+        function openMobilePanel(panelId, iconClass) {
+            const panel = document.getElementById(panelId);
+            if (!panel) return;
+
+            // Lazy-clone content from desktop popup on first open
+            if (!mobilePanelInitialized[panelId]) {
+                const map = mobileContentMap[panelId];
+                const source = document.getElementById(map.sourceId);
+                const dest   = document.getElementById(map.contentId);
+                if (source && dest) {
+                    const srcContent = source.querySelector('.window_main');
+                    if (srcContent) {
+                        dest.innerHTML = srcContent.innerHTML;
+                        // Re-run pixelation canvases inside mobile panel if present
+                        dest.querySelectorAll('canvas').forEach(c => {
+                            const cId = c.id + '_m';
+                            c.id = cId;
+                        });
+                        dest.querySelectorAll('img[id^="source-img"]').forEach(img => {
+                            const iId = img.id + '_m';
+                            img.id = iId;
+                        });
+                        // Re-pixelate canvases in mobile panel
+                        ['1','2','3','4'].forEach(n => {
+                            const cEl = dest.querySelector('#canvas' + n + '_m');
+                            const iEl = dest.querySelector('#source-img' + n + '_m');
+                            if (cEl && iEl) {
+                                if (iEl.complete && iEl.naturalWidth > 0) {
+                                    pixelateImage(cEl.id, iEl.id, 80);
+                                } else {
+                                    iEl.addEventListener('load', () => pixelateImage(cEl.id, iEl.id, 80));
+                                }
+                            }
+                        });
+                    }
+                }
+                mobilePanelInitialized[panelId] = true;
+            }
+
+            panel.classList.add('mp-visible');
+            // Trigger transition on next frame
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    panel.classList.add('mp-open');
+                });
+            });
+
+            // Scroll body to top
+            const body = panel.querySelector('.mobile-panel-body');
+            if (body) body.scrollTop = 0;
+        }
+
+        function closeMobilePanel(panelId) {
+            const panel = document.getElementById(panelId);
+            if (!panel) return;
+            panel.classList.remove('mp-open');
+            panel.addEventListener('transitionend', function handler() {
+                panel.classList.remove('mp-visible');
+                panel.removeEventListener('transitionend', handler);
+            });
+        }
+
+        // Wire up all close buttons in mobile panels
+        document.querySelectorAll('.mobile-back-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const panelId = btn.getAttribute('data-close');
+                closeMobilePanel(panelId);
+            });
+        });
+
+        // Close on Android back gesture (popstate)
+        window.addEventListener('popstate', () => {
+            document.querySelectorAll('.mobile-panel.mp-open').forEach(panel => {
+                closeMobilePanel(panel.id);
             });
         });
 
