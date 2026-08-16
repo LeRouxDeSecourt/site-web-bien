@@ -25,7 +25,7 @@ class SoundManager {
         this.backgroundNoise = new Howl({
             loop: true,
             src: ["hub_elements/sons/backgroundnoise.ogg"],
-            volume: 3.0
+            volume: 0.25
         });
 
         // Son de clic par défaut (down: 0-30ms, up: 30-100ms)
