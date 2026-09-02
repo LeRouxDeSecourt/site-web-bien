@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,8 +81,6 @@
             --gris: #BBB5B1;
             --noir: #000000;
             --orange: #FFA100;
-            --orange_fonce: #6a4000;
-            --bleu: #005EFFFF;
 
             --background_color: #050505e6;
             --margin: 1.5rem;
@@ -90,6 +88,11 @@
             --border1: 0.3rem;
             --border2: 0.2rem;
             --gap: 0.5rem;
+        }
+
+        /* Global box-model reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
         /* Base elements */
@@ -225,24 +228,9 @@
             margin: var(--padding);
             gap: calc(var(--padding)*2);
         }
-        body.safari .grid {
-            column-count: 2;
-            column-fill: balance;
-            margin: var(--padding);
-            gap: calc(var(--padding)*2);
-        }
 
         .grid img {
             display: block;
-        }
-        body.safari .grid img {
-            display: block;
-        }
-
-        @media (max-width: 1px) {
-            .grid {
-                column-count: 1;
-            }
         }
 
         .img_art_petit {
@@ -253,11 +241,8 @@
             margin-bottom: calc(2 * var(--padding));
         }
         body.safari .img_art_petit {
-            width: 100%;
-            border: solid var(--border2) var(--blanc);
-            background-color: black;
-            box-sizing: border-box;
-            margin: calc(2 * var(--padding)) 0;
+            /* Safari masonry fix: also add top margin to each image */
+            margin-top: calc(2 * var(--padding));
         }
 
         .img_art_grand {
@@ -271,13 +256,6 @@
             margin-bottom: 0;
         }
 
-        .img_art_grand_autre{
-            width: calc(50rem - (var(--border2) * 2));
-            height: auto;
-            margin: var(--padding);
-            border: solid var(--border2) var(--blanc);
-            background-color: black;
-        }
     
 
         hr {
@@ -376,7 +354,6 @@
 
         #pop_up_flotant_contact .window {
             width: 40rem;
-            height: 40rem;
             max-height: 30rem;
         }
         
@@ -403,14 +380,13 @@
         #pop_up_flotant_contact .window .window_main{
             display: flex;
             flex-direction: row;
-            padding-top: 0rem;
+            padding-top: 0;
         }
 
 
         .haut_page {
             padding: 0.5rem var(--padding);
             background-color: var(--blanc);
-            box-shadow: inset 0px 3px 0px 3px var(--blanc);
             border-bottom: solid var(--border1) var(--gris);
             display: flex;
             justify-content: space-between;
@@ -452,7 +428,7 @@
         }
 
         .haut_page .control_button:hover {
-            color: var(--bleu);
+            color: var(--orange);
         }
 
         /* Main content */
@@ -545,7 +521,7 @@
             display: flex;
             color: var(--blanc);
             margin-top: auto;
-            width: 212px;
+            width: calc(100% + 2rem);
         }
 
         .box_horizontale h4{
@@ -675,12 +651,12 @@
 
         #pop_up_flotant_work hr {
             flex-shrink: 0;
-            align-self: stretch;
-            border: 0;
-            border-top: var(--border2) solid var(--blanc);
+            border: none;
+            height: var(--border1);
+            background-color: var(--blanc);
             margin: 0 var(--padding);
-            height: 0;
-            width: calc(100% - (4 * var(--padding)));
+            width: calc(100% - (2 * var(--padding)));
+            align-self: center;
         }
 
 
@@ -1033,7 +1009,7 @@
                 <div class="div_boutons">
                     <div class="bouton_plus_texte" id="icon_about">
                         <div class="img_boutton_main"></div>
-                        <h4>infos</h4>
+                        <h4>Infos</h4>
                     </div>
                     <div class="bouton_plus_texte" id="icon_work">
                         <div class="img_boutton_main"></div>
@@ -1243,7 +1219,7 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
                 </button>
             </div>
             <div class="window_main">
-                <h2>ici tout ce que j'ai fait !</h2>
+                <h3>Tout ce que j'ai fait !</h3>
                 <a class="box_transparent" target="_blank" href="recap_philo/index.php" >
                     <img src="hub_elements/images/project_recap_philo.png" class="img_grand">
                     <div style="margin: var(--padding);">
@@ -1300,8 +1276,8 @@ en vrai c'est compliqué car les données sont très volumineuses... mais si tu 
                 </button>
             </div>
             <div class="window_main">
-                <h2>Et ici toutes mes productions :</h2>
-                <img src="hub_elements/images/art_1.png" class="img_art_grand img_art_grand_autre">
+                <h3>Toutes mes productions :</h3>
+                <img src="hub_elements/images/art_1.png" class="img_art_grand">
                 <div class="grid">
                     <img src="hub_elements/images/art_2.png" class="img_art_petit">
                     <img src="hub_elements/images/art_3.png" class="img_art_petit">
